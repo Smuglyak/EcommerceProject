@@ -8,5 +8,5 @@ Alihan Djamankulov
 Alexandra Vocv
 Craig Justin Balibalos
 
-####Clientele: 
+#### Clientele: 
 A restaurant that needs a website for delivering food online.
