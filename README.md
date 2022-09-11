@@ -1,6 +1,7 @@
-# EcommerceProject
-## Ecommerce Project 2022
+# Ecommerce Project 2022
+
 ### Team Name: Beavers
+
 #### Team Members:
 - Alihan Djamankulov
 - Alexandra Vovc
@@ -10,7 +11,7 @@
 A restaurant that needs a website for delivering food online.
 
 #### The general goal of the project
-Create a full functioning website that will be used as an online delivery shop. 
+We will build a Web Application where customer can order food online.
 
 Our project will support the following stories:
 1. As a customer, I can register, login, and logout (these are not new features - they are given in class)
