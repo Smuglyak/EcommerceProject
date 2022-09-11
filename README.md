@@ -14,6 +14,6 @@ Create a full functioning website that will be used as an online delivery shop.
 
 Our project will support the following stories:
 1. As a customer, I can register, login, and logout (these are not new features - they are given in class)
-1.
+1. As a customer, I can look through menu (catalog of the foods)
 1.
 1.
