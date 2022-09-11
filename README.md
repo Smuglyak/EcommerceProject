@@ -24,7 +24,7 @@ Our project will support the following stories:
 1. As a customer, I can check my account and/or change my information (contact and location)
 1. As a customer, I can check my purchase history and their details *
 1. As a customer, I can check offers on food
-- Not the final features. We might add more update the proposal.
+- Not the final features. We might add more and update the proposal.
 - (* - features that might changed due to difficulty of implementation)
 
 Our web application will be slightly similar to the Mcdonalds mobile application. 
