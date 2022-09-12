@@ -17,7 +17,7 @@ Our project will support the following stories:
 3. As a customer, I can List the menu by price
 4. As a customer, I can View the meal description and ingredients
 6. As a customer, I can View the meal visualization
-7. As a customer, I can Add or Remove specific ingrediets in the meal as I wish
+7. As a customer, I can Add or Remove specific ingredients in the meal as I wish
 8. As a customer, I can Add, Delete or Modify the quantity of the order
 9. As a customer, I can Forget my password, and press the option to send the sign in link to my email *
 10. As a customer, I can Contact the chat support for any questions *
@@ -26,9 +26,9 @@ Our project will support the following stories:
 13. As a customer, I can Check my account and/or Change my information (contact and location)
 14. As a customer, I can Check my purchase history and their Details *
 15. As a customer, I can Check offers on food
-16. As a customer, I can directly Add or Delete my payment information (credit or debit cart, Paypal, etc.)
+16. As a customer, I can directly Add or Delete my payment information (credit or debit card, Paypal, etc.)
 17. As a customer, I can Order a delivery
-18. As a customer, I can directly Tip the person deliverying me food
+18. As a customer, I can directly Tip the person delivering  me food
 19. As a customer, I can gain points from ordering and then Spend them to get a discount
 - Not the final features. We might add more and update the proposal.
 - (* - features that might changed due to difficulty of implementation)
