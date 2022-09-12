@@ -13,17 +13,19 @@ We will build a marketplace Web Application where a customer can order food onli
 
 Our project will support the following stories:
 1. As a customer, I can Register, Login, and Logout (these are not new features - they are given in class)
-1. As a customer, I can look through Menu (catalog of the foods)
-1. As a customer, I can List the menu by price
-1. As a customer, I can View the food description
-1. As a customer, I can Add, Delete or Modify the quantity of order
-1. As a customer, I can Forget my password, and press the option to send the sign in link to my email *
-1. As a customer, I can Contact the chat support for any questions *
-1. As a customer, I can Checkout my order
-1. As a customer, I can favorite food on the menu, and it will be Added or Deleted to my favorite food section in my profile
-1. As a customer, I can Check my account and/or Change my information (contact and location)
-1. As a customer, I can Check my purchase history and their Details *
-1. As a customer, I can Check offers on food
+2. As a customer, I can look through Menu (catalog of the foods)
+3. As a customer, I can List the menu by price
+4. As a customer, I can View the meal description
+5. As a customer, I can View the meal visualization
+6. As a customer, I can Add, Delete or Modify the quantity of the order
+7. As a customer, I can Forget my password, and press the option to send the sign in link to my email *
+8. As a customer, I can Contact the chat support for any questions *
+9. As a customer, I can Checkout my order
+10. As a customer, I can favorite meal on the menu, and it will be Added or Deleted to my favorite meal section in my profile
+11. As a customer, I can Check my account and/or Change my information (contact and location)
+12. As a customer, I can Check my purchase history and their Details *
+13. As a customer, I can Check offers on food
+14. As a customer, I can directly Add my payment information (credit or debit cart, Paypal, etc.)
 - Not the final features. We might add more and update the proposal.
 - (* - features that might changed due to difficulty of implementation)
 
