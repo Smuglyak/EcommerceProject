@@ -27,7 +27,7 @@ Our project will support the following stories:
 14. As a customer, I can Check my purchase history and their Details *
 15. As a customer, I can Check offers on food
 16. As a customer, I can directly Add or Delete my payment information (credit or debit card, Paypal, etc.)
-17. As a customer, I can Order a delivery
+17. As a customer, I can Order a delivery **(How does this differ from #11 Checking out an order?)**
 18. As a customer, I can directly Tip the person delivering  me food
 19. As a customer, I can gain points from ordering and then Spend them to get a discount
 - Not the final features. We might add more and update the proposal.
