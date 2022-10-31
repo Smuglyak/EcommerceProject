@@ -19,19 +19,22 @@ Our project will support the following stories:
 6. As a customer, I can View the meal visualization
 7. As a customer, I can Add or Remove specific ingredients in the meal as I wish
 8. As a customer, I can Add, Delete or Modify the quantity of the order
-9. As a customer, I can Forget my password, and press the option to send the sign in link to my email *
+9. As a customer, I can Change my password if i forget 
 10. As a customer, I can Contact the chat support for any questions *
 11. As a customer, I can Checkout my order
 12. As a customer, I can favorite meal on the menu, and it will be Added or Deleted to my favorite meal section in my profile
-13. As a customer, I can Check my account and/or Change my information (contact and location)
-14. As a customer, I can Check my purchase history and their Details *
+13. As a customer, I can Check my account and/or Change my information (first name and last name)
+14. As a customer, I can Check my purchase history
 15. As a customer, I can Check offers on food
 16. As a customer, I can directly Add or Delete my payment information (credit or debit card, Paypal, etc.)
-17. As a customer, I can Order a delivery **(How does this differ from #11 Checking out an order?)**
-18. As a customer, I can directly Tip the person delivering  me food
+17. As a customer, I can have my order be delivered or not 
+18. As a customer, I can directly Tip the person delivering me food
 19. As a customer, I can gain points from ordering and then Spend them to get a discount
 - Not the final features. We might add more and update the proposal.
 - (* - features that might changed due to difficulty of implementation)
 
 Our web application will be slightly similar to the Mcdonalds mobile application. 
 We will be spending approximately 180 hours or more building this product.
+
+#### Teacher's comments:
+17. As a customer, I can Order a delivery **(How does this differ from #11 Checking out an order?)**
