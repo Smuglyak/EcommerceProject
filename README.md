@@ -31,7 +31,7 @@ Our project will support the following stories:
 17. As a customer, I can have my order be delivered or not 
 18. As a customer, I can directly Tip the person delivering me food
 19. As a customer, I can Gain points from ordering and then Spend them to get a discount
-20. As a customer, I can Rate a food and Leave a review
+20. As a customer, I can Rate a food and Leave a comment
 21. As an admin, I can Add, Delete or Update a combo
 22. As an admin, I can Add, Delete or Update food
 23. As an admin, I can Add, Delete or Update menu/food catalogs
