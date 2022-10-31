@@ -13,6 +13,7 @@ We will build a marketplace Web Application where a customer can order food onli
 
 Our project will support the following stories:
 1. As a customer, I can Register, Login, and Logout (these are not new features - they are given in class)
+
 2. As a customer, I can look through Menu (catalog of the foods)
 3. As a customer, I can List the menu by price
 4. As a customer, I can View the meal description and ingredients
