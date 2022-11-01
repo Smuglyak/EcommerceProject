@@ -28,7 +28,7 @@ Our project will support the following stories:
 20. As a customer, I can Rate a food and Leave a comment
 21. As an admin, I can Add, Delete or Update a combo (3 features)
 22. As an admin, I can Add, Delete or Update food (3 features)
-23. As an admin, I can Add, Delete or Update menu/food catalogs (3 features)
+23. As an admin, I can Add, Delete or Update food categories (3 features)
 - Not the final features. We might add more and update the proposal.
 - (* - features that might changed due to difficulty of implementation)
 
