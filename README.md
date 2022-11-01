@@ -14,7 +14,7 @@ We will build a marketplace Web Application where a customer can order food onli
 Our project will support the following stories:
 1. As a customer, I can Register, Login, Logout and 2-Factor Authentication (these are not new features - they are given in class)
 
-2. As a customer, I can Look through Menu (catalog of the foods)
+2. As a customer, I can Look through Menu (catalog of the foods)(a feature?)
 3. As a customer, I can List the menu by price, categories, etc.
 5. As a customer, I can View the meal description and ingredients
 8. As a customer, I can Add, Delete or Modify the quantity of the order (3 features)
