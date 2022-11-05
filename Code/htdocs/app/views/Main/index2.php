@@ -1,0 +1,1 @@
+<p>My other index file.</p>
