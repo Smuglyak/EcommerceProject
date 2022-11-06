@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2022 at 01:37 AM
+-- Generation Time: Nov 06, 2022 at 09:50 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -36,7 +36,7 @@ CREATE TABLE `account` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `password_hash` varchar(72) NOT NULL,
-  `role` varchar(25) NOT NULL,
+  `role` varchar(25) NOT NULL DEFAULT 'user',
   `two_fa_code` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -92,6 +92,7 @@ CREATE TABLE `food` (
   `food_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
   `food_name` varchar(50) NOT NULL,
+  `picture` varchar(20) NOT NULL,
   `food_description` text NOT NULL,
   `price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
