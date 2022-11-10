@@ -7,7 +7,7 @@ class Food extends \app\core\Model{
 
 	public $food_name;
 	public $food_description;
-	public $price
+	public $price;
 
 	public function getAll(){
 		$SQL = "SELECT * FROM food";
