@@ -18,14 +18,14 @@ class Food extends \app\core\Model{
 	}
 
 	public function getForMenu($menu_id){
-		$SQL = "SELECT * FROM food WHERE menu_id=:menu_id";
+		$SQL = "SELECT * FROM food_menu WHERE menu_id=:menu_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['menu_id'=>$menu_id]);
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\FoodMenu');
 		return $STMT->fetchAll();
 	}
 
-	public function get($food_id){
+	public function getById($food_id){
 		$SQL = "SELECT * FROM food WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$food_id]);
@@ -33,11 +33,18 @@ class Food extends \app\core\Model{
 		return $STMT->fetch();
 	}
 
-	protected function insert(){
-		$SQL = "INSERT INTO food(menu_id, food_name, picture, food_description, price) VALUES (:menu_id, :food_name, :picture, :food_description ,:price)";
+	public function getByName($food_name){
+		$SQL = "SELECT * FROM food WHERE food_name=:food_name";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['menu_id'=>$this->menu_id,
-						'food_name'=>$this->food_name,
+		$STMT->execute(['food_name'=>$food_name]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetch();
+	}
+
+	protected function insert(){
+		$SQL = "INSERT INTO food(food_name, picture, food_description, price) VALUES (:food_name, :picture, :food_description ,:price)";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['food_name'=>$this->food_name,
 						'picture'=>$this->picture,
 						'food_description'=>$this->food_description,
 						'price'=>$this->price]);

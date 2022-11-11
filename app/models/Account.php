@@ -16,10 +16,10 @@ public $last_name;
 		return $STMT->fetchAll();
 	}
 
-	public function get($account_id){
-		$SQL = "SELECT * FROM account WHERE account_id=:account_id";
+	public function get($username){
+		$SQL = "SELECT * FROM account WHERE username=:username";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['account_id'=>$account_id]);
+		$STMT->execute(['username'=>$username]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Account');
 		return $STMT->fetch();
 	}
