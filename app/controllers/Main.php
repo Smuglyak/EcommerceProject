@@ -15,6 +15,7 @@ class Main extends \app\core\Controller{
 			if(password_verify($_POST['password'], $account->password_hash)){
 				$_SESSION['account_id'] = $account->account_id;
 				$_SESSION['username'] = $account->username;
+				$_SESSION['role'] = $account->role;
 				header('location:/Menu/index');
 			}else{
 				header('location:/Main/login?error=Wrong username/password combination!');

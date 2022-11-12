@@ -8,7 +8,7 @@ class Food extends \app\core\Controller{
 		
 	}
 
-	//Not Finished
+	//I am not sure if this is gonna work
 	public function add(){
 		if(isset($_POST['action'])){
 			$newFood = new \app\models\Food();
@@ -52,19 +52,11 @@ class Food extends \app\core\Controller{
 		}
 	}
 
-	//Not Finished
-	public function delete(){
-		if(isset($_POST['action'])){
-			$food = new \app\models\Food();
-			$food->food_id = $_POST['food_id'];
-			$food->delete();
-			header('location:/Menu/index');
-		}else{
-			$food = new \app\models\Food();
-			$foods = $food->getAll();
-			$this->view("Food/deleteFood",$foods);
-		}
-		
+	public function delete($food_id){
+		$food = new \app\models\Food();
+		$food = $food->getById($food_id);
+		$food->deleteFoodMenu();
+		$food->delete();
 	}
 
 }

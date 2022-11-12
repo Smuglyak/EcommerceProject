@@ -17,14 +17,6 @@ class Food extends \app\core\Model{
 		return $STMT->fetchAll();
 	}
 
-	public function getForMenu($menu_id){
-		$SQL = "SELECT * FROM food_menu WHERE menu_id=:menu_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['menu_id'=>$menu_id]);
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\FoodMenu');
-		return $STMT->fetchAll();
-	}
-
 	public function getById($food_id){
 		$SQL = "SELECT * FROM food WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
@@ -62,6 +54,12 @@ class Food extends \app\core\Model{
 
 	public function delete(){
 		$SQL = "DELETE FROM food WHERE food_id=:food_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['food_id'=>$this->food_id]);
+	}
+
+	public function deleteFoodMenu(){
+		$SQL = "DELETE FROM food_menu WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id]);
 	}
