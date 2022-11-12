@@ -15,13 +15,21 @@ class Menu extends \app\core\Model{
 		return $STMT->fetchAll();
 	}
 
-	//public function get($menu_id){
-		//$SQL = "SELECT * FROM menu WHERE menu_id=:menu_id";
-		//$STMT = self::$_connection->prepare($SQL);
-		//$STMT->execute(['menu_id'=>$menu_id]);
-		//$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Menu');
-		//return $STMT->fetch();
-	//}
+	public function getById($menu_id){
+		$SQL = "SELECT * FROM menu WHERE menu_id=:menu_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['menu_id'=>$menu_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Menu');
+		return $STMT->fetch();
+	}
+
+	public function getByName($menu_name){
+		$SQL = "SELECT * FROM menu WHERE menu_name=:menu_name";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['menu_name'=>$menu_name]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Menu');
+		return $STMT->fetch();
+	}
 
 	protected function insert(){
 		$SQL = "INSERT INTO menu(menu_name) VALUES (:menu_name)";
@@ -36,8 +44,8 @@ class Menu extends \app\core\Model{
 						'menu_id'=>$this->menu_id]);
 	}
 
-	public function deleteFood(){
-		$SQL = "DELETE FROM food WHERE menu_id=:menu_id";
+	public function deleteFoodMenu(){
+		$SQL = "DELETE FROM food_menu WHERE menu_id=:menu_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['menu_id'=>$this->menu_id]);
 	}
