@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2022 at 09:50 PM
+-- Generation Time: Nov 11, 2022 at 05:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -62,7 +62,7 @@ CREATE TABLE `checkout` (
 DROP TABLE IF EXISTS `checkout_details`;
 CREATE TABLE `checkout_details` (
   `checkout_details_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `sub_total_price` double NOT NULL
@@ -90,11 +90,23 @@ CREATE TABLE `favorite` (
 DROP TABLE IF EXISTS `food`;
 CREATE TABLE `food` (
   `food_id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
   `food_name` varchar(50) NOT NULL,
   `picture` varchar(20) NOT NULL,
   `food_description` text NOT NULL,
   `price` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `food_menu`
+--
+
+DROP TABLE IF EXISTS `food_menu`;
+CREATE TABLE `food_menu` (
+  `food_menu_id` int(11) NOT NULL,
+  `food_id` int(11) NOT NULL,
+  `menu_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -161,7 +173,7 @@ ALTER TABLE `checkout`
 ALTER TABLE `checkout_details`
   ADD PRIMARY KEY (`checkout_details_id`),
   ADD KEY `FK_checkout_details_to_checkout` (`checkout_id`),
-  ADD KEY `FK_checkout_details_to_food` (`food_id`);
+  ADD KEY `FK_checkout_details_to_menu` (`menu_id`);
 
 --
 -- Indexes for table `favorite`
@@ -175,8 +187,15 @@ ALTER TABLE `favorite`
 -- Indexes for table `food`
 --
 ALTER TABLE `food`
-  ADD PRIMARY KEY (`food_id`),
-  ADD KEY `FK_food_to_menu` (`menu_id`);
+  ADD PRIMARY KEY (`food_id`);
+
+--
+-- Indexes for table `food_menu`
+--
+ALTER TABLE `food_menu`
+  ADD PRIMARY KEY (`food_menu_id`),
+  ADD KEY `FK_food_menu_to_food` (`food_id`),
+  ADD KEY `FK_food_menu_to_menu` (`menu_id`);
 
 --
 -- Indexes for table `history`
@@ -234,6 +253,12 @@ ALTER TABLE `food`
   MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `food_menu`
+--
+ALTER TABLE `food_menu`
+  MODIFY `food_menu_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
@@ -266,7 +291,7 @@ ALTER TABLE `checkout`
 --
 ALTER TABLE `checkout_details`
   ADD CONSTRAINT `FK_checkout_details_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`),
-  ADD CONSTRAINT `FK_checkout_details_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
+  ADD CONSTRAINT `FK_checkout_details_to_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`);
 
 --
 -- Constraints for table `favorite`
@@ -276,10 +301,11 @@ ALTER TABLE `favorite`
   ADD CONSTRAINT `FK_favorite_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
 
 --
--- Constraints for table `food`
+-- Constraints for table `food_menu`
 --
-ALTER TABLE `food`
-  ADD CONSTRAINT `FK_food_to_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`);
+ALTER TABLE `food_menu`
+  ADD CONSTRAINT `FK_food_menu_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`),
+  ADD CONSTRAINT `FK_food_menu_to_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`);
 
 --
 -- Constraints for table `history`
