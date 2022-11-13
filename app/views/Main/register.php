@@ -11,34 +11,37 @@
 
               <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
               <p class="text-dark-50 mb-5">Please enter your credentials</p>
-              
+
+              <form action='' method='post'>
+
                 <div class="form-outline mb-4">
-                    <input type="email" id="Username" class="form-control form-control-lg" />
+                    <input type="text" name="username" class="form-control form-control-lg" />
                     <div class="form-helper">Username</div>
                 </div>
 
                 <div class="form-outline form-dark mb-4">
-                    <input type="text" id="Firstname" class="form-control form-control-lg" />
+                    <input type="text" name="first_name" class="form-control form-control-lg" />
                     <div class="form-helper">Firstname</div>
                 </div>
 
                 <div class="form-outline form-dark mb-4">
-                    <input type="text" id="Lastname" class="form-control form-control-lg" />
+                    <input type="text" name="last_name" class="form-control form-control-lg" />
                     <div class="form-helper">Lastname</div>
                 </div>
 
               <div class="form-outline form-dark mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                <input type="password" name="password" class="form-control form-control-lg" />
                 <div class="form-helper">Password</div>
               </div>
 
               <div class="form-outline form-dark mb-4">
-                <input type="password" id="typePasswordX" class="form-control form-control-lg" />
+                <input type="password" name="password_confirm" class="form-control form-control-lg" />
                 <div class="form-helper">Confirm Password</div>
               </div>
 
-              <button class="btn btn-outline-light btn-lg px-5" type="submit" style="background-color: red">Sign up</button>
+              <button class="btn btn-outline-light btn-lg px-5" type="submit"  name="action" style="background-color: red">Sign up</button>
 
+</form>
             </div>
 
           </div>
