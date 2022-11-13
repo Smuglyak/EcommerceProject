@@ -46,7 +46,6 @@ class Main extends \app\core\Controller{
 			else{
 				header('location:/Main/register?error=Passwords do not match.');
 			}
-
 		}
 		else{
 			$this->view('Main/register');
