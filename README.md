@@ -8,7 +8,7 @@
 - Craig Justin Balibalos
 
 ### The general goal of the project:
-#### Marketplace
+#### Foodie Marketplace
 We will build a marketplace Web Application where a customer can order food online.
 
 Our project will support the following stories:
