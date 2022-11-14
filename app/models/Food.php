@@ -33,7 +33,7 @@ class Food extends \app\core\Model{
 		return $STMT->fetch();
 	}
 
-	protected function insert(){
+	public function insert(){
 		$SQL = "INSERT INTO food(food_name, picture, food_description, price) VALUES (:food_name, :picture, :food_description ,:price)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_name'=>$this->food_name,
@@ -42,7 +42,7 @@ class Food extends \app\core\Model{
 						'price'=>$this->price]);
 	}
 
-	protected function update(){
+	public function update(){
 		$SQL = "UPDATE food SET food_name=:food_name, picture=:picture, food_description=:food_description, price=:price WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_name'=>$this->food_name,

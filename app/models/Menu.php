@@ -31,7 +31,7 @@ class Menu extends \app\core\Model{
 		return $STMT->fetch();
 	}
 
-	protected function insert(){
+	public function insert(){
 		$SQL = "INSERT INTO menu(menu_name) VALUES (:menu_name)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['menu_name'=>$this->menu_name,]);

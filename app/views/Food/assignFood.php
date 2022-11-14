@@ -18,6 +18,6 @@
                     ?>
                   </select>
                 </div>
-                <input type="submit" name="action" value="Create food" class='btn btn-primary' />
+                <input type="submit" name="action" value="Assign food" class='btn btn-primary' />
                 </form>
 </body>

@@ -3,8 +3,6 @@
 namespace app\models;
 
 class Review extends \app\core\Model{
-
-
 	public $rating;
 	public $comment;
 

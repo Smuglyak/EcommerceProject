@@ -7,7 +7,7 @@ class Menu extends \app\core\Controller{
 	public function index(){
 		$menu = new \app\models\Menu();
 		$menus = $menu->getAll();
-		$this->view('Menu/index', $menus);
+		$this->view('Menu/index', ['menus'=>$menus]);
 	}
 
 	public function add(){
