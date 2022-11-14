@@ -48,7 +48,7 @@ class Food extends \app\core\Controller{
 			header('location:/Menu/index');
 		}
 		else{
-			$this->view('Menu/editFood', $food);
+			$this->view('Food/editFood', $food);
 		}
 	}
 
@@ -59,4 +59,9 @@ class Food extends \app\core\Controller{
 		$food->delete();
 	}
 
+	public function view($food_id){
+		$food = new \app\models\Food();
+		$food = $food->getById($food_id);
+		$this->view('Food/viewFood', $food);
+	}
 }
