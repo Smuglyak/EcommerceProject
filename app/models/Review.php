@@ -41,10 +41,11 @@ class Review extends \app\core\Model{
 	//}
 
 	public function insert(){
-		$SQL = "INSERT INTO comment(account_id, food_id, comment) VALUES (:account_id, :food_id, :comment)";
+		$SQL = "INSERT INTO comment(account_id, food_id, rating, comment) VALUES (:account_id, :food_id, :rating, :comment)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['account_id'=>$this->account_id,
 						'food_id'=>$this->food_id,
+						'rating'=>$this->rating,
 						'comment'=>$this->comment]);
 		return self::$_connection->lastInsertId();
 	}

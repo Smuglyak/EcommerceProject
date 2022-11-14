@@ -5,7 +5,9 @@ namespace app\controllers;
 class Menu extends \app\core\Controller{
 
 	public function index(){
-		$this->view('Menu/index');
+		$menu = new \app\models\Menu();
+		$menus = $menu->getAll();
+		$this->view('Menu/index', $menus);
 	}
 
 	public function add(){
