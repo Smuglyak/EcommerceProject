@@ -10,7 +10,7 @@ class Menu extends \app\core\Controller{
 		$this->view('Menu/index', ['menus'=>$menus]);
 	}
 
-	public function add(){
+	public function addMenu(){
 		if(isset($_POST['action'])){
 			$menu = new \app\models\Menu();
 			$check = $menu->getByName($_POST['menu_name']);
@@ -26,6 +26,12 @@ class Menu extends \app\core\Controller{
 		else{
 			$this->view('Menu/addMenu');
 		}
+	}
+
+	public function details($menu_id){
+		$menu = new \app\models\Menu();
+		$menu = $menu->get($menu_id);
+		$this->view('Menu/details', $menu);
 	}
 
 	public function edit($menu_id){

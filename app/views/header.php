@@ -39,6 +39,6 @@
 
 <body>
 	<!-- <div class='container'> -->
-		<a href='/Main/index'><img src="/images/girl2.ico" style="max-width: 200px;" /></a>
+		<a href='/Menu/index'><img src="/images/foodie.png" style="max-width: 200px;" /></a>
 		<hr class="solid">
 	<!-- </div> -->

@@ -6,7 +6,7 @@
 </head>
 
 <body>
-
+<?php $this->view('header', 'Foodie'); ?>
 <h1>Food information</h1>
 <dl>
 	<dt>
@@ -46,6 +46,6 @@ if (file != "") {
 </script>
 
 <a href='/Food/index/'>Back to Food List</a>
-
+<?php $this->view('footer', 'foodie'); ?>
 </body>
 </html>
