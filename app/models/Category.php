@@ -8,7 +8,7 @@ class Category extends \app\core\Model{
 	public $category_name;
 
 	public function getAllMenus(){
-		$SQL = "SELECT * FROM categories WHERE type=Menu";
+		$SQL = "SELECT * FROM categories WHERE category_type=Menu";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
@@ -40,9 +40,9 @@ class Category extends \app\core\Model{
 	}
 
 	public function insert(){
-		$SQL = "INSERT INTO categories(category_name) VALUES (:category_name)";
+		$SQL = "INSERT INTO categories(category_name) VALUES (:category_name, :category_type)";
 		$STMT = self::$_connection->prepare($SQL);	
-		$STMT->execute(['category_name'=>$this->category_name,]);
+		$STMT->execute(['category_name'=>$this->category_name, 'category_type'=>$this->category_type,]);
 	}
 
 	protected function update(){

@@ -6,7 +6,7 @@ class Category extends \app\core\Controller{
 
 	public function index(){
 		$menu = new \app\models\Category();
-		$menus = $menu->getAllMenus();
+		$menus = $menu->getAllMenus();	
 		$this->view('Menu/index', $menus);
 	}
 
@@ -16,7 +16,7 @@ class Category extends \app\core\Controller{
 			$check = $menu->getByName($_POST['menu_name']);
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
-
+				$menu->category_type = $_POST['menu_type'];
 				$menu->insert();
 				header('location:/Menu/index?message=Menu created!');
 			}
