@@ -31,7 +31,7 @@ class Menu extends \app\core\Controller{
 	public function details($menu_id){
 		$menu = new \app\models\Menu();
 		$menu = $menu->get($menu_id);
-		$this->view('Menu/details', $menu);
+		$this->view('Menu/details', ['menu'=>$menu]);
 	}
 
 	public function edit($menu_id){

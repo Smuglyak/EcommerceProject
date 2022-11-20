@@ -6,20 +6,20 @@
 		Name:
 	</dt>
 	<dd>
-		<?= $data['food']->food_name ?>
+		<?= $data['menu']->menu_name ?>
 		
 	</dd>
 	<dt>
 		Description:
 	</dt>
 	<dd>
-		<?= $data['food']->food_description ?>
+		<?= $data['menu']->menu_description ?>
 	</dd>
     <dt>
 		Price:
 	</dt>
 	<dd>
-		<?= $data['food']->price ?>
+		<?= $data['menu']->price ?>
 	</dd>
 	<dt>
 		Picture:
