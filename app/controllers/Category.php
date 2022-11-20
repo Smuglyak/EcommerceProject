@@ -2,17 +2,17 @@
 
 namespace app\controllers;
 
-class Menu extends \app\core\Controller{
+class Category extends \app\core\Controller{
 
 	public function index(){
-		$menu = new \app\models\Menu();
-		$menus = $menu->getAll();
+		$menu = new \app\models\Category();
+		$menus = $menu->getAllMenu();
 		$this->view('Menu/index', ['menus'=>$menus]);
 	}
 
 	public function add(){
 		if(isset($_POST['action'])){
-			$menu = new \app\models\Menu();
+			$menu = new \app\models\Category();
 			$check = $menu->getByName($_POST['menu_name']);
 			if(!$check){
 				$menu->menu_name = $_POST['menu_name'];

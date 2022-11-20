@@ -9,4 +9,5 @@ foreach ($data as $menu) {
 ?>
 
 <a style="" href="/Main/logout">Log out</a>
+
 <?php $this->view('footer', 'Foodie'); ?>
