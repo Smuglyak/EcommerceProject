@@ -7,24 +7,25 @@
 </head>
 
 <body>
+	<?php $this->view('header', 'Foodie'); ?>
 <h1>Food List</h1>
+<?php echo "<a href='/Food/addFood'>Add Food</a>" ?>
+<br>
+
 <?php
 foreach ($data as $food) {
 	echo "<tr>
-		<td type=name>$food->food_name</td>
-        <td type=name>$food->price</td>
+		<td type=name>$food->food_name</td>       		 
 		<td type=action>
-		
 		<a href='/Food/editFood/$food->food_id'>edit</a> | 
         <a href='/Food/viewFood/$food->food_id'>view details</a> |
-		<a href='/Food/delete/$food->food_id'>delete</a>
+		<a href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
 		</td>
 		</tr>
         </br>";
 }
-
 ?>
 
-<a href='/'>Cancel</a>
-
+<a href='/'>Log out</a>
+<?php $this->view('footer', 'Foodie'); ?>
 </body>

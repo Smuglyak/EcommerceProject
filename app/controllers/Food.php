@@ -60,6 +60,7 @@ class Food extends \app\core\Controller{
 		$food = $food->getById($food_id);
 		//$food->deleteFoodMenu();
 		$food->delete();
+		header('location:/Food/index/');
 	}
 
 	public function viewFood($food_id){

@@ -7,6 +7,7 @@
 </head>
 
 <body>
+	<?php $this->view('header', 'Foodie'); ?>
 <h1>Add Menu</h1>
 <form action='' method='post' enctype='multipart/form-data'>
 	<div class="form-group">
@@ -15,6 +16,7 @@
 	<input type="submit" name="action" value="Create menu" class='btn btn-primary' />
 </form>
 
-<a href='/'>Cancel</a>
+<a href='/'>Log out</a>
 
+<?php $this->view('footer', 'Foodie'); ?>
 </body>
