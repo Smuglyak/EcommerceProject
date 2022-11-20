@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2022 at 05:22 PM
+-- Generation Time: Nov 20, 2022 at 06:31 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -43,6 +43,32 @@ CREATE TABLE `account` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `assign_food`
+--
+
+DROP TABLE IF EXISTS `assign_food`;
+CREATE TABLE `assign_food` (
+  `asssign_food_id` int(11) NOT NULL,
+  `food_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `categories`
+--
+
+DROP TABLE IF EXISTS `categories`;
+CREATE TABLE `categories` (
+  `category_id` int(11) NOT NULL,
+  `category_name` varchar(50) NOT NULL,
+  `type` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `checkout`
 --
 
@@ -62,7 +88,7 @@ CREATE TABLE `checkout` (
 DROP TABLE IF EXISTS `checkout_details`;
 CREATE TABLE `checkout_details` (
   `checkout_details_id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL,
+  `assign_food_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `sub_total_price` double NOT NULL
@@ -93,20 +119,8 @@ CREATE TABLE `food` (
   `food_name` varchar(50) NOT NULL,
   `picture` varchar(20) NOT NULL,
   `food_description` text NOT NULL,
-  `price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `food_menu`
---
-
-DROP TABLE IF EXISTS `food_menu`;
-CREATE TABLE `food_menu` (
-  `food_menu_id` int(11) NOT NULL,
-  `food_id` int(11) NOT NULL,
-  `menu_id` int(11) NOT NULL
+  `price` double NOT NULL,
+  `is_available` varchar(5) NOT NULL DEFAULT 'TRUE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -125,18 +139,6 @@ CREATE TABLE `history` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `menu`
---
-
-DROP TABLE IF EXISTS `menu`;
-CREATE TABLE `menu` (
-  `menu_id` int(11) NOT NULL,
-  `menu_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `review`
 --
 
@@ -147,6 +149,20 @@ CREATE TABLE `review` (
   `food_id` int(11) NOT NULL,
   `rating` int(2) NOT NULL,
   `comment` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `security_question`
+--
+
+DROP TABLE IF EXISTS `security_question`;
+CREATE TABLE `security_question` (
+  `security_question_id` int(11) NOT NULL,
+  `account_id` int(11) NOT NULL,
+  `question` text NOT NULL,
+  `answer` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -161,6 +177,20 @@ ALTER TABLE `account`
   ADD UNIQUE KEY `username` (`username`);
 
 --
+-- Indexes for table `assign_food`
+--
+ALTER TABLE `assign_food`
+  ADD PRIMARY KEY (`asssign_food_id`),
+  ADD KEY `assign_food_to_food` (`food_id`),
+  ADD KEY `assign_food_to_category` (`category_id`);
+
+--
+-- Indexes for table `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`category_id`);
+
+--
 -- Indexes for table `checkout`
 --
 ALTER TABLE `checkout`
@@ -173,7 +203,7 @@ ALTER TABLE `checkout`
 ALTER TABLE `checkout_details`
   ADD PRIMARY KEY (`checkout_details_id`),
   ADD KEY `FK_checkout_details_to_checkout` (`checkout_id`),
-  ADD KEY `FK_checkout_details_to_menu` (`menu_id`);
+  ADD KEY `FK_checkout_details_to_menu` (`assign_food_id`);
 
 --
 -- Indexes for table `favorite`
@@ -190,25 +220,11 @@ ALTER TABLE `food`
   ADD PRIMARY KEY (`food_id`);
 
 --
--- Indexes for table `food_menu`
---
-ALTER TABLE `food_menu`
-  ADD PRIMARY KEY (`food_menu_id`),
-  ADD KEY `FK_food_menu_to_food` (`food_id`),
-  ADD KEY `FK_food_menu_to_menu` (`menu_id`);
-
---
 -- Indexes for table `history`
 --
 ALTER TABLE `history`
   ADD PRIMARY KEY (`history_id`),
   ADD KEY `FK_history_to_checkout` (`checkout_id`);
-
---
--- Indexes for table `menu`
---
-ALTER TABLE `menu`
-  ADD PRIMARY KEY (`menu_id`);
 
 --
 -- Indexes for table `review`
@@ -219,6 +235,13 @@ ALTER TABLE `review`
   ADD KEY `FK_review_to_food` (`food_id`);
 
 --
+-- Indexes for table `security_question`
+--
+ALTER TABLE `security_question`
+  ADD PRIMARY KEY (`security_question_id`),
+  ADD KEY `FK_security_question_to_account` (`account_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -227,6 +250,18 @@ ALTER TABLE `review`
 --
 ALTER TABLE `account`
   MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `assign_food`
+--
+ALTER TABLE `assign_food`
+  MODIFY `asssign_food_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `checkout`
@@ -253,22 +288,10 @@ ALTER TABLE `food`
   MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `food_menu`
---
-ALTER TABLE `food_menu`
-  MODIFY `food_menu_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `history`
 --
 ALTER TABLE `history`
   MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `menu`
---
-ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `review`
@@ -277,8 +300,21 @@ ALTER TABLE `review`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `security_question`
+--
+ALTER TABLE `security_question`
+  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `assign_food`
+--
+ALTER TABLE `assign_food`
+  ADD CONSTRAINT `assign_food_to_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
+  ADD CONSTRAINT `assign_food_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
 
 --
 -- Constraints for table `checkout`
@@ -290,8 +326,8 @@ ALTER TABLE `checkout`
 -- Constraints for table `checkout_details`
 --
 ALTER TABLE `checkout_details`
-  ADD CONSTRAINT `FK_checkout_details_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`),
-  ADD CONSTRAINT `FK_checkout_details_to_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`);
+  ADD CONSTRAINT `FK_checkout_details_to_assign_food` FOREIGN KEY (`assign_food_id`) REFERENCES `assign_food` (`asssign_food_id`),
+  ADD CONSTRAINT `FK_checkout_details_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`);
 
 --
 -- Constraints for table `favorite`
@@ -299,13 +335,6 @@ ALTER TABLE `checkout_details`
 ALTER TABLE `favorite`
   ADD CONSTRAINT `FK_favorite_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
   ADD CONSTRAINT `FK_favorite_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
-
---
--- Constraints for table `food_menu`
---
-ALTER TABLE `food_menu`
-  ADD CONSTRAINT `FK_food_menu_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`),
-  ADD CONSTRAINT `FK_food_menu_to_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`);
 
 --
 -- Constraints for table `history`
@@ -319,6 +348,12 @@ ALTER TABLE `history`
 ALTER TABLE `review`
   ADD CONSTRAINT `FK_review_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
   ADD CONSTRAINT `FK_review_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
+
+--
+-- Constraints for table `security_question`
+--
+ALTER TABLE `security_question`
+  ADD CONSTRAINT `FK_security_question_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
