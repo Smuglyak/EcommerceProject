@@ -13,7 +13,7 @@
 </ul>
 <!-- Pills navs -->
 
-<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
-
+<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?> <br>
+<a href="/Food/index">Food List</a>
 
 <?php $this->view('footer', 'Foodie'); ?>

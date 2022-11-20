@@ -39,7 +39,11 @@ class Food extends \app\core\Controller{
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
 		if(isset($_POST['action'])){
-			$filename = $this->saveFile($_FILES['picture']);
+
+
+			$filename = $this->saveFile($_FILES['pic_preview']);
+
+
 			if($filename){
 				unlink("images/$food->picture");
 				$food->picture = $filename;
@@ -69,19 +73,19 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food]);
 	}
 
-	public function assignFood($food_id){
-		if(isset($_POST['action'])){
-			$food = new \app\models\Food();
-			$foodMenu = new \app\models\FoodMenu();
-			$food = $food->getById($food_id);
-			$foodMenu->food_id = $food->food_id;
-			$foodMenu->menu_id = $_POST['menu_id'];
-			$foodMenu->insert();
-		}
-		else {
-			$menu = new \app\models\Menu();
-			$menus = $menu->getAll();
-			$this->view('Food/assignFood', $menus);
-		}
-	}
+	// public function assignFood($food_id){
+	// 	if(isset($_POST['action'])){
+	// 		$food = new \app\models\Food();
+	// 		$foodMenu = new \app\models\FoodMenu();
+	// 		$food = $food->getById($food_id);
+	// 		$foodMenu->food_id = $food->food_id;
+	// 		$foodMenu->menu_id = $_POST['menu_id'];
+	// 		$foodMenu->insert();
+	// 	}
+	// 	else {
+	// 		$menu = new \app\models\Menu();
+	// 		$menus = $menu->getAll();
+	// 		$this->view('Food/assignFood', $menus);
+	// 	}
+	// }
 }

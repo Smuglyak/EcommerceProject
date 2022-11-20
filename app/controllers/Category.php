@@ -17,6 +17,7 @@ class Category extends \app\core\Controller{
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
 				$menu->category_type = $_POST['menu_type'];
+
 				$menu->insert();
 				header('location:/Menu/index?message=Menu created!');
 			}
@@ -47,11 +48,11 @@ class Category extends \app\core\Controller{
 		}
 	}
 
-	public function delete($category_id){
-		$menu = new \app\models\Category();
-		$menu->menu_id = $menu_id;
-		$menu->deleteFoodMenu();
-		$menu->delete();
-		header('location:/Menu/index');
-	}
+	// public function delete($category_id){
+	// 	$menu = new \app\models\Category();
+	// 	$menu->menu_id = $menu_id;
+	// 	$menu->deleteFoodMenu();
+	// 	$menu->delete();
+	// 	header('location:/Menu/index');
+	// }
 }
