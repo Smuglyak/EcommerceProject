@@ -6,7 +6,7 @@ class Category extends \app\core\Controller{
 
 	public function index(){
 		$menu = new \app\models\Category();
-		$menus = $menu->getAllMenus();	
+		$menus = $menu->getAll();	
 		$this->view('Menu/index', $menus);
 	}
 
@@ -16,7 +16,7 @@ class Category extends \app\core\Controller{
 			$check = $menu->getByName($_POST['menu_name']);
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
-				$menu->category_type = $_POST['menu_type'];
+				$menu->type = $_POST['type'];
 
 				$menu->insert();
 				header('location:/Menu/index?message=Menu created!');
@@ -33,7 +33,7 @@ class Category extends \app\core\Controller{
 	public function details($menu_id){
 		$menu = new \app\models\Category();
 		$menu = $menu->get($menu_id);
-		$this->view('Menu/details', ['menu'=>$menu]);
+		$this->view('Menu/details', $menu);
 	}
 
 	public function edit($menu_id){
@@ -51,7 +51,7 @@ class Category extends \app\core\Controller{
 	// public function delete($category_id){
 	// 	$menu = new \app\models\Category();
 	// 	$menu->menu_id = $menu_id;
-	// 	$menu->deleteFoodMenu();
+	// 	$menu->deleteAssignFood();
 	// 	$menu->delete();
 	// 	header('location:/Menu/index');
 	// }

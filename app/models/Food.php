@@ -43,12 +43,13 @@ class Food extends \app\core\Model{
 	}
 
 	public function update(){
-		$SQL = "UPDATE food SET food_name=:food_name, picture=:picture, food_description=:food_description, price=:price WHERE food_id=:food_id";
+		$SQL = "UPDATE food SET food_name=:food_name, picture=:picture, food_description=:food_description, price=:price, is_available=:is_available WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_name'=>$this->food_name,
 						'picture'=>$this->picture,
 						'food_description'=>$this->food_description,
 						'price'=>$this->price,
+						'is_availablee'=>$this->is_available,
 						'food_id'=>$this->food_id]);
 	}
 

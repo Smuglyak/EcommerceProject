@@ -4,21 +4,28 @@ namespace app\models;
 
 class Category extends \app\core\Model{
 
-
 	public $category_name;
 
-	public function getAllMenus(){
-		$SQL = "SELECT * FROM categories WHERE category_type=Menu";
+	public function getAll(){
+		$SQL = "SELECT * FROM categories";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}
 
-	public function getAllCombos(){
-		$SQL = "SELECT * FROM categories WHERE type=Combo";
+	public function getAllMenus($type){
+		$SQL = "SELECT * FROM categories WHERE type=:type";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute();
+		$STMT->execute(['type'=>$type]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
+		return $STMT->fetchAll();
+	}
+
+	public function getAllCombos($type){
+		$SQL = "SELECT * FROM categories WHERE type=:type";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['type'=>$type]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}

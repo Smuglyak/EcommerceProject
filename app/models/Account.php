@@ -16,7 +16,15 @@ public $last_name;
 		return $STMT->fetchAll();
 	}
 
-	public function get($username){
+	public function getById($account_id){
+		$SQL = "SELECT * FROM account WHERE account_id=:account_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['account_id'=>$account_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Account');
+		return $STMT->fetch();
+	}
+
+	public function getByName($username){
 		$SQL = "SELECT * FROM account WHERE username=:username";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['username'=>$username]);
@@ -38,6 +46,14 @@ public $last_name;
 		$SQL = "UPDATE account SET password_hash=:password_hash WHERE account_id=:account_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['password_hash'=>$this->password_hash,
+						'account_id'=>$this->account_id]);
+	}
+
+	public function update(){
+		$SQL = "UPDATE account SET first_name=:first_name, last_name=:last_name WHERE account_id=:account_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['first_name'=>$this->first_name,
+						'last_name'=>$this->last_name,
 						'account_id'=>$this->account_id]);
 	}
 

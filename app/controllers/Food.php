@@ -40,9 +40,7 @@ class Food extends \app\core\Controller{
 		$food = $food->getById($food_id);
 		if(isset($_POST['action'])){
 
-
 			$filename = $this->saveFile($_FILES['pic_preview']);
-
 
 			if($filename){
 				unlink("images/$food->picture");
