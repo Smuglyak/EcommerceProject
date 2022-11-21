@@ -11,8 +11,8 @@ class Favorite extends \app\core\Controller{
 
     public function getFavorite($account_id){
     	$favoriteFood = new \app\models\Favorite();
-    	$foods = $favoriteFood->getById($account_id);
-        $this->view('Account/favoriteFood', $foods);
+    	$favorites = $favoriteFood->getById($account_id);
+        $this->view('Account/favoriteFood', $favorites);
     }
 
     public function addFavorite(){

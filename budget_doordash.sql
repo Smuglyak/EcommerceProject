@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2022 at 06:31 AM
+-- Generation Time: Nov 21, 2022 at 05:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -48,7 +48,7 @@ CREATE TABLE `account` (
 
 DROP TABLE IF EXISTS `assign_food`;
 CREATE TABLE `assign_food` (
-  `asssign_food_id` int(11) NOT NULL,
+  `assign_food_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -75,8 +75,7 @@ CREATE TABLE `categories` (
 DROP TABLE IF EXISTS `checkout`;
 CREATE TABLE `checkout` (
   `checkout_id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
-  `total_price` double NOT NULL
+  `account_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,7 +90,7 @@ CREATE TABLE `checkout_details` (
   `assign_food_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
   `order_quantity` int(11) NOT NULL,
-  `sub_total_price` double NOT NULL
+  `total_price` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -180,7 +179,7 @@ ALTER TABLE `account`
 -- Indexes for table `assign_food`
 --
 ALTER TABLE `assign_food`
-  ADD PRIMARY KEY (`asssign_food_id`),
+  ADD PRIMARY KEY (`assign_food_id`),
   ADD KEY `assign_food_to_food` (`food_id`),
   ADD KEY `assign_food_to_category` (`category_id`);
 
@@ -255,7 +254,7 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `assign_food`
 --
 ALTER TABLE `assign_food`
-  MODIFY `asssign_food_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assign_food_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -326,7 +325,6 @@ ALTER TABLE `checkout`
 -- Constraints for table `checkout_details`
 --
 ALTER TABLE `checkout_details`
-  ADD CONSTRAINT `FK_checkout_details_to_assign_food` FOREIGN KEY (`assign_food_id`) REFERENCES `assign_food` (`asssign_food_id`),
   ADD CONSTRAINT `FK_checkout_details_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`);
 
 --
