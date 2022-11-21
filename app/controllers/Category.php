@@ -31,13 +31,13 @@ class Category extends \app\core\Controller{
 
 	public function details($menu_id){
 		$menu = new \app\models\Category();
-		$menu = $menu->get($menu_id);
+		$menu = $menu->getById($menu_id);
 		$this->view('Menu/details', ['menu'=>$menu]);
 	}
 
 	public function edit($menu_id){
 		$menu = new \app\models\Category();
-		$menu = $menu->get($menu_id);
+		$menu = $menu->getById($menu_id);
 		if(isset($_POST['action'])){
 			$menu->menu_name = $_POST['menu_name'];
 			$menu->update();
