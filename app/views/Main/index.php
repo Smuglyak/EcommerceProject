@@ -14,9 +14,9 @@
 <!-- Ali's pages -->
 <?php echo "<a href='/Category/addMenu'>Add Category</a>" ?> <br>
 
-<a href="/Food/index">Food List</a>
+<a href="/Food/index">Food List</a> <br>
 
-<a href="/Food/index">Food List</a>
+<a href="/Account/index">Account</a>
 
 
 <?php $this->view('footer', 'Foodie'); ?>
