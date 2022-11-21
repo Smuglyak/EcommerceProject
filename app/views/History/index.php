@@ -1,7 +1,5 @@
 <?php $this->view('header', 'Foodie'); ?>
 
-Favorite foods
-
-
+History of foods 
 
 <?php $this->view('footer', 'Foodie'); ?>

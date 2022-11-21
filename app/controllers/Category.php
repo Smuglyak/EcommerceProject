@@ -7,7 +7,7 @@ class Category extends \app\core\Controller{
 	public function index(){
 		$menu = new \app\models\Category();
 		$menus = $menu->getAllMenus();	
-		$this->view('Menu/index', $menus);
+		$this->view('Menu/index', ['menus'=>$menus]);
 	}
 
 	public function addMenu(){

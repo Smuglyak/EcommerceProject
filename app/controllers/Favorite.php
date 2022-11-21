@@ -6,7 +6,7 @@ class Favorite extends \app\core\Controller{
 
 	public function index()
     {
-    	
+		$this->view('Favorite/index');
     }
 
     public function getFavorite($account_id){
