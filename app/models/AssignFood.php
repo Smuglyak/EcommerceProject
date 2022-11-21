@@ -2,21 +2,21 @@
 
 namespace app\models;
 
-class FoodMenu extends \app\core\Model{
+class AssignFood extends \app\core\Model{
 
 	public function getAll(){
-		$SQL = "SELECT * FROM food_menu";
+		$SQL = "SELECT * FROM assign_food";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\FoodMenu');
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
 		return $STMT->fetchAll();
 	}
 
 	public function getComboPrice(){
-		$SQL = "SELECT SUM(price) FROM food_menu INNER JOIN food WHERE food_menu.food_id=food.food_id";
+		$SQL = "SELECT SUM(price) FROM assign_food INNER JOIN food WHERE assign_food.food_id=food.food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\FoodMenu');
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
 		return $STMT->fetchAll();
 	}
 
@@ -37,36 +37,36 @@ class FoodMenu extends \app\core\Model{
 	// }
 
 	public function insert(){
-		$SQL = "INSERT INTO food_menu(food_id, menu_id) VALUES (:food_id, :menu_id)";
+		$SQL = "INSERT INTO assign_food(food_id, category_id) VALUES (:food_id, :category_id)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id,
-						'menu_id'=>$this->menu_id]);
+						'category_id'=>$this->category_id]);
 	}
-
+	
 	protected function update(){
-		$SQL = "UPDATE food_menu SET food_id=:food_id, menu_id=:menu_id WHERE food_menu_id=:food_menu_id";
+		$SQL = "UPDATE assign_food SET food_id=:food_id, category_id=:category_id WHERE assign_food_id=:assign_food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id,
-						'menu_id'=>$this->menu_id,
-						'food_menu_id'=>$this->food_menu_id]);
+						'category_id'=>$this->category_id,
+						'assign_food_id'=>$this->assign_food_id]);
 	}
 
 	public function delete(){
-		$SQL = "DELETE FROM food_menu WHERE food_menu_id=:food_menu_id";
+		$SQL = "DELETE FROM assign_food WHERE assign_food_id=:assign_food_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_menu_id'=>$this->food_menu_id]);
+		$STMT->execute(['assign_food_id'=>$this->assign_food_id]);
 	}
 
 	public function deleteByFood(){
-		$SQL = "DELETE FROM food_menu WHERE food_id=:food_id";
+		$SQL = "DELETE FROM assign_food WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id]);
 	}
 
 	public function deleteByMenu(){
-		$SQL = "DELETE FROM food_menu WHERE menu_id=:menu_id";
+		$SQL = "DELETE FROM assign_food WHERE category_id=:category_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['menu_id'=>$this->menu_id]);
+		$STMT->execute(['category_id'=>$this->category_id]);
 	}
 
 }

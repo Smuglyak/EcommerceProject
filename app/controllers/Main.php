@@ -16,7 +16,7 @@ class Main extends \app\core\Controller{
 				$_SESSION['account_id'] = $account->account_id;
 				$_SESSION['username'] = $account->username;
 				$_SESSION['role'] = $account->role;
-				header('location:/Menu/index');
+				header('location:/Category/index');
 			}else{
 				header('location:/Main/login?error=Wrong username/password combination!');
 			}
