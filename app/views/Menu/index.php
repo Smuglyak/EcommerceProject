@@ -8,13 +8,18 @@ This is menu index
 
 <!-- List of all the menus -->
 <?php
+
 foreach ($data['menus'] as $menu) {
-	$this->view('Menu/menuLink', $menu);
-}
+	$this->view('/Menu/menuLink', $menu);
+}	
 ?>
 
 <!-- the food list(all foods, uncategorized) -->
 <a href="/Food/index">Food List</a>
+
+<br>
+
+<a href="/Account/index">Account settings<i class="fa-regular fa-gear"></i></a>
 
 <br>
 

@@ -10,7 +10,7 @@ Edit the account
                         <div class="col-md-4 gradient-custom text-center text-dark" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <img src="https://img.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg?w=2000" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
 
-                            <h5>Username</h5>
+                            <input class='form-control' type="text" name="username" value="<?= $data->username ?>" />
 
                             <!-- edit button -->
                             <a href="/Account/edit"><i class="far fa-edit mb-5"></i></a>
@@ -24,11 +24,11 @@ Edit the account
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>First Name</h6>
-                                        <input class='form-control' type="text" name="first_name" value="<?= $data->food_name ?>" />
+                                        <input class='form-control' type="text" name="first_name" value="<?= $data->first_name ?>" />
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Last Name</h6>
-                                        <input class='form-control' type="text" name="last_name" value="<?= $data->food_name ?>" />
+                                        <input class='form-control' type="text" name="last_name" value="<?= $data->last_name ?>" />
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-4">

@@ -6,12 +6,14 @@ class Account extends \app\core\Controller{
 
     public function index()
     {
-        $account = new \app\models\Account();
-        $this->view('Account/index');
+        $accounts = new \app\models\Account();
+        $accounts = $accounts->getAll();
+        $this->view('Account/index', $accounts);
     }
 
-    public function edit(){
-        $this->view('Account/edit');
+    public function edit($account_id){
+        
+        $this->view('Account/edit', [$account_id]);
     }
 
     public function checkHistory(){

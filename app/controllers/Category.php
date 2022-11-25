@@ -32,7 +32,7 @@ class Category extends \app\core\Controller{
 	public function details($menu_id){
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($menu_id);
-		$this->view('Menu/details', ['menu'=>$menu]);
+		$this->view('Menu/details', $menu);
 	}
 
 	public function edit($menu_id){
@@ -45,6 +45,10 @@ class Category extends \app\core\Controller{
 		}else{
 			$this->view('Menu/editMenu', $menu);
 		}
+	}
+
+	public function menuLink(){
+		$this->view('Menu/menuLink');
 	}
 
 	// public function delete($category_id){
