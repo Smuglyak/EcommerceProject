@@ -4,31 +4,22 @@ namespace app\models;
 
 class Category extends \app\core\Model{
 
-
 	public $category_name;
 
-	public function getAllMenus(){
-		$SQL = "SELECT * FROM categories WHERE category_type=Menu";
+	public function getAll(){
+		$SQL = "SELECT * FROM categories";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}
 
-	public function getAllCombos(){
-		$SQL = "SELECT * FROM categories WHERE type=Combo";
+	public function getByType($type){
+		$SQL = "SELECT * FROM categories WHERE type=:type";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute();
+		$STMT->execute(['type'=>$type]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
-	}
-
-	public function getById($category_id){
-		$SQL = "SELECT * FROM categories WHERE category_id=:category_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['category_id'=>$category_id]);
-		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
-		return $STMT->fetch();
 	}
 
 	public function getByName($category_name){
@@ -39,8 +30,16 @@ class Category extends \app\core\Model{
 		return $STMT->fetch();
 	}
 
+	public function getById($category_id){
+		$SQL = "SELECT * FROM categories WHERE category_id=:category_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category_id'=>$category_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
+		return $STMT->fetch();
+	}
+
 	public function insert(){
-		$SQL = "INSERT INTO categories(category_name) VALUES (:category_name, :category_type)";
+		$SQL = "INSERT INTO categories(category_name, category_type) VALUES (:category_name, :category_type)";
 		$STMT = self::$_connection->prepare($SQL);	
 		
 		$STMT->execute(['category_name'=>$this->category_name, 'category_type'=>$this->category_type,]);

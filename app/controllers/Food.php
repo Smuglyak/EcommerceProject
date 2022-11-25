@@ -14,7 +14,7 @@ class Food extends \app\core\Controller{
 	public function addFood(){
 		if(isset($_POST['action'])){
 			$newFood = new \app\models\Food();
-			// $getFood = new \app\models\Food();
+			$getFood = new \app\models\Food();
 			// $foodMenu = new \app\models\FoodMenu();
 			$newFood->food_name = $_POST['food_name'];
 			$newFood->food_description = $_POST['food_description'];
@@ -22,13 +22,11 @@ class Food extends \app\core\Controller{
 			$filename = $this->saveFile($_FILES['picture']);
 			$newFood->picture = $filename;
 			$newFood->insert();
-			// $getFood->food_id = $newFood->getByName($_POST['food_name']);
-			// $food = $getFood->food_id;
-			// $food = $food->getByName($_POST['food_name']);
-			// $foodMenu->food_id = $food->food_id;
+			$getFood->food_id = $getFood->getByName($_POST['food_name']);
+			// $foodMenu->food_id = $getFood->food_id;
 			// $foodMenu->menu_id = $_POST['menu_id'];
 			// $foodMenu->insert();
-			header('location:/Food/index');
+			header('location:/Food/assignFood', $getFood);
 		}
 		else{
 			$this->view('Food/addFood');
@@ -39,11 +37,7 @@ class Food extends \app\core\Controller{
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
 		if(isset($_POST['action'])){
-
-
 			$filename = $this->saveFile($_FILES['pic_preview']);
-
-
 			if($filename){
 				unlink("images/$food->picture");
 				$food->picture = $filename;
@@ -73,19 +67,19 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food]);
 	}
 
-	// public function assignFood($food_id){
-	// 	if(isset($_POST['action'])){
-	// 		$food = new \app\models\Food();
-	// 		$foodMenu = new \app\models\FoodMenu();
-	// 		$food = $food->getById($food_id);
-	// 		$foodMenu->food_id = $food->food_id;
-	// 		$foodMenu->menu_id = $_POST['menu_id'];
-	// 		$foodMenu->insert();
-	// 	}
-	// 	else {
-	// 		$menu = new \app\models\Menu();
-	// 		$menus = $menu->getAll();
-	// 		$this->view('Food/assignFood', $menus);
-	// 	}
-	// }
+	public function assignFood($food_id){
+		if(isset($_POST['action'])){
+			$food = new \app\models\Food();
+			$assignFood = new \app\models\AssignFood();
+			$food = $food->getById($food_id);
+			$foodMenu->food_id = $food->food_id;
+			$foodMenu->menu_id = $_POST['menu_id'];
+			$foodMenu->insert();
+		}
+		else {
+			$menu = new \app\models\Category();
+			$menus = $menu->getAll();
+			$this->view('Food/assignFood', $menus);
+		}
+	}
 }

@@ -16,7 +16,7 @@ class Main extends \app\core\Controller{
 				$_SESSION['account_id'] = $account->account_id;
 				$_SESSION['username'] = $account->username;
 				$_SESSION['role'] = $account->role;
-				header('location:/Category/index');
+				header('location:/Account/index');
 			}else{
 				header('location:/Main/login?error=Wrong username/password combination!');
 			}
@@ -36,9 +36,9 @@ class Main extends \app\core\Controller{
 					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$account->first_name = $_POST['first_name'];
 					$account->last_name = $_POST['last_name'];
-					$_SESSION['user_id'] = $account->insert();
+					$_SESSION['account_id'] = $account->insert();
 					$_SESSION['username'] = $_POST['username'];
-					header('location:/Menu/index');
+					header('location:/Main/addSecurityQuestion');
 				}else{
 					header('location:/Main/register?error=The username "'.$_POST['username'].'" is already in use. Enter another username.');
 				}
@@ -49,6 +49,20 @@ class Main extends \app\core\Controller{
 		}
 		else{
 			$this->view('Main/register');
+		}
+	}
+
+	public function addSecurityQuestion(){
+		if(isset($_POST['action'])){
+			$question = new \app\models\SecurityQuestion();
+			$question->account_id = $_SESSION['account_id'];
+			$question->question = $_POST['question'];
+			$question->answer = $_POST['answer'];
+			$question->insert();
+			header('location:/Main/viewAccount');
+		}
+		else{
+
 		}
 	}
 

@@ -15,11 +15,11 @@ class Favorite extends \app\core\Controller{
         $this->view('Account/favoriteFood', $favorites);
     }
 
-    public function addFavorite(){
+    public function addFavorite($account_id, $food_id){
 			$favoriteFood = new \app\models\Favorite();
-			$favoriteFood->account_id = $_POST['food_name'];
-			$favoriteFood->food_id = $_POST['food_description'];
-			$newFood->insert();
+			$favoriteFood->account_id = $account_id;
+			$favoriteFood->food_id = $food_id;
+			$favoriteFood->insert();
 			header('location:/Account/favoriteFood');
     }
 
