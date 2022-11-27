@@ -29,6 +29,7 @@
 <body>
   <!-- <div class='container'> -->
   <div class="text-center p-3" style="background-color: #f38f95;">
+
     <a href='/Menu/index'><img src="/images/foodie.png" style="max-width: 200px;" /></a>
     <img src="/images/power.png" style="max-width: 200px;" />
     <img src="/images/Makima.png" style="max-width: 200px;" />

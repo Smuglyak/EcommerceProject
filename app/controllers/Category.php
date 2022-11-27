@@ -6,8 +6,9 @@ class Category extends \app\core\Controller{
 
 	public function index(){
 		$menu = new \app\models\Category();
-		$menus = $menu->getAllMenus();	
-		$this->view('Menu/index', ['menus'=>$menus]);
+		$menus = $menu->getAllMenus();
+		$combos = $menu->getAllCombos();	
+		$this->view('Menu/index', ['menus'=>$menus, 'combos' => $combos]);
 	}
 
 	public function addMenu(){
@@ -16,6 +17,7 @@ class Category extends \app\core\Controller{
 			$check = $menu->getByName($_POST['menu_name']);
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
+				$menu->category_description = $_POST['menu_description'];
 				$menu->category_type = $_POST['menu_type'];
 				$menu->insert();
 				header('location:/Category/index');
@@ -39,9 +41,11 @@ class Category extends \app\core\Controller{
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($menu_id);
 		if(isset($_POST['action'])){
-			$menu->menu_name = $_POST['menu_name'];
+			$menu->category_name = $_POST['menu_name'];
+			$menu->category_description = $_POST['menu_description'];
+			$menu->category_type = $_POST['menu_type'];
 			$menu->update();
-			header('location:/Menu/index');
+			header('location:/Category/index');
 		}else{
 			$this->view('Menu/editMenu', $menu);
 		}
@@ -51,11 +55,10 @@ class Category extends \app\core\Controller{
 		$this->view('Menu/menuLink');
 	}
 
-	// public function delete($category_id){
-	// 	$menu = new \app\models\Category();
-	// 	$menu->menu_id = $menu_id;
-	// 	$menu->deleteFoodMenu();
-	// 	$menu->delete();
-	// 	header('location:/Menu/index');
-	// }
+	public function delete($category_id){
+		$menu = new \app\models\Category();
+		$menu = $menu->getById($category_id);
+		$menu->delete();
+		header('location:/Category/index');
+	}
 }

@@ -1,17 +1,28 @@
 <?php $this->view('header', 'Foodie'); ?>
-This is menu index
+<h1>Menu Index</h1>
 <br>
 
 <!-- add menu -->
 <?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
 <br>
 
-<!-- List of all the menus -->
+<h2>
+	List of all the Menus
+</h2>
+
 <?php
 
 foreach ($data['menus'] as $menu) {
 	$this->view('/Menu/menuLink', $menu);
-}	
+}
+?>
+
+<h2>List of all the Combos</h2>
+
+<?php
+foreach ($data['combos'] as $menu) {
+	$this->view('/Menu/menuLink', $menu);
+}
 ?>
 
 <!-- the food list(all foods, uncategorized) -->
@@ -19,7 +30,7 @@ foreach ($data['menus'] as $menu) {
 
 <br>
 
-<a href="/Account/index">Account settings<i class="fa-regular fa-gear"></i></a>
+<a href="/Account/index">Account settings<i class="bi bi-gear"></i></a>
 
 <br>
 
