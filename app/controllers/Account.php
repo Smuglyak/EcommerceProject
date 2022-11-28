@@ -34,5 +34,3 @@ class Account extends \app\core\Controller{
     }
 
 }
-
-?>

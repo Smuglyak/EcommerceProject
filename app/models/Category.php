@@ -4,37 +4,52 @@ namespace app\models;
 
 class Category extends \app\core\Model{
 
-
 	public $category_name;
 
-	public function getAllMenus(){
-		$SQL = "SELECT * FROM categories WHERE category_type='Menu'";
+	public function getAll(){
+		$SQL = "SELECT * FROM categories";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
+		return $STMT->fetchAll();
+	}
+
+	public function getAllMenus(){
+		$SQL = "SELECT * FROM categories WHERE type=:type";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['type'=>'Menu']);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}
 
 	public function getAllCombos(){
-		$SQL = "SELECT * FROM categories WHERE category_type='Combo'";
+		$SQL = "SELECT * FROM categories WHERE type=:type";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute();
+		$STMT->execute(['type'=>'Combo']);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetchAll();
 	}
 
-	public function getById($category_id){
-		$SQL = "SELECT * FROM categories WHERE category_id=:category_id";
+	public function getByType($type){
+		$SQL = "SELECT * FROM categories WHERE type=:type";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['category_id'=>$category_id]);
+		$STMT->execute(['type'=>$type]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
-		return $STMT->fetch();
+		return $STMT->fetchAll();
 	}
 
 	public function getByName($category_name){
 		$SQL = "SELECT * FROM categories WHERE category_name=:category_name";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['category_name'=>$category_name]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
+		return $STMT->fetch();
+	}
+
+	public function getById($category_id){
+		$SQL = "SELECT * FROM categories WHERE category_id=:category_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category_id'=>$category_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
 		return $STMT->fetch();
 	}

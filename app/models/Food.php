@@ -34,12 +34,13 @@ class Food extends \app\core\Model{
 	}
 
 	public function insert(){
-		$SQL = "INSERT INTO food(food_name, picture, food_description, price) VALUES (:food_name, :picture, :food_description ,:price)";
+		$SQL = "INSERT INTO food(food_name, picture, food_description, price, is_available) VALUES (:food_name, :picture, :food_description ,:price, :is_available)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_name'=>$this->food_name,
 						'picture'=>$this->picture,
 						'food_description'=>$this->food_description,
-						'price'=>$this->price]);
+						'price'=>$this->price,
+						'is_available'=>$this->is_available]);
 	}
 
 	public function update(){
@@ -53,13 +54,14 @@ class Food extends \app\core\Model{
 	}
 
 	public function delete(){
-		$SQL = "DELETE FROM food WHERE food_id=:food_id";
+		$SQL = "UPDATE food SET is_available=:is_available WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_id'=>$this->food_id]);
+		$STMT->execute(['is_available'=>$this->is_available,
+			'food_id'=>$this->food_id]);
 	}
 
-	public function deleteFoodMenu(){
-		$SQL = "DELETE FROM food_menu WHERE food_id=:food_id";
+	public function deleteAssignFood(){
+		$SQL = "DELETE FROM assign_food WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id]);
 	}

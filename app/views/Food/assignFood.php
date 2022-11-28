@@ -10,10 +10,10 @@
   <form action='' method='post' enctype='multipart/form-data'>
 <div class="form-outline mb-4">
                   <label for="menu">Choose a Menu:</label>
-                  <select name="menu_id" id="menu">
+                  <select name="category_id" id="menu">
                     <?php
                       foreach($data as $menu){
-                        echo "<option value='$menu->menu_id'>$menu->name</option>";
+                        echo "<option value='$menu->category_id'>$menu->category_name</option>";
                       }
                     ?>
                   </select>

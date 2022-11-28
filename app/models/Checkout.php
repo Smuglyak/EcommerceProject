@@ -4,11 +4,18 @@ namespace app\models;
 
 class Checkout extends \app\core\Model{
 
-	public function insert(){
-		$SQL = "INSERT INTO history(checkout_id, date_ordered) VALUES (:checkout_id, :date_ordered)";
+	public function createCheckout(){
+		$SQL = "INSERT INTO checkout(account_id, status) VALUES (:account_id, :status)";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['checkout_id'=>$this->checkout_id,
-						'date_ordered'=>$this->date_ordered]);
+		$STMT->execute(['account_id'=>$this->account_id,
+						'status'=>$this->status]);
+	}
+
+	public function updateCheckoutStatus(){
+		$SQL = "UPDATE checkout SET status=:status WHERE account_id = :account_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['status'=>$this->status,
+						'account_id'=>$this->account_id]);
 	}
 	
 }
