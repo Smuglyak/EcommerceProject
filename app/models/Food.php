@@ -65,4 +65,23 @@ class Food extends \app\core\Model{
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id]);
 	}
+
+	public function search($searchTerm)
+	{
+		//get all newest first
+		$SQL = "SELECT * FROM food WHERE food_name LIKE :searchTerm";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['searchTerm' => "%$searchTerm%"]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetchAll();
+	}
+	
+	public function sortByPrice(){
+
+		$SQL = "SELECT * FROM food WHERE price LIKE :searchTerm";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['searchTerm' => "%$searchTerm%"]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetchAll();
+	}
 }

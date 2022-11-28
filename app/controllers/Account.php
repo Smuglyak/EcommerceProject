@@ -7,34 +7,26 @@ class Account extends \app\core\Controller{
     public function index()
     {
         $account = new \app\models\Account();
-        $account = $account->getById($_SESSION['account_id']);
+        $account = $account->get($_SESSION['username']);
         $this->view('Account/index', $account);
     }
 
-    public function getFavorite()
-    {
-        $food = new \app\models\Food();
-        $foods = $food->getAll();
-        $favorite = new \app\models\Favorite();
-        $favorites = $favorite->getByAccount($_SESSION['account_id']);       
-        $this->view('Favorite/index',['foods'=>$foods, 'favorites'=>$favorites]);
-    }
-    
-
-    public function edit($account_id)
-    {
-        $user = new \app\models\Account();
-        $user = $user->getById($account_id);
-        if(isset($_POST['action'])){
-            $user->first_name = $_POST['first_name'];
-            $user->last_name = $_POST['last_name'];
-            $user->update();
+    public function edit(){
+        $account = new \app\models\Account();
+        $account = $account->get($_SESSION['username']);
+        if (isset($_POST['action'])) {
+            $account->username = $_POST['username'];
+            $account->first_name = $_POST['first_name'];
+            $account->last_name = $_POST['last_name'];
+            $_SESSION['username'] = $account->username;
+            $_SESSION['first_name'] = $account->first_name;
+            $_SESSION['last_name'] = $account->last_name;
+            $account->update();
             header('location:/Account/index');
+            // $this->view('Account/edit', $account);
+        } else {
+            $this->view('Account/edit', $account);
         }
-        else{
-            $this->view('Account/edit', $user);
-        }
-        $this->view('Account/index');
     }
 
     public function checkHistory(){

@@ -29,9 +29,18 @@
 <body>
   <!-- <div class='container'> -->
   <div class="text-center p-3" style="background-color: #f38f95;">
-    <a href='/Menu/index'><img src="/images/foodie.png" style="max-width: 200px;" /></a>
+
+    <?php
+    if (!isset($_SESSION['username'])) { ?>
+      <a href='/Main/index'><img src="/images/foodie.png" style="max-width: 200px;" /></a>
+    <?php  } else { ?>
+      <a href='/Category/index'><img src="/images/foodie.png" style="max-width: 200px;" /></a>
+    <?php  }
+    ?>
+
     <img src="/images/power.png" style="max-width: 200px;" />
     <img src="/images/Makima.png" style="max-width: 200px;" />
+    <hr class="solid">
   </div>
-  <hr class="solid">
-  <!-- </div> -->
+  <div class="container py-3">
+    <!-- </div> -->

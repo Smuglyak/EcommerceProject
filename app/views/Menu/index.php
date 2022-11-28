@@ -1,24 +1,37 @@
 <?php $this->view('header', 'Foodie'); ?>
-This is menu index
-<br>
+	<h1>Dashboard</h1>
+	<br>
 
-<!-- add menu -->
-<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
-<br>
+	<!-- add menu -->
+	<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
+	<br>
 
-<!-- List of all the menus -->
-<?php
-foreach ($data['menus'] as $menu) {
-	$this->view('Menu/menuLink', $menu);
-}
-?>
+	<h2>
+		List of all the Menus
+	</h2>
 
-<!-- the food list(all foods, uncategorized) -->
-<a href="/Food/index">Food List</a>
+	<?php
 
-<br>
+	foreach ($data['menus'] as $menu) {
+		$this->view('/Menu/menuLink', $menu);
+	}
+	?>
 
-<a style="" href="/Main/logout">Log out</a>
+	<h2>List of all the Combos</h2>
 
+	<?php
+	foreach ($data['combos'] as $menu) {
+		$this->view('/Menu/menuLink', $menu);
+	}
+	?>
 
-<?php $this->view('footer', 'Foodie'); ?>
+	<!-- the food list(all foods, uncategorized) -->
+	<a href="/Food/index">Food List</a>
+
+	<br>
+
+	<a href="/Account/index">Account settings<i class="bi bi-gear"></i></a>
+
+	<br>
+<!-- </div> -->
+	<?php $this->view('footer', 'Foodie'); ?>

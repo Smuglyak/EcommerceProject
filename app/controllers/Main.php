@@ -6,34 +6,38 @@ define("questions", ["What is your mother's maiden name?"=>"What is your mother'
 
 class Main extends \app\core\Controller{
 
-	public function index(){
+	public function index()
+	{
 		$this->view('Main/index');
 	}
 
-	public function login(){
-		if(isset($_POST['action'])){
+	public function login()
+	{
+		if (isset($_POST['action'])) {
 			$account = new \app\models\Account();
 			$account = $account->get($_POST['username']);
-			if(password_verify($_POST['password'], $account->password_hash)){
+			if (password_verify($_POST['password'], $account->password_hash)) {
 				$_SESSION['account_id'] = $account->account_id;
 				$_SESSION['username'] = $account->username;
 				$_SESSION['role'] = $account->role;
-				header('location:/Account/index');
-			}else{
+				$_SESSION['first_name'] = $account->first_name;
+				$_SESSION['last_name'] = $account->last_name;
+				header('location:/Category/index');
+			} else {
 				header('location:/Main/login?error=Wrong username/password combination!');
 			}
-		}
-		else{
+		} else {
 			$this->view('Main/login');
 		}
 	}
 
-	public function register(){
-		if(isset($_POST['action'])){
-			if($_POST['password'] == $_POST['password_confirm']){
+	public function register()
+	{
+		if (isset($_POST['action'])) {
+			if ($_POST['password'] == $_POST['password_confirm']) {
 				$account = new \app\models\Account();
 				$check = $account->get($_POST['username']);
-				if(!$check){
+				if (!$check) {
 					$account->username = $_POST['username'];
 					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$account->first_name = $_POST['first_name'];
@@ -44,12 +48,10 @@ class Main extends \app\core\Controller{
 				}else{
 					header('location:/Main/register?error=The username "'.$_POST['username'].'" is already in use. Enter another username.');
 				}
-			}
-			else{
+			} else {
 				header('location:/Main/register?error=Passwords do not match.');
 			}
-		}
-		else{
+		} else {
 			$this->view('Main/register');
 		}
 	}
@@ -86,8 +88,7 @@ class Main extends \app\core\Controller{
 					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$account->updatePassword();
 					header('location:/Main/viewAccount?message=Password changed successfully.');
-				}
-				else{
+				} else {
 					header('location:/Main/changePassword?error=Passwords do not match.');
 				}
 			}
@@ -104,7 +105,8 @@ class Main extends \app\core\Controller{
 		}
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		session_destroy();
 		header('location:/Main/index');
 	}

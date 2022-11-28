@@ -6,8 +6,8 @@
 		Name:
 	</dt>
 	<dd>
-		<?= $data['menu']->menu_name ?>
-		
+		<?= $data->category_name ?>
+
 	</dd>
 	<dt>
 		Type:
