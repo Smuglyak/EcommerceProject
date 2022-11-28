@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 02:43 AM
+-- Generation Time: Nov 28, 2022 at 04:33 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -40,6 +40,17 @@ CREATE TABLE `account` (
   `two_fa_code` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `account`
+--
+
+INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `password_hash`, `role`, `two_fa_code`) VALUES
+(1, 'AkiraSan', 'Akira', 'San', '$2y$10$GQLqUht08iTyugcWXu/ujuGBMKRT7Ky.lRj9MB8aKZUF9p1R0/7xC', 'user', ''),
+(2, 'Lol', 'lol', 'lol', '$2y$10$uwLmjjBh6Tns.ybNuHKQueGt2Zef/OU6SukVy.MA/beDHLzyOg7WC', 'user', ''),
+(3, 'lol2', 'lol2', 'lol2', '$2y$10$mbpJ2vSyV7SYJF1C55.Y.ujjwuSbyq6sfwqiAyBad36LovMG81xdK', 'user', ''),
+(4, 'lol3', 'lol2', 'lol2', '$2y$10$13tW8NLJLsAN25HVP5CSve0c7vnilu48SWcBHyYvu2FMjX7zGPk4e', 'user', ''),
+(5, 'lol5', 'lol2', 'lol2', '$2y$10$eSTg.j2X3JdhNbILoMlyrOEYXISIAYH8Irijd2OXmZXE4Fy07t8Wy', 'user', '');
+
 -- --------------------------------------------------------
 
 --
@@ -63,7 +74,7 @@ DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(50) NOT NULL,
-  `type` varchar(25) NOT NULL
+  `category_type` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -123,6 +134,14 @@ CREATE TABLE `food` (
   `is_available` varchar(5) NOT NULL DEFAULT 'TRUE'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `food`
+--
+
+INSERT INTO `food` (`food_id`, `food_name`, `picture`, `food_description`, `price`, `is_available`) VALUES
+(1, '', '', '', 0, 'TRUE'),
+(2, 'LeanBeefPatty', '6384d130993da.jpg', 'Lean Beef Patty', 1931839, 'TRUE');
+
 -- --------------------------------------------------------
 
 --
@@ -164,6 +183,13 @@ CREATE TABLE `security_question` (
   `question` text NOT NULL,
   `answer` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `security_question`
+--
+
+INSERT INTO `security_question` (`security_question_id`, `account_id`, `question`, `answer`) VALUES
+(1, 5, 'What', 'ali');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +275,7 @@ ALTER TABLE `security_question`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `assign_food`
@@ -285,7 +311,7 @@ ALTER TABLE `favorite`
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `history`
@@ -303,7 +329,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `security_question`
 --
 ALTER TABLE `security_question`
-  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
