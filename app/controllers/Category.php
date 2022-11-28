@@ -31,14 +31,13 @@ class Category extends \app\core\Controller{
 			$check = $menu->getByName($_POST['menu_name']);
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
-				$menu->category_type = 'Menu';
-				// $menu->category_description = $_POST['menu_description'];
-				// $menu->category_type = $_POST['menu_type'];
+				$menu->category_description = $_POST['menu_description'];
+				$menu->category_type = $_POST['menu_type'];
 				$menu->insert();
 				header('location:/Category/index');
 			}
 			else{
-				header('location:/Menu/addMenu?error='.$_POST['menu_name'].'" menu name already exist. Enter another name');
+				header('location:/Category/addMenu?error='.$_POST['menu_name'].'" menu name already exist. Enter another name');
 			}
 		}
 		else{

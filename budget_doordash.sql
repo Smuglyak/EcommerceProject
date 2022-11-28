@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 04:33 PM
+-- Generation Time: Nov 28, 2022 at 05:26 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `budget_doordash`
 --
-CREATE DATABASE IF NOT EXISTS `budget_doordash` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `budget_doordash`;
 
 -- --------------------------------------------------------
 
@@ -29,7 +27,6 @@ USE `budget_doordash`;
 -- Table structure for table `account`
 --
 
-DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -49,7 +46,9 @@ INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `pas
 (2, 'Lol', 'lol', 'lol', '$2y$10$uwLmjjBh6Tns.ybNuHKQueGt2Zef/OU6SukVy.MA/beDHLzyOg7WC', 'user', ''),
 (3, 'lol2', 'lol2', 'lol2', '$2y$10$mbpJ2vSyV7SYJF1C55.Y.ujjwuSbyq6sfwqiAyBad36LovMG81xdK', 'user', ''),
 (4, 'lol3', 'lol2', 'lol2', '$2y$10$13tW8NLJLsAN25HVP5CSve0c7vnilu48SWcBHyYvu2FMjX7zGPk4e', 'user', ''),
-(5, 'lol5', 'lol2', 'lol2', '$2y$10$eSTg.j2X3JdhNbILoMlyrOEYXISIAYH8Irijd2OXmZXE4Fy07t8Wy', 'user', '');
+(5, 'lol5', 'lol2', 'lol2', '$2y$10$eSTg.j2X3JdhNbILoMlyrOEYXISIAYH8Irijd2OXmZXE4Fy07t8Wy', 'user', ''),
+(6, 'lo6', 'lol', 'lol', '$2y$10$DWUVTPnolz6Ftt5CcSPfHOyUIr6LJomGihOWbrFqlzMx1uGSpFyHa', 'user', ''),
+(7, 'lo7', 'lol7', 'lol7', '$2y$10$oe3ZFE8zj3DPkfhyY3ieKeOYxSe7rmfXGhmupLgHqs0535YvE7/w6', 'user', '');
 
 -- --------------------------------------------------------
 
@@ -57,7 +56,6 @@ INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `pas
 -- Table structure for table `assign_food`
 --
 
-DROP TABLE IF EXISTS `assign_food`;
 CREATE TABLE `assign_food` (
   `assign_food_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL,
@@ -70,12 +68,19 @@ CREATE TABLE `assign_food` (
 -- Table structure for table `categories`
 --
 
-DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(50) NOT NULL,
-  `category_type` varchar(25) NOT NULL
+  `category_type` varchar(25) NOT NULL,
+  `category_description` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category_id`, `category_name`, `category_type`, `category_description`) VALUES
+(1, 'Burgers', 'Menu', NULL);
 
 -- --------------------------------------------------------
 
@@ -83,7 +88,6 @@ CREATE TABLE `categories` (
 -- Table structure for table `checkout`
 --
 
-DROP TABLE IF EXISTS `checkout`;
 CREATE TABLE `checkout` (
   `checkout_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -96,7 +100,6 @@ CREATE TABLE `checkout` (
 -- Table structure for table `checkout_details`
 --
 
-DROP TABLE IF EXISTS `checkout_details`;
 CREATE TABLE `checkout_details` (
   `checkout_details_id` int(11) NOT NULL,
   `assign_food_id` int(11) NOT NULL,
@@ -111,7 +114,6 @@ CREATE TABLE `checkout_details` (
 -- Table structure for table `favorite`
 --
 
-DROP TABLE IF EXISTS `favorite`;
 CREATE TABLE `favorite` (
   `favorite_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -124,7 +126,6 @@ CREATE TABLE `favorite` (
 -- Table structure for table `food`
 --
 
-DROP TABLE IF EXISTS `food`;
 CREATE TABLE `food` (
   `food_id` int(11) NOT NULL,
   `food_name` varchar(50) NOT NULL,
@@ -148,7 +149,6 @@ INSERT INTO `food` (`food_id`, `food_name`, `picture`, `food_description`, `pric
 -- Table structure for table `history`
 --
 
-DROP TABLE IF EXISTS `history`;
 CREATE TABLE `history` (
   `history_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
@@ -161,7 +161,6 @@ CREATE TABLE `history` (
 -- Table structure for table `review`
 --
 
-DROP TABLE IF EXISTS `review`;
 CREATE TABLE `review` (
   `review_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -176,7 +175,6 @@ CREATE TABLE `review` (
 -- Table structure for table `security_question`
 --
 
-DROP TABLE IF EXISTS `security_question`;
 CREATE TABLE `security_question` (
   `security_question_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -189,7 +187,9 @@ CREATE TABLE `security_question` (
 --
 
 INSERT INTO `security_question` (`security_question_id`, `account_id`, `question`, `answer`) VALUES
-(1, 5, 'What', 'ali');
+(1, 5, 'What', 'ali'),
+(2, 6, 'What', 'Lol'),
+(3, 7, 'What', 'yu6ht');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +275,7 @@ ALTER TABLE `security_question`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `assign_food`
@@ -287,7 +287,7 @@ ALTER TABLE `assign_food`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `checkout`
@@ -329,7 +329,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `security_question`
 --
 ALTER TABLE `security_question`
-  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

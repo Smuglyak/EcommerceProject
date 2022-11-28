@@ -74,7 +74,6 @@ class Main extends \app\core\Controller{
 		$account = new \app\models\Account();
 		$account = $account->get($_SESSION['username']);
 		$this->view('Menu/index', $account);
-		
 		//idl what you mean by viewAccount
 	}
 

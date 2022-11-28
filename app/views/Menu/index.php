@@ -5,7 +5,6 @@
 	<!-- add menu -->
 	<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
 	<br>
-
 	<h2>
 		List of all the Menus
 	</h2>
@@ -15,7 +14,7 @@
 	foreach ($data['menus'] as $menu) {
 		$this->view('/Menu/menuLink', $menu);
 	}
-	?>
+	?>z`
 
 	<h2>List of all the Combos</h2>
 

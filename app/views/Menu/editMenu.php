@@ -11,6 +11,12 @@
     </div>
 
     <div class="form-group">
+        <label class="col-sm-2 col-form-label">Description:
+            <textarea name="menu_description" rows="4" cols="50" value=""><?= $data->category_description ?></textarea>
+        </label>
+    </div>
+
+    <div class="form-group">
         <label class="col-sm-2 col-form-label">Menu Type:
             <input class='form-control' type="text" name="menu_type" value="<?= $data->category_type ?>" />
         </label>

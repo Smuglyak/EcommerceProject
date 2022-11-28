@@ -10,10 +10,16 @@
 
 	</dd>
 	<dt>
+		Description:
+	</dt>
+	<dd>
+		<?= $data->category_description ?>
+	</dd>
+	<dt>
 		Type:
 	</dt>
 	<dd>
-		<?= $data['menu']->type ?>
+		<?= $data->category_type ?>
 	</dd>
 </dl>
 

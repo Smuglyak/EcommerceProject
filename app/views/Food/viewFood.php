@@ -9,10 +9,10 @@
 </div>
 
 <?php	}
-	if(isset($_GET['message'])) ?> {
+	if(isset($_GET['message'])){ ?> 
 <div class="alert alert-success" role="alert">
   <?= $_GET['message'] ?>
-</div> } ?>
+</div> <?php } ?>
 
 <a href='/Favorite/addFavorite/<?= $data['food']->food_id ?>'>Add to Favorite</a>
 <dl>
