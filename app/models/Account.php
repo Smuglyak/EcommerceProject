@@ -34,6 +34,18 @@ public $last_name;
 						'password_hash'=>$this->password_hash]);
 	}
 
+	public function update()
+	{
+		$SQL = "UPDATE account SET username=:username, first_name=:first_name, last_name=:last_name WHERE account_id=:account_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute([
+			'username' => $this->username,
+			'first_name' => $this->first_name,
+			'last_name' => $this->last_name,
+			'account_id' => $this->account_id
+		]);
+	}
+
 	public function updatePassword(){
 		$SQL = "UPDATE account SET password_hash=:password_hash WHERE account_id=:account_id";
 		$STMT = self::$_connection->prepare($SQL);

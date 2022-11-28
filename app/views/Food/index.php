@@ -44,7 +44,5 @@
         </br>";
 	}
 	?>
-
-	<a href='/'>Log out</a>
 	<?php $this->view('footer', 'Foodie'); ?>
 </body>

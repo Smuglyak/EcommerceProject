@@ -11,7 +11,7 @@
 
                             <!-- have to access specific account only, i passed all accounts instead for now for the fields-->
                             <h5>Hey there <?= $_SESSION['username'] ?>!</h5>
-
+ 
                             <!-- edit button -->
                             <a href="/Account/edit/"><i class="far fa-edit mb-5"></i></a>
                         </div>
