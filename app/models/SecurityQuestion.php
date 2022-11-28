@@ -4,6 +4,8 @@ namespace app\models;
 
 class SecurityQuestion extends \app\core\Model{
 
+	public $account_id;
+
 	public function getQuestion($account_id){
 		$SQL = "SELECT * FROM security_question WHERE account_id=:account_id";
 		$STMT = self::$_connection->prepare($SQL);
@@ -19,3 +21,5 @@ class SecurityQuestion extends \app\core\Model{
 						'question'=>$this->question,
 						'answer'=>$this->answer]);
 	}
+
+}

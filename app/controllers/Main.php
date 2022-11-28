@@ -73,7 +73,9 @@ class Main extends \app\core\Controller{
 	public function viewAccount(){
 		$account = new \app\models\Account();
 		$account = $account->get($_SESSION['username']);
-		$this->view('Main/viewAccount', $account);
+		$this->view('Menu/index', $account);
+		
+		//idl what you mean by viewAccount
 	}
 
 	public function changePassword(){

@@ -79,10 +79,11 @@ class Food extends \app\core\Controller{
 		}
 		else {
 			$menu = new \app\models\Category();
-			$menu->type = 'Menu';
-			$menus = $menu->getByType($menu);
+			//$menu->type = 'Menu';
+			$menus = $menu->getAllMenus();
 			$this->view('Food/assignFood', $menus);
 		}
+	}
 
 	public function search(){
 		//To find interesting publications, as a person or user, I can search for captions by search terms.
