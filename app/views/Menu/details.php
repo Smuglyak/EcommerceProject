@@ -6,26 +6,20 @@
 		Name:
 	</dt>
 	<dd>
-		<?= $data['menu']->menu_name ?>
-		
+		<?= $data->category_name ?>
+
 	</dd>
 	<dt>
 		Description:
 	</dt>
 	<dd>
-		<?= $data['menu']->menu_description ?>
-	</dd>
-    <dt>
-		Price:
-	</dt>
-	<dd>
-		<?= $data['menu']->price ?>
+		<?= $data->category_description ?>
 	</dd>
 	<dt>
-		Picture:
+		Menu type:
 	</dt>
 	<dd>
-		<img src="/images/blank.jpg" style="max-width:200px;max-height:200px" id="profile_pic_preview" />
+		<?= $data->category_type ?>
 	</dd>
 </dl>
 

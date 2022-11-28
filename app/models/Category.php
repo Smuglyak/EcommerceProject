@@ -16,7 +16,7 @@ class Category extends \app\core\Model{
 	}
 
 	public function getAllCombos(){
-		$SQL = "SELECT * FROM categories WHERE type=Combo";
+		$SQL = "SELECT * FROM categories WHERE category_type='Combo'";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Category');
@@ -45,10 +45,14 @@ class Category extends \app\core\Model{
 		$STMT->execute(['category_name'=>$this->category_name, 'category_type'=>$this->category_type,]);
 	}
 
-	protected function update(){
-		$SQL = "UPDATE categories SET category_name=:category_name WHERE category_id=:category_id";
+	public function update(){
+		$SQL = "UPDATE categories SET category_name=:category_name, category_description=:category_description, category_type=:category_type WHERE category_id=:category_id";
+
 		$STMT = self::$_connection->prepare($SQL);
+		
 		$STMT->execute(['category_name'=>$this->category_name,
+			'category_description' => $this->category_description,
+			'category_type' => $this->category_type,
 						'category_id'=>$this->category_id]);
 	}
 
