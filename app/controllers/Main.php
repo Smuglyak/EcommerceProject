@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+define("questions", ["What is your mother's maiden name?"=>"What is your mother's maiden name?", "What is the name of your first pet?"=>"What is the name of your first pet?", "What is your nickname when you were a kid?"=>"What is your nickname when you were a kid?"]);
+
 class Main extends \app\core\Controller{
 
 	public function index(){
@@ -62,7 +64,7 @@ class Main extends \app\core\Controller{
 			header('location:/Main/viewAccount');
 		}
 		else{
-
+			$this->view('Main/addSecurityQuestion');
 		}
 	}
 
@@ -73,10 +75,13 @@ class Main extends \app\core\Controller{
 	}
 
 	public function changePassword(){
-		if(isset($_POST['action'])){
+		if(isset($_POST['findQuestion'])){
+			$question = new \app\models\SecurityQuestion();
+			$question = $question->getQuestion($_POST['username']);
+		if(isset($_POST['changePass'])){
 			$account = new \app\models\Account();
-			$account = $account->get($_SESSION['username']);
-			if(password_verify($_POST['old_password'],$account->password_hash)){
+			$account = $account->get($_POST['username']);
+			if($_POST['answer'] == $question->answer){
 				if($_POST['password'] == $_POST['password_confirm']){
 					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$account->updatePassword();
@@ -87,9 +92,13 @@ class Main extends \app\core\Controller{
 				}
 			}
 			else{
-				header('location:/Main/changePassword?error=Wrong old password provided.');
+				header('location:/Main/changePassword?error=Wrong answer provided.');
 			}
 		}
+		else{
+			header('location:/Main/changePassword?error=Wrong username provided.');
+		}
+	}
 		else{
 			$this->view('Main/changePassword');
 		}

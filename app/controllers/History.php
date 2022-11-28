@@ -10,5 +10,4 @@ class History extends \app\core\Controller{
 		$orders = $order->getByAccount($account);
 		$this->view('Account/checkHistory', $orders);
 	}
-
 }

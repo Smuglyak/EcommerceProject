@@ -9,7 +9,7 @@
                         <div class="col-md-4 gradient-custom text-center text-dark" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <img src="https://img.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg?w=2000" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
 
-                            <h5>Name</h5>
+                            <h5>Username</h5>
 
                             <!-- edit button -->
                             <a href="/Account/edit"><i class="far fa-edit mb-5"></i></a>
@@ -34,7 +34,7 @@
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>Check purchase history</h6>
-                                        <a href="/Account/checkHistory"><i class="fas fa-history"></i></a>
+                                        <a href="/History/index"><i class="fas fa-history"></i></a>
                                         <br>
                                     </div>
                                     <div class="col-6 mb-3">

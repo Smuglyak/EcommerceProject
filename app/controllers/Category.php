@@ -13,14 +13,14 @@ class Category extends \app\core\Controller{
 	public function getMenus(){
 		$menu = new \app\models\Category();
 		$menu->category_type = 'Menu'
-		$menus = $menu->getByType();	
+		$menus = $menu->getByType($menu);	
 		$this->view('Menu/index', $menus);
 	}
 
 	public function getCombos(){
 		$combo = new \app\models\Category();
 		$combo->category_type = 'Combo'
-		$combos = $combo->getByType();	
+		$combos = $combo->getByType($combo);
 		$this->view('Menu/index', $combos);
 	}
 
@@ -31,9 +31,8 @@ class Category extends \app\core\Controller{
 			if(!$check){
 				$menu->category_name = $_POST['menu_name'];
 				$menu->category_type = 'Menu';
-
 				$menu->insert();
-				header('location:/Menu/index?message=Menu created!');
+				header('location:/Category/index');
 			}
 			else{
 				header('location:/Menu/addMenu?error='.$_POST['menu_name'].'" menu name already exist. Enter another name');

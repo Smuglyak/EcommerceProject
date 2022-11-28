@@ -13,9 +13,11 @@ class Account extends \app\core\Controller{
 
     public function getFavorite()
     {
+        $food = new \app\models\Food();
+        $foods = $food->getAll();
         $favorite = new \app\models\Favorite();
-        $favorite = $favorite->getByAccount($_SESSION['account_id']);
-        $this->view('Account/viewFavorite', $favorite);
+        $favorites = $favorite->getByAccount($_SESSION['account_id']);       
+        $this->view('Favorite/index',['foods'=>$foods, 'favorites'=>$favorites]);
     }
     
 
@@ -32,6 +34,7 @@ class Account extends \app\core\Controller{
         else{
             $this->view('Account/edit', $user);
         }
+        $this->view('Account/index');
     }
 
     public function checkHistory(){

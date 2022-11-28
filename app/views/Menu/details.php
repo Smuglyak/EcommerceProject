@@ -10,22 +10,10 @@
 		
 	</dd>
 	<dt>
-		Description:
+		Type:
 	</dt>
 	<dd>
-		<?= $data['menu']->menu_description ?>
-	</dd>
-    <dt>
-		Price:
-	</dt>
-	<dd>
-		<?= $data['menu']->price ?>
-	</dd>
-	<dt>
-		Picture:
-	</dt>
-	<dd>
-		<img src="/images/blank.jpg" style="max-width:200px;max-height:200px" id="profile_pic_preview" />
+		<?= $data['menu']->type ?>
 	</dd>
 </dl>
 

@@ -21,12 +21,12 @@ class Food extends \app\core\Controller{
 			$newFood->price = $_POST['price'];
 			$filename = $this->saveFile($_FILES['picture']);
 			$newFood->picture = $filename;
-			$newFood->insert();
-			$getFood->food_id = $getFood->getByName($_POST['food_name']);
+			$_SESSION['food_id'] = $newFood->insert();
+			// $getFood->food_id = $getFood->getByName($_POST['food_name']);
 			// $foodMenu->food_id = $getFood->food_id;
 			// $foodMenu->menu_id = $_POST['menu_id'];
 			// $foodMenu->insert();
-			header('location:/Food/assignFood', $getFood);
+			header('location:/Food/assignFood');
 		}
 		else{
 			$this->view('Food/addFood');
@@ -56,7 +56,8 @@ class Food extends \app\core\Controller{
 	public function delete($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
-		//$food->deleteFoodMenu();
+		$food->deleteAssignFood();
+		$food->is_available = 'False';
 		$food->delete();
 		header('location:/Food/index/');
 	}
@@ -67,18 +68,19 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food]);
 	}
 
-	public function assignFood($food_id){
+	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();
 			$assignFood = new \app\models\AssignFood();
-			$food = $food->getById($food_id);
-			$foodMenu->food_id = $food->food_id;
-			$foodMenu->menu_id = $_POST['menu_id'];
-			$foodMenu->insert();
+			$assignFood->food_id = $_SESSION['food_id'];
+			$assignFood->category_id = $_POST['category_id'];
+			$assignFood->insert();
+			header('location:/Food/index/');
 		}
 		else {
 			$menu = new \app\models\Category();
-			$menus = $menu->getAll();
+			$menu->type = 'Menu';
+			$menus = $menu->getByType($menu);
 			$this->view('Food/assignFood', $menus);
 		}
 	}

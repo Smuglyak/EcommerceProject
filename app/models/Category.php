@@ -41,7 +41,6 @@ class Category extends \app\core\Model{
 	public function insert(){
 		$SQL = "INSERT INTO categories(category_name, category_type) VALUES (:category_name, :category_type)";
 		$STMT = self::$_connection->prepare($SQL);	
-		
 		$STMT->execute(['category_name'=>$this->category_name, 'category_type'=>$this->category_type,]);
 	}
 

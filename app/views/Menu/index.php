@@ -9,7 +9,7 @@ This is menu index
 <!-- List of all the menus -->
 <?php
 foreach ($data['menus'] as $menu) {
-	$this->view('Category/menuLink', $menu);
+	$this->view('Menu/menuLink', $menu);
 }
 ?>
 

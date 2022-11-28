@@ -6,21 +6,15 @@ class Favorite extends \app\core\Controller{
 
 	public function index()
     {
-    	
+		$this->view('Favorite/index');
     }
 
-    public function getFavorite($account_id){
-    	$favoriteFood = new \app\models\Favorite();
-    	$favorites = $favoriteFood->getById($account_id);
-        $this->view('Account/favoriteFood', $favorites);
-    }
-
-    public function addFavorite($account_id, $food_id){
+    public function addFavorite($food_id){
 			$favoriteFood = new \app\models\Favorite();
-			$favoriteFood->account_id = $account_id;
+			$favoriteFood->account_id = $_SESSION['account_id'];
 			$favoriteFood->food_id = $food_id;
 			$favoriteFood->insert();
-			header('location:/Account/favoriteFood');
+			header('location:/Food/viewFood?message=Food added to Favorite');
     }
 
     public function deleteFavorite($favorite_id)
@@ -28,6 +22,6 @@ class Favorite extends \app\core\Controller{
     	$favoriteFood = new \app\models\Favorite();
 		$favoriteFood = $favoriteFood->getById($favorite_id);
 		$favoriteFood->delete();
-		header('location:/Account/favoriteFood/');
+		header('location:/Favorite/index');
     }
 }
