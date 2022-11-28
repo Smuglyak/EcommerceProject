@@ -10,7 +10,7 @@
                             <img src="https://img.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg?w=2000" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
 
                             <!-- have to access specific account only, i passed all accounts instead for now for the fields-->
-                            <input class='form-control' type="text" name="username" value="<?= $data->username ?>" />
+                            <h5>Hey there <?= $_SESSION['username'] ?>!</h5>
 
                             <!-- edit button -->
                             <a href="/Account/edit/"><i class="far fa-edit mb-5"></i></a>
@@ -24,11 +24,11 @@
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
                                         <h6>First Name</h6>
-                                        <input class='form-control' type="text" name="first_name" value="<?= $data->first_name ?>" />
+                                        <h5><?= $_SESSION['first_name'] ?></h5>
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Last Name</h6>
-                                        <input class='form-control' type="text" name="last_name" value="<?= $data->last_name ?>" />
+                                        <h5><?= $_SESSION['last_name'] ?></h5>
                                     </div>
                                 </div>
                                 <hr class="mt-0 mb-4">
