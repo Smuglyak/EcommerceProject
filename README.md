@@ -7,6 +7,8 @@
 - Alexandra Vovc
 - Craig Justin Balibalos
 
+![](https://github.com/Smuglyak/EcommerceProject/blob/main/images/pochitadancing-pochita.gif)
+
 ### The general goal of the project:
 #### Foodie Marketplace
 We will build a marketplace Web Application where a customer can order food online.
