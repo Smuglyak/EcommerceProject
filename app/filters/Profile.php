@@ -11,4 +11,3 @@ class Profile extends \app\core\AccessFilter{
 		return false;
 	}
 }
-?>

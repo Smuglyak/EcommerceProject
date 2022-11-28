@@ -19,18 +19,3 @@ class SecurityQuestion extends \app\core\Model{
 						'question'=>$this->question,
 						'answer'=>$this->answer]);
 	}
-
-	public function updatePassword(){
-		$SQL = "UPDATE account SET password_hash=:password_hash WHERE account_id=:account_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['password_hash'=>$this->password_hash,
-						'account_id'=>$this->account_id]);
-	}
-
-	public function update2fa(){
-		$SQL = "UPDATE account SET two_fa_code=:two_fa_code WHERE account_id=:account_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['two_fa_code'=>$this->two_fa_code,
-						'account_id'=>$this->account_id]);
-	}
-}

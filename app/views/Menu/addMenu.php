@@ -11,10 +11,7 @@
 <h1>Add Menu</h1>
 <form action='' method='post' enctype='multipart/form-data'>
 	<div class="form-group">
-		<label class="col-sm-2 col-form-label">Name:<input class='form-control' type="text" name="menu_name" placeholder='Enter the menu/combo name.' style="width: 400px;"/></label>
-	</div>
-	<div class="form-group">
-		<label class="col-sm-2 col-form-label">Type:<input class='form-control' type="text" name="menu_type" placeholder='Enter the type of menu(Combo or Menu).' style="width: 400px;"/></label>
+		<label class="col-sm-2 col-form-label">Name:<input class='form-control' type="text" name="menu_name" placeholder='Enter the menu name.' style="width: 400px;"/></label>
 	</div>
 	<input type="submit" name="action" value="Create menu" class='btn btn-primary' />
 </form>
