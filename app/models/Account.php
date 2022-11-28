@@ -33,6 +33,7 @@ public $last_name;
 						'last_name'=>$this->last_name,
 						'password_hash'=>$this->password_hash]);
 						return self::$_connection->lastInsertId();
+		return self::$_connection->lastInsertId();
 	}
 
 	public function update()

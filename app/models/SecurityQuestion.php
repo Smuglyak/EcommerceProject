@@ -21,5 +21,4 @@ class SecurityQuestion extends \app\core\Model{
 						'question'=>$this->question,
 						'answer'=>$this->answer]);
 	}
-
 }

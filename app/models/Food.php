@@ -47,6 +47,12 @@ class Food extends \app\core\Model
 			'food_description' => $this->food_description,
 			'price' => $this->price
 		]);
+		$STMT->execute(['food_name'=>$this->food_name,
+						'picture'=>$this->picture,
+						'food_description'=>$this->food_description,
+						'price'=>$this->price,
+						'is_available'=>$this->is_available]);
+		return self::$_connection->lastInsertId();
 	}
 
 	public function update()
