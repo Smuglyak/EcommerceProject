@@ -40,6 +40,11 @@
 
     <img src="/images/power.png" style="max-width: 200px;" />
     <img src="/images/Makima.png" style="max-width: 200px;" />
+
+    <?php
+    if (isset($_SESSION['username'])) { ?>
+      <a style="color:inherit;"href="/Account/index">Account<i class="bi bi-person-circle"></i></a>
+    <?php } ?>
     <hr class="solid">
   </div>
   <div class="container py-3">

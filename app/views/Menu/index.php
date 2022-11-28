@@ -30,8 +30,6 @@
 
 	<br>
 
-	<a href="/Account/index">Account settings<i class="bi bi-gear"></i></a>
-
 	<br>
 <!-- </div> -->
 	<?php $this->view('footer', 'Foodie'); ?>

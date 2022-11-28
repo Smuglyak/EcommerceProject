@@ -19,7 +19,5 @@
 	<input type="submit" name="action" value="Create menu" class='btn btn-primary' />
 </form>
 
-<a href='/'>Log out</a>
-
 <?php $this->view('footer', 'Foodie'); ?>
 </body>

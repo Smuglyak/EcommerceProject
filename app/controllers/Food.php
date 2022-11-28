@@ -99,7 +99,7 @@ class Food extends \app\core\Controller{
 	public function sortByPrice(){
 		//To find interesting publications, as a person or user, I can search for captions by search terms.
 		$food = new \app\models\Food();
-		$foods = $food->sortByPrice($_GET['search_term']);
-		$this->view('Food/index', $foods);
+		$food = $food->sortByPrice($_GET['search_term2']);
+		$this->view('Food/index', $food);
 	}
 }
