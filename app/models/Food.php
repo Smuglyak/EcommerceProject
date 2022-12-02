@@ -51,11 +51,13 @@ class Food extends \app\core\Model
 	{
 		$SQL = "INSERT INTO food(food_name, picture, food_description, price, is_available) VALUES (:food_name, :picture, :food_description ,:price, :is_available)";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_name'=>$this->food_name,
-						'picture'=>$this->picture,
-						'food_description'=>$this->food_description,
-						'price'=>$this->price,
-						'is_available'=>$this->is_available]);
+		$STMT->execute([
+			'food_name' => $this->food_name,
+			'picture' => $this->picture,
+			'food_description' => $this->food_description,
+			'price' => $this->price,
+			'is_available' => $this->is_available
+		]);
 		return self::$_connection->lastInsertId();
 	}
 
@@ -99,12 +101,25 @@ class Food extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
-	public function sortByPrice($searchTerm)
+	public function sortByPrice($orderType)
 	{
-		$SQL = "SELECT * FROM food WHERE price <= :searchTerm";
+		$SQL = "SELECT * FROM food ORDER BY price " . ($orderType == 'Ascend'?'ASC':'DESC');
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['searchTerm' => "%$searchTerm%"]);
+		$STMT->execute();
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
 		return $STMT->fetchAll();
 	}
+
+	public function getByCategory($orderType, $category)
+	{
+		$SQL = "SELECT * FROM food JOIN assign_food ON food.food_id = assign_food.food_id WHERE category_id = :category ORDER BY price " . ($orderType == 'Ascend' ? 'ASC' : 'DESC');
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category'=>$category]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetchAll();
+	}
+
+
+
+
 }

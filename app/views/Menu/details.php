@@ -25,21 +25,22 @@
 
 <h2>Menu food list</h2>
 
-<form action="/Food/sortByPrice" method="get" style='display:inline-block'>
+<form action="/Category/details/<?= $data['menu']->category_id ?>" method="get" style='display:inline-block'>
+	<h4>Sort Food by price</h4>
 	<div class="input-group">
-		<input type="search" style="width: 250px" name='search_term2' class="form-control" placeholder="Sort food by price" />
-		<button type="submit" class="btn btn-primary" value="Search"><i class="bi-search"></i></button>
+		<button type="submit" name="Order" value="Ascend"><i class="bi bi-sort-up-alt"></i></button>
+		<button type="submit" name="Order" value="Descend"><i class="bi bi-sort-down"></i></button>
 	</div>
 </form>
 
 <?php
-foreach ($data['assignFoods'] as $food) {
-	$food_id = $food->food_id;
+//foreach ($data['assignFoods'] as $food) {
+//	$food_id = $food->food_id;
 	foreach ($data['foods'] as $viewFood) {
-		if ($viewFood->food_id == $food_id) {
+//		if ($viewFood->food_id == $food_id) {
 			$this->view('/Food/assignFoodView', $viewFood);
-		}
-	}
+//		}
+//	}
 }
 ?>
 

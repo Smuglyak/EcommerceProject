@@ -11,19 +11,19 @@ class Category extends \app\core\Controller{
 		$this->view('Menu/index', ['menus'=>$menus, 'combos' => $combos]);;
 	}
 
-	public function getMenus(){
-		$menu = new \app\models\Category();
-		$menu->category_type = 'Menu';
-		$menus = $menu->getByType($menu);	
-		$this->view('Menu/index', $menus);
-	}
+	// public function getMenus(){
+	// 	$menu = new \app\models\Category();
+	// 	$menu->category_type = 'Menu';
+	// 	$menus = $menu->getByType($menu);	
+	// 	$this->view('Menu/index', $menus);
+	// }
 
-	public function getCombos(){
-		$combo = new \app\models\Category();
-		$combo->category_type = 'Combo';
-		$combos = $combo->getByType($combo);
-		$this->view('Menu/index', $combos);
-	}
+	// public function getCombos(){
+	// 	$combo = new \app\models\Category();
+	// 	$combo->category_type = 'Combo';
+	// 	$combos = $combo->getByType($combo);
+	// 	$this->view('Menu/index', $combos);
+	// }
 
 	// public function getCombo($combo_id){
 	// 	$combo = new \app\models\Category();
@@ -72,14 +72,22 @@ class Category extends \app\core\Controller{
 	}
 
 	public function details($menu_id){
-		$menu = new \app\models\Category();
-		$menu = $menu->getById($menu_id);
-		$assignFoods = new \app\models\AssignFood();
-		$food = new \app\models\Food();
-		$foods = $food->getAll();
-		$assignFoods = $assignFoods->getAllWithMenuId($menu_id);
-		$_SESSION['menu_id'] = $menu_id;
-		$this->view('Menu/details', ['menu'=>$menu, 'assignFoods'=>$assignFoods, 'foods'=>$foods]);
+		if(!isset($_GET['Order'])){
+			$menu = new \app\models\Category();
+			$menu = $menu->getById($menu_id);
+			$assignFoods = new \app\models\AssignFood();
+			$food = new \app\models\Food();
+			$foods = $food->getAll();
+			$assignFoods = $assignFoods->getAllWithMenuId($menu_id);
+			$_SESSION['menu_id'] = $menu_id;
+			$this->view('Menu/details', ['menu' => $menu, 'assignFoods' => $assignFoods, 'foods' => $foods]);
+		} else {
+			$food = new \app\models\Food();
+			$foods = $food->getByCategory($_GET['Order'], $menu_id);
+			$menu = new \app\models\Category();
+			$menu = $menu->getById($_SESSION['menu_id']);
+			 $this->view('Menu/details', ['menu' => $menu, 'foods'=>$foods]);
+		}	
 	}
 
 	public function edit($menu_id){
@@ -106,4 +114,9 @@ class Category extends \app\core\Controller{
 		$menu->delete();
 		header('location:/Category/index');
 	}
+
+	// public function sortByPrice()
+	// {
+		
+	// }
 }
