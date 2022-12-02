@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 04:14 PM
+-- Generation Time: Dec 02, 2022 at 04:35 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `budget_doordash`
 --
+CREATE DATABASE IF NOT EXISTS `budget_doordash` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `budget_doordash`;
 
 -- --------------------------------------------------------
 
@@ -27,6 +29,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `account`
 --
 
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `account_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -55,6 +58,7 @@ INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `pas
 -- Table structure for table `assign_food`
 --
 
+DROP TABLE IF EXISTS `assign_food`;
 CREATE TABLE `assign_food` (
   `assign_food_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL,
@@ -76,6 +80,7 @@ INSERT INTO `assign_food` (`assign_food_id`, `food_id`, `category_id`) VALUES
 -- Table structure for table `categories`
 --
 
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE `categories` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(50) NOT NULL,
@@ -98,6 +103,7 @@ INSERT INTO `categories` (`category_id`, `category_name`, `category_type`, `cate
 -- Table structure for table `checkout`
 --
 
+DROP TABLE IF EXISTS `checkout`;
 CREATE TABLE `checkout` (
   `checkout_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -110,6 +116,7 @@ CREATE TABLE `checkout` (
 -- Table structure for table `checkout_details`
 --
 
+DROP TABLE IF EXISTS `checkout_details`;
 CREATE TABLE `checkout_details` (
   `checkout_details_id` int(11) NOT NULL,
   `assign_food_id` int(11) NOT NULL,
@@ -124,6 +131,7 @@ CREATE TABLE `checkout_details` (
 -- Table structure for table `favorite`
 --
 
+DROP TABLE IF EXISTS `favorite`;
 CREATE TABLE `favorite` (
   `favorite_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -143,6 +151,7 @@ INSERT INTO `favorite` (`favorite_id`, `account_id`, `food_id`) VALUES
 -- Table structure for table `food`
 --
 
+DROP TABLE IF EXISTS `food`;
 CREATE TABLE `food` (
   `food_id` int(11) NOT NULL,
   `food_name` varchar(50) NOT NULL,
@@ -170,6 +179,7 @@ INSERT INTO `food` (`food_id`, `food_name`, `picture`, `food_description`, `pric
 -- Table structure for table `history`
 --
 
+DROP TABLE IF EXISTS `history`;
 CREATE TABLE `history` (
   `history_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
@@ -182,6 +192,7 @@ CREATE TABLE `history` (
 -- Table structure for table `review`
 --
 
+DROP TABLE IF EXISTS `review`;
 CREATE TABLE `review` (
   `review_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -196,6 +207,7 @@ CREATE TABLE `review` (
 -- Table structure for table `security_question`
 --
 
+DROP TABLE IF EXISTS `security_question`;
 CREATE TABLE `security_question` (
   `security_question_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,

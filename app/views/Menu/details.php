@@ -24,12 +24,14 @@
 </dl>
 
 <h2>Menu food list</h2>
+
 <form action="/Food/sortByPrice" method="get" style='display:inline-block'>
 	<div class="input-group">
 		<input type="search" style="width: 250px" name='search_term2' class="form-control" placeholder="Sort food by price" />
 		<button type="submit" class="btn btn-primary" value="Search"><i class="bi-search"></i></button>
 	</div>
 </form>
+
 <?php
 foreach ($data['assignFoods'] as $food) {
 	$food_id = $food->food_id;
@@ -41,7 +43,7 @@ foreach ($data['assignFoods'] as $food) {
 }
 ?>
 
-<a href='/Category/index'>Back to category</a>
+<a href='/Category/index'>Back to category index</a>
 
 
 <?php $this->view('footer', 'Foodie'); ?>
