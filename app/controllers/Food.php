@@ -68,6 +68,10 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food]);
 	}
 
+	public function assignFoodView(){
+		
+	}
+
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();
@@ -86,7 +90,7 @@ class Food extends \app\core\Controller{
 			$menu = new \app\models\Category();
 			$menus = $menu->getAllMenus();
 			$food = new \app\models\Food();
-			$foods = $food->getAll();
+			$foods = $food->getAllAvailable();
 			$this->view('Food/assignFood', ['menus'=>$menus,'foods'=>$foods]);
 		}
 	}

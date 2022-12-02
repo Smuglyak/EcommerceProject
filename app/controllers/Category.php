@@ -69,8 +69,11 @@ class Category extends \app\core\Controller{
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($menu_id);
 		$assignFoods = new \app\models\AssignFood();
+		$food = new \app\models\Food();
+		$foods = $food->getAll();
 		$assignFoods = $assignFoods->getAllWithMenuId($menu_id);
-		$this->view('Menu/details', $menu, $assignFoods);
+		$_SESSION['menu_id'] = $menu_id;
+		$this->view('Menu/details', ['menu'=>$menu, 'assignFoods'=>$assignFoods, 'foods'=>$foods]);
 	}
 
 	public function edit($menu_id){

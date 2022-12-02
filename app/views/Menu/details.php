@@ -6,27 +6,34 @@
 		Name:
 	</dt>
 	<dd>
-		<?= $data->category_name ?>
+		<?= $data['menu']->category_name ?>
 
 	</dd>
 	<dt>
 		Description:
 	</dt>
 	<dd>
-		<?= $data->category_description ?>
+		<?= $data['menu']->category_description ?>
 	</dd>
 	<dt>
 		Type:
 	</dt>
 	<dd>
-		<?= $data->category_type ?>
+		<?= $data['menu']->category_type ?>
 	</dd>
 </dl>
 
 <h2>Menu food list</h2>
-Food menus as assignFoods
-put assignFoods in for loop, with the id of the menu, that we are in, 
-so get the menu id as parameter in here, and the assignFoods list.
+<?php
+foreach ($data['assignFoods'] as $food) {
+	$food_id = $food->food_id;
+	foreach ($data['foods'] as $viewFood) {
+		if ($viewFood->food_id == $food_id) {
+			$this->view('/Food/assignFoodView', $viewFood);
+		}
+	}
+}
+?>
 
 
 <?php $this->view('footer', 'Foodie'); ?>

@@ -20,6 +20,15 @@ class Food extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
+	public function getAllAvailable()
+	{
+		$SQL = "SELECT * FROM food WHERE is_available='TRUE'";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute();
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetchAll();
+	}
+
 	public function getById($food_id)
 	{
 		$SQL = "SELECT * FROM food WHERE food_id=:food_id";
