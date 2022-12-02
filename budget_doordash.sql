@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 05:26 PM
+-- Generation Time: Dec 02, 2022 at 04:14 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -43,12 +43,11 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `password_hash`, `role`, `two_fa_code`) VALUES
 (1, 'AkiraSan', 'Akira', 'San', '$2y$10$GQLqUht08iTyugcWXu/ujuGBMKRT7Ky.lRj9MB8aKZUF9p1R0/7xC', 'user', ''),
-(2, 'Lol', 'lol', 'lol', '$2y$10$uwLmjjBh6Tns.ybNuHKQueGt2Zef/OU6SukVy.MA/beDHLzyOg7WC', 'user', ''),
-(3, 'lol2', 'lol2', 'lol2', '$2y$10$mbpJ2vSyV7SYJF1C55.Y.ujjwuSbyq6sfwqiAyBad36LovMG81xdK', 'user', ''),
-(4, 'lol3', 'lol2', 'lol2', '$2y$10$13tW8NLJLsAN25HVP5CSve0c7vnilu48SWcBHyYvu2FMjX7zGPk4e', 'user', ''),
 (5, 'lol5', 'lol2', 'lol2', '$2y$10$eSTg.j2X3JdhNbILoMlyrOEYXISIAYH8Irijd2OXmZXE4Fy07t8Wy', 'user', ''),
 (6, 'lo6', 'lol', 'lol', '$2y$10$DWUVTPnolz6Ftt5CcSPfHOyUIr6LJomGihOWbrFqlzMx1uGSpFyHa', 'user', ''),
-(7, 'lo7', 'lol7', 'lol7', '$2y$10$oe3ZFE8zj3DPkfhyY3ieKeOYxSe7rmfXGhmupLgHqs0535YvE7/w6', 'user', '');
+(7, 'lol78', 'lol7', 'lol7', '$2y$10$oe3ZFE8zj3DPkfhyY3ieKeOYxSe7rmfXGhmupLgHqs0535YvE7/w6', 'user', ''),
+(9, 'lol', 'lol', 'lol', '$2y$10$ecq8VQicU5IXdO3euewn0ePCuWCke.F8oYVBqJd1XJSK4of9KNxZi', 'user', ''),
+(10, 'AkiraAkira', 'Akira', 'Akira', '$2y$10$tF0HAJL5SW/WcaWiG/ahMOdeEF6uORM7KuIFc/QElbXbFcVKwAZ.S', 'user', '');
 
 -- --------------------------------------------------------
 
@@ -61,6 +60,15 @@ CREATE TABLE `assign_food` (
   `food_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assign_food`
+--
+
+INSERT INTO `assign_food` (`assign_food_id`, `food_id`, `category_id`) VALUES
+(1, 7, 7),
+(2, 10, 8),
+(3, 8, 8);
 
 -- --------------------------------------------------------
 
@@ -80,7 +88,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`category_id`, `category_name`, `category_type`, `category_description`) VALUES
-(1, 'Burgers', 'Menu', NULL);
+(6, 'Jesuses', 'Combo', 'oh holy jesuses'),
+(7, 'Burgers', 'Menu', 'Burgers... hmmm'),
+(8, 'Sandwiches', 'Menu', 'Sandwiches , damn');
 
 -- --------------------------------------------------------
 
@@ -120,6 +130,13 @@ CREATE TABLE `favorite` (
   `food_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `favorite`
+--
+
+INSERT INTO `favorite` (`favorite_id`, `account_id`, `food_id`) VALUES
+(1, 7, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -140,8 +157,12 @@ CREATE TABLE `food` (
 --
 
 INSERT INTO `food` (`food_id`, `food_name`, `picture`, `food_description`, `price`, `is_available`) VALUES
-(1, '', '', '', 0, 'TRUE'),
-(2, 'LeanBeefPatty', '6384d130993da.jpg', 'Lean Beef Patty', 1931839, 'TRUE');
+(2, 'LeanBeefPatty', '6384d130993da.jpg', 'Lean Beef Patty', 1931839, 'False'),
+(6, 'Krabby Patty', '6388bef482cde.jpg', 'Krabby Patty', 13, 'False'),
+(7, 'Maide', '63896bd0447e8.png', 'Maide the maide', 14342424, 'TRUE'),
+(8, 'CutePower', '63896e0fd4ac4.png', 'Pooooweeeerrrr!', 93829, 'TRUE'),
+(9, 'JustinDream', '638974b6f2f79.jpg', 'Justin loves this pizza', 13, 'TRUE'),
+(10, 'A Man', '638974f5102cf.jpg', 'Not edible', 1, 'TRUE');
 
 -- --------------------------------------------------------
 
@@ -189,7 +210,9 @@ CREATE TABLE `security_question` (
 INSERT INTO `security_question` (`security_question_id`, `account_id`, `question`, `answer`) VALUES
 (1, 5, 'What', 'ali'),
 (2, 6, 'What', 'Lol'),
-(3, 7, 'What', 'yu6ht');
+(3, 7, 'What', 'yu6ht'),
+(4, 9, 'What', 'lol'),
+(5, 10, 'What', 'Akira');
 
 --
 -- Indexes for dumped tables
@@ -275,19 +298,19 @@ ALTER TABLE `security_question`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `assign_food`
 --
 ALTER TABLE `assign_food`
-  MODIFY `assign_food_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `assign_food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `checkout`
@@ -305,13 +328,13 @@ ALTER TABLE `checkout_details`
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
-  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `history`
@@ -329,7 +352,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `security_question`
 --
 ALTER TABLE `security_question`
-  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

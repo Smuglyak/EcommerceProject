@@ -19,7 +19,7 @@
         <input type="submit" name="action" value="Create food" class='btn btn-primary' />
     </form>
 
-    <a href='/'>Cancel</a>
+    <a href='/Food/index'>Cancel</a>
 
     <script>
         picture.onchange = evt => {

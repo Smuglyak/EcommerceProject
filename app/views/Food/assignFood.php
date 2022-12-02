@@ -20,13 +20,14 @@
         <?php
         foreach ($data['foods'] as $food) {
           echo "<option value='$food->food_id'>$food->food_name</option>";
-          
         }
         ?>
       </select>
     </div>
     <input type="submit" name="action" value="Assign food" class='btn btn-primary' />
   </form>
+
+  <a href='/Food/index'>Cancel</a>
 
   <?php $this->view('footer', 'Foodie'); ?>
 </body>

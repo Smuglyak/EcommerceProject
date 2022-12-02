@@ -10,13 +10,6 @@
 		</div>
 	</form>
 
-	<form action="/Food/sortByPrice" method="get" style='display:inline-block'>
-		<div class="input-group">
-			<input type="search" style="width: 250px" name='search_term2' class="form-control" placeholder="Sort food by price" />	
-			<button type="submit" class="btn btn-primary" value="Search"><i class="bi-search"></i></button>
-		</div>
-	</form>
-
 	<a href="/Food/assignFood">Assign a food to menu</a>
 
 <br>
