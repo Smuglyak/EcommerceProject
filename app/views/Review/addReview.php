@@ -7,17 +7,27 @@
 </head>
 
 <body>
+
 <h1>Add Review</h1>
+
+<?php 
+  if(isset($_GET['error'])){ ?>
+        <div class="alert alert-danger" role="alert">
+  <?= $_GET['error'] ?>
+        </div>
+<?php }
+?>
+
 <form action='' method='post' enctype='multipart/form-data'>
 	<div class="form-group">
-		<label class="col-sm-2 col-form-label">Rating:<input class='form-control' type="text" name="rating" placeholder='Enter rating. Rating is out of 5 stars.' /></label>
+		<label class="col-sm-2 col-form-label">Rating:<input class='form-control' type="text" name="rating" placeholder='Enter rating. Rating is out of 5 stars.' required/></label>
 	</div>
 	<div class="form-group">
 		<label class="col-sm-2 col-form-label">Comment:
-		<textarea name="food_description" rows="4" cols="50" placeholder="Write your comment here.">
+		<textarea name="comment" rows="4" cols="50" placeholder="Write your comment here." required>
 		</textarea></label>
 	</div>
-	<input type="submit" name="action" value="Create food" class='btn btn-primary' />
+	<input type="submit" name="action" value="Post Review" class='btn btn-primary' />
 </form>
 
 <a href='/'>Cancel</a>

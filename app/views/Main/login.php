@@ -21,7 +21,7 @@
                   <input type="password" name="password" class="form-control form-control-lg" />
                   <div class="form-helper">Password</div>
                 </div>
-                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="/Main/findSecurityQuestion">Forgot password?</a></p>
 
                 <button class="btn btn-outline-light btn-lg px-5" type="submit" name="action" style="background-color: red">Login</button>
               </form>

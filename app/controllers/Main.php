@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-define("questions", ["What is your mother's maiden name?"=>"What is your mother's maiden name?", "What is the name of your first pet?"=>"What is the name of your first pet?", "What is your nickname when you were a kid?"=>"What is your nickname when you were a kid?"]);
+define("questions", ["What is your mother`s maiden name?"=>"What is your mother`s maiden name?", "What is the name of your first pet?"=>"What is the name of your first pet?", "What is your nickname when you were a kid?"=>"What is your nickname when you were a kid?"]);
 
 class Main extends \app\core\Controller{
 
@@ -63,7 +63,7 @@ class Main extends \app\core\Controller{
 			$question->question = $_POST['question'];
 			$question->answer = $_POST['answer'];
 			$question->insert();
-			header('location:/Main/viewAccount');
+			header('location:/Main/login');
 		}
 		else{
 			$this->view('Main/addSecurityQuestion');
@@ -74,36 +74,55 @@ class Main extends \app\core\Controller{
 		$account = new \app\models\Account();
 		$account = $account->get($_SESSION['username']);
 		$this->view('Menu/index', $account);
-		//idl what you mean by viewAccount
+	}
+
+	public function findSecurityQuestion(){
+		if(isset($_POST['action'])){
+			$user = new \app\models\Account();
+			$user = $user->get($_POST['username']);
+			$_SESSION['temp_account_id'] = $user->account_id;
+			header('location:/Main/answerSecurityQuestion');
+		}
+		else{
+			$this->view('Main/findSecurityQuestion');
+		}
+	}
+
+	public function answerSecurityQuestion(){
+		$question = new \app\models\SecurityQuestion();
+		$question = $question->getQuestion($_SESSION['temp_account_id']);
+		if(isset($_POST['action'])){
+			if($_POST['answer'] == $question->answer){
+				$user = new \app\models\Account();
+				$user = $user->getById($_SESSION['temp_account_id']);
+				$_SESSION['name'] = $user->username;
+				header('location:/Main/changePassword');
+			}
+			else{
+				header('location:/Main/findSecurityQuestion?error=Wrong answer provided.');
+			}	
+		}
+		else{
+			
+			$this->view('Main/answerSecurityQuestion', ['question'=>$question]);
+		}
 	}
 
 	public function changePassword(){
-		if(isset($_POST['findQuestion'])){
-			$question = new \app\models\SecurityQuestion();
-			$question = $question->getQuestion($_POST['username']);
-		if(isset($_POST['changePass'])){
+		if(isset($_POST['action'])){
 			$account = new \app\models\Account();
-			$account = $account->get($_POST['username']);
-			if($_POST['answer'] == $question->answer){
+			$account = $account->get($_SESSION['name']);
 				if($_POST['password'] == $_POST['password_confirm']){
 					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 					$account->updatePassword();
-					header('location:/Main/viewAccount?message=Password changed successfully.');
+					header('location:/Main/login?message=Password changed successfully.');
 				} else {
 					header('location:/Main/changePassword?error=Passwords do not match.');
 				}
 			}
 			else{
-				header('location:/Main/changePassword?error=Wrong answer provided.');
+				$this->view('Main/changePassword');
 			}
-		}
-		else{
-			header('location:/Main/changePassword?error=Wrong username provided.');
-		}
-	}
-		else{
-			$this->view('Main/changePassword');
-		}
 	}
 
 	public function logout()

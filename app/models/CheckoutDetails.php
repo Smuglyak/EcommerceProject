@@ -23,7 +23,8 @@ class CheckoutDetails extends \app\core\Model{
 	public function getByUser($account_id){
 		$SQL = "SELECT * FROM checkout INNER JOIN checkout_details WHERE checkout.checkout_id=checkout_details.checkout_id AND account_id=:account_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['account_id'=>$this->$account_id]);
+		$STMT->execute(['checkout_id'=>$checkout_id,
+						'account_id'=>$this->$account_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Checkout');
 		return $STMT->fetch();
 	}
@@ -38,10 +39,4 @@ class CheckoutDetails extends \app\core\Model{
 						'total_price'=>$this->total_price]);
 	}
 
-	public function updateCheckoutStatus(){
-		$SQL = "UPDATE checkout SET status=:status WHERE account_id = :account_id";
-		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['status'=>'paid',
-						'account_id'=>$this->account_id]);
-	}
 }

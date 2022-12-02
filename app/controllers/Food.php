@@ -19,7 +19,7 @@ class Food extends \app\core\Controller{
 			$newFood->food_description = $_POST['food_description'];
 			$newFood->price = $_POST['price'];
 			$filename = $this->saveFile($_FILES['picture']);
-			$newFood->is_available = "TRUE";
+			$newFood->is_available = "True";
 			$newFood->picture = $filename;
 			$_SESSION['food_id'] = $newFood->insert();
 			// $getFood->food_id = $getFood->getByName($_POST['food_name']);

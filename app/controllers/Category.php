@@ -25,6 +25,12 @@ class Category extends \app\core\Controller{
 		$this->view('Menu/index', $combos);
 	}
 
+	// public function getCombo($combo_id){
+	// 	$combo = new \app\models\Category();
+	// 	$combo = $combo->getById($combo_id)
+	// 	$this->view('Menu/index', $combo);
+	// }
+
 	public function addMenu(){
 		if(isset($_POST['action'])){
 			$menu = new \app\models\Category();
