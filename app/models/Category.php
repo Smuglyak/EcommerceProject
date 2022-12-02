@@ -5,6 +5,7 @@ namespace app\models;
 class Category extends \app\core\Model{
 
 	public $category_name;
+	public $category_id;
 
 	public function getAll(){
 		$SQL = "SELECT * FROM categories";

@@ -17,6 +17,8 @@
 		</div>
 	</form>
 
+	<a href="/Food/assignFood">Assign a food to menu</a>
+
 <br>
 
 	<?php echo "<a href='/Food/addFood'>Add Food</a>" ?>
@@ -24,7 +26,8 @@
 
 	<?php
 	foreach ($data as $food) {
-		echo "<tr>
+		if($food->is_available != "False"){
+			echo "<tr>
 		<td type=name>$food->food_name</td>       		 
 		<td type=action>
 		<a href='/Food/editFood/$food->food_id'>edit<i class='bi bi-pencil-square'></i></a> | 
@@ -33,6 +36,7 @@
 		</td>
 		</tr>
         </br>";
+		}
 	}
 	?>
 	<?php $this->view('footer', 'Foodie'); ?>

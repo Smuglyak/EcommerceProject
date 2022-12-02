@@ -23,4 +23,10 @@
 	</dd>
 </dl>
 
+<h2>Menu food list</h2>
+Food menus as assignFoods
+put assignFoods in for loop, with the id of the menu, that we are in, 
+so get the menu id as parameter in here, and the assignFoods list.
+
+
 <?php $this->view('footer', 'Foodie'); ?>

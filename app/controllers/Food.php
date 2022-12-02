@@ -71,17 +71,23 @@ class Food extends \app\core\Controller{
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();
+			$category_id = new \app\models\Category();
+			$category_id = $category_id->category_id;
+			$postCategory = $_POST['category_id'];
+			$category_id = $postCategory;
 			$assignFood = new \app\models\AssignFood();
+			//where do you get food id and category id sessions?
 			$assignFood->food_id = $_SESSION['food_id'];
-			$assignFood->category_id = $_POST['category_id'];
+			$assignFood->category_id = $category_id;
 			$assignFood->insert();
 			header('location:/Food/index/');
 		}
 		else {
 			$menu = new \app\models\Category();
-			//$menu->type = 'Menu';
 			$menus = $menu->getAllMenus();
-			$this->view('Food/assignFood', $menus);
+			$food = new \app\models\Food();
+			$foods = $food->getAll();
+			$this->view('Food/assignFood', $menus, $foods);
 		}
 	}
 

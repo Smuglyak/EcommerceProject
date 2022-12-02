@@ -12,6 +12,14 @@ class AssignFood extends \app\core\Model{
 		return $STMT->fetchAll();
 	}
 
+	public function getAllWithMenuId($menu_id){
+		$SQL = "SELECT * FROM assign_food WHERE category_id=:menu_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['menu_id' => $menu_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
+		return $STMT->fetchAll();
+	}
+
 	public function getComboPrice(){
 		$SQL = "SELECT SUM(price) FROM assign_food INNER JOIN food WHERE assign_food.food_id=food.food_id AND status=:status";
 		$STMT = self::$_connection->prepare($SQL);

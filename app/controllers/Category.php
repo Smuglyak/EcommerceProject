@@ -68,7 +68,9 @@ class Category extends \app\core\Controller{
 	public function details($menu_id){
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($menu_id);
-		$this->view('Menu/details', $menu);
+		$assignFoods = new \app\models\AssignFood();
+		$assignFoods = $assignFoods->getAllWithMenuId($menu_id);
+		$this->view('Menu/details', $menu, $assignFoods);
 	}
 
 	public function edit($menu_id){

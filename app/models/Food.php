@@ -39,13 +39,14 @@ class Food extends \app\core\Model
 
 	public function insert()
 	{
-		$SQL = "INSERT INTO food(food_name, picture, food_description, price) VALUES (:food_name, :picture, :food_description ,:price)";
+		$SQL = "INSERT INTO food(food_name, picture, food_description, price, is_available) VALUES (:food_name, :picture, :food_description ,:price, TRUE)";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute([
 			'food_name' => $this->food_name,
 			'picture' => $this->picture,
 			'food_description' => $this->food_description,
-			'price' => $this->price
+			'price' => $this->price,
+			'is_available' => 'TRUE'	
 		]);
 		$STMT->execute(['food_name'=>$this->food_name,
 						'picture'=>$this->picture,

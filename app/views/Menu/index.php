@@ -14,7 +14,7 @@
 	foreach ($data['menus'] as $menu) {
 		$this->view('/Menu/menuLink', $menu);
 	}
-	?>z`
+	?>
 
 	<h2>List of all the Combos</h2>
 
