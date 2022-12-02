@@ -24,23 +24,25 @@ class Review extends \app\core\Controller{
 		}
 	}
 
-	// public function edit($menu_id){
-	// 	$menu = new \app\models\Menu();
-	// 	$menu = $menu->get($menu_id);
-	// 	if(isset($_POST['action'])){
-	// 		$menu->menu_name = $_POST['menu_name'];
-	// 		$menu->update();
-	// 		header('location:/Menu/index');
-	// 	}else{
-	// 		$this->view('Menu/editMenu', $menu);
-	// 	}
-	// }
+	public function editReview($review_id){
+		$review = new \app\models\Review();
+		$review = $review->get($review_id);
+		if(isset($_POST['action'])){
+			$review->rating = $_POST['rating'];
+			$review->comment = $_POST['comment'];
+			$review->account_id = $_SESSION['account_id']
+			$review->update();
+			header('location:/Food/viewFood');
+		}
+		else{
+			$this->view('Review/editReview', $review);
+		}
+	}
 
-	// public function delete($menu_id){
-	// 	$menu = new \app\models\Menu();
-	// 	$menu->menu_id = $menu_id;
-	// 	$menu->deleteFoodMenu();
-	// 	$menu->delete();
-	// 	header('location:/Menu/index');
-	// }
+	public function deleteReview($review_id){
+		$review = new \app\models\Review();
+		$review->review_id = $review_id;
+		$review->deleteReview();
+		header('location:/Food/viewFood');
+	}
 }

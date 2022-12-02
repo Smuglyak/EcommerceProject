@@ -55,7 +55,7 @@ class Food extends \app\core\Model
 						'picture'=>$this->picture,
 						'food_description'=>$this->food_description,
 						'price'=>$this->price,
-						'is_available' =>$this->is_available]);
+						'is_available'=>$this->is_available]);
 		return self::$_connection->lastInsertId();
 	}
 
@@ -77,7 +77,7 @@ class Food extends \app\core\Model
 		$SQL = "UPDATE food SET is_available=:is_available WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute([
-			'is_available' => $this->is_available,
+			'is_available'=>$this->is_available,
 			'food_id' => $this->food_id
 		]);
 	}
@@ -101,7 +101,6 @@ class Food extends \app\core\Model
 
 	public function sortByPrice($searchTerm)
 	{
-
 		$SQL = "SELECT * FROM food WHERE price <= :searchTerm";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['searchTerm' => "%$searchTerm%"]);

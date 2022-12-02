@@ -23,10 +23,10 @@
             <div class="form-outline mb-4">
              <label for="question">Question:</label>
               <select name="question" id="question">
-                <optgroup label="Breads">
+                <optgroup label="Questions">
                   <?php 
                     foreach (questions as $key=>$question) {
-                      echo "<option value=$key>$question</option>";
+                      echo "<option value='$key'>$question</option>";
                     }
                   ?>
                 </optgroup>

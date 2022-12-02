@@ -24,6 +24,14 @@ public $last_name;
 		return $STMT->fetch();
 	}
 
+	public function getById($account_id){
+		$SQL = "SELECT * FROM account WHERE account_id=:account_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['account_id'=>$account_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Account');
+		return $STMT->fetch();
+	}
+
 	public function insert(){
 		if(!$this->isValid()) return false;
 		$SQL = "INSERT INTO account(username, first_name, last_name, password_hash) VALUES (:username, :first_name, :last_name, :password_hash)";

@@ -30,13 +30,13 @@ class Review extends \app\core\Model{
 		return $STMT->fetchAll();
 	}
 
-	//public function get($review_id){
-		//$SQL = "SELECT * FROM review WHERE review_id=:review_id";
-		//$STMT = self::$_connection->prepare($SQL);
-		//$STMT->execute(['review_id'=>$review_id]);
-		//$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Review');
-		//return $STMT->fetch();
-	//}
+	public function get($review_id){
+		$SQL = "SELECT * FROM review WHERE review_id=:review_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['review_id'=>$review_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Review');
+		return $STMT->fetch();
+	}
 
 	public function insert(){
 		$SQL = "INSERT INTO comment(account_id, food_id, rating, comment) VALUES (:account_id, :food_id, :rating, :comment)";
@@ -48,17 +48,17 @@ class Review extends \app\core\Model{
 		return self::$_connection->lastInsertId();
 	}
 
-	//protected function update(){
-		//$SQL = "UPDATE review SET rating=:rating, comment=:comment WHERE review_id=:review_id";
-		//$STMT = self::$_connection->prepare($SQL);
-		//$STMT->execute(['ratin'=>$this->rating,
-						//'comment'=>$this->comment,
-						//'review_id'=>$this->review_id]);
-	//}
+	public function update(){
+		$SQL = "UPDATE review SET rating=:rating, comment=:comment WHERE review_id=:review_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['ratin'=>$this->rating,
+						'comment'=>$this->comment,
+						'review_id'=>$this->review_id]);
+	}
 
-	//public function delete(){
-		//$SQL = "DELETE FROM review WHERE review_id=:review_id";
-		//$STMT = self::$_connection->prepare($SQL);
-		//$STMT->execute(['review_id'=>$this->review_id]);
-	//}
+	public function delete(){
+		$SQL = "DELETE FROM review WHERE review_id=:review_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['review_id'=>$this->review_id]);
+	}
 }

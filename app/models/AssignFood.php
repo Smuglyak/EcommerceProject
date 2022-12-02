@@ -21,10 +21,18 @@ class AssignFood extends \app\core\Model{
 	}
 
 	public function getComboPrice(){
-		$SQL = "SELECT SUM(price) FROM assign_food INNER JOIN food WHERE assign_food.food_id=food.food_id AND status=:status";
+		$SQL = "SELECT SUM(price) FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id CROSS JOIN category ON assign_food.category_id=category.category_id WHERE category_type=:category_type";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category_type'=>$this->category_type]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
+		return $STMT->fetchAll();
+	}
+
+	public function getFoodPrice(){
+		$SQL = "SELECT price FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id AND category_type=:category_type";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$this->food_id,
-						'status'=>'Combo']);
+						'category_type'=>$this->category_type]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
 		return $STMT->fetchAll();
 	}

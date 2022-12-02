@@ -7,26 +7,27 @@
 
 <body>
 <?php $this->view('header', 'Foodie'); ?>
-<h1>Change Password</h1>
+<h1>Answer the Question to proceed to password change</h1>
 
-<?php
-	if(isset($_GET['error'])){ ?>
-<div class="alert alert-danger" role="alert">
-  <?= $_GET['error'] ?>
+<form action='' enctype="multipart/form-data" method='post'>    
+<dl>
+	<dt>
+		Question:
+	</dt>
+	<dd>
+		<?= $data['question']->question ?>
+	</dd>
+</dl>
+<div class="form-outline mb-4">
+    <input type="text" name="answer" placeholder="Enter the answer to the question" required>
 </div>
-<?php	}
-?>
-<a href="/User/setup2fa">Set up 2-factor authentication</a>
-
-
-<h1>Modify your password</h1>
-<form action='' method='post'>
-	<label>New Password:<input type="password" name="password" /></label><br>
-	<label>Confirmation New Password :<input type="password" name="password_confirm" /></label><br>
-	<input type="submit" name="action" value="Change password" />
+<div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4" name="action">Verify Answer</button>
+          </div>
 </form>
 
 <a href='/Main/login/'>Back to Login</a>
 <?php $this->view('footer', 'foodie'); ?>
 </body>
 </html>
+
