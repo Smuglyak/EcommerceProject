@@ -9,6 +9,7 @@ class Food extends \app\core\Model
 	public $food_name;
 	public $food_description;
 	public $price;
+	public $is_available;
 
 	public function getAll()
 	{
@@ -39,20 +40,13 @@ class Food extends \app\core\Model
 
 	public function insert()
 	{
-		$SQL = "INSERT INTO food(food_name, picture, food_description, price, is_available) VALUES (:food_name, :picture, :food_description ,:price, TRUE)";
+		$SQL = "INSERT INTO food(food_name, picture, food_description, price, is_available) VALUES (:food_name, :picture, :food_description ,:price, :is_available)";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute([
-			'food_name' => $this->food_name,
-			'picture' => $this->picture,
-			'food_description' => $this->food_description,
-			'price' => $this->price,
-			'is_available' => 'TRUE'	
-		]);
 		$STMT->execute(['food_name'=>$this->food_name,
 						'picture'=>$this->picture,
 						'food_description'=>$this->food_description,
 						'price'=>$this->price,
-						'is_available'=>$this->is_available]);
+						'is_available' =>$this->is_available]);
 		return self::$_connection->lastInsertId();
 	}
 

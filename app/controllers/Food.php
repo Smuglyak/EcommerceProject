@@ -14,12 +14,12 @@ class Food extends \app\core\Controller{
 	public function addFood(){
 		if(isset($_POST['action'])){
 			$newFood = new \app\models\Food();
-			$getFood = new \app\models\Food();
 			// $foodMenu = new \app\models\FoodMenu();
 			$newFood->food_name = $_POST['food_name'];
 			$newFood->food_description = $_POST['food_description'];
 			$newFood->price = $_POST['price'];
 			$filename = $this->saveFile($_FILES['picture']);
+			$newFood->is_available = "TRUE";
 			$newFood->picture = $filename;
 			$_SESSION['food_id'] = $newFood->insert();
 			// $getFood->food_id = $getFood->getByName($_POST['food_name']);
@@ -77,7 +77,7 @@ class Food extends \app\core\Controller{
 			$category_id = $postCategory;
 			$assignFood = new \app\models\AssignFood();
 			//where do you get food id and category id sessions?
-			$assignFood->food_id = $_SESSION['food_id'];
+			$assignFood->food_id = $_POST['food_id'];
 			$assignFood->category_id = $category_id;
 			$assignFood->insert();
 			header('location:/Food/index/');
@@ -87,7 +87,7 @@ class Food extends \app\core\Controller{
 			$menus = $menu->getAllMenus();
 			$food = new \app\models\Food();
 			$foods = $food->getAll();
-			$this->view('Food/assignFood', $menus, $foods);
+			$this->view('Food/assignFood', ['menus'=>$menus,'foods'=>$foods]);
 		}
 	}
 

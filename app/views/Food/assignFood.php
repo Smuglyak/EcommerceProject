@@ -7,7 +7,7 @@
       <label for="menu">Choose a Menu:</label>
       <select name="category_id" id="menu">
         <?php
-        foreach ($data as $menu) {
+        foreach ($data['menus'] as $menu) {
           echo "<option value='$menu->category_id'>$menu->category_name</option>";
         }
         ?>
@@ -18,8 +18,9 @@
       <label for="menu">Choose a Food:</label>
       <select name="food_id" id="food">
         <?php
-        foreach ($data as $foods) {
-          echo "<option value='$food->food_id'>$food->$food_name</option>";
+        foreach ($data['foods'] as $food) {
+          echo "<option value='$food->food_id'>$food->food_name</option>";
+          
         }
         ?>
       </select>
