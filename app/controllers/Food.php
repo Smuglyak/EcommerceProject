@@ -65,7 +65,9 @@ class Food extends \app\core\Controller{
 	public function viewFood($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
-		$this->view('Food/viewFood', ['food'=>$food]);
+		$review = new \app\models\Review();
+		$reviews = $review->getAllForFood($food_id);
+		$this->view('Food/viewFood', ['food'=>$food,'reviews'=>$reviews]);
 	}
 
 	public function assignFoodView(){

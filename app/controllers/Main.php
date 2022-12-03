@@ -120,11 +120,9 @@ class Main extends \app\core\Controller
 					$account->updatePassword();
 					header('location:/Main/login?message=Password changed successfully.');
 				} else{
-					header('location:/Main/changePassword?error=Wrong answer provided.');
-				}
-			} else{
-				header('location:/Main/changePassword?error=Wrong username provided.');
+					header('location:/Main/changePassword?error=Passwords do not match.');
 			}
+		}
 			else{
 				$this->view('Main/changePassword');
 			}

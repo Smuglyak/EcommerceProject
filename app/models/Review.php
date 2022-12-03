@@ -14,8 +14,8 @@ class Review extends \app\core\Model{
 		//return $STMT->fetchAll();
 	//}
 
-	public function getForFood($food_id){
-		$SQL = "SELECT * FROM review WHERE food_id=:food_id";
+	public function getAllForFood($food_id){
+		$SQL = "SELECT * FROM review CROSS JOIN account ON review.account_id=account.account_id WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$food_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Review');

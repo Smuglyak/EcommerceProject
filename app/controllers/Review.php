@@ -8,7 +8,7 @@ class Review extends \app\core\Controller{
 		
 	}
 
-	public function add($food_id){
+	public function addReview($food_id){
 		if(isset($_POST['action'])){
 			$review = new \app\models\Review();
 			$review->account_id = $_SESSION['account_id'];
@@ -19,7 +19,6 @@ class Review extends \app\core\Controller{
 			header('location:/Food/viewFood?message=Review added!');
 		}
 		else{
-			$food = new \app\models\Review();
 			$this->view('Review/addReview');
 		}
 	}

@@ -13,18 +13,17 @@
 
 <?php
 foreach ($data as $favorites) {
-	foreach ($data as $foods) {
 		echo "<tr>
-		<td type=name>$foods->food_name</td>
+		<td type=name>$favorites->food_name</td>
 		<td type=action>
-		<a href='/favorite/delete/$favorites->food_id'>Remove from Favorite<i class='bi-trash'></i></a>
+		<a href='/Food/viewFood/$favorites->food_id'>View Details</a>
+		<a href='/Favorite/deleteFavorite/$favorites->favorite_id'>Remove from Favorite<i class='bi-trash'></i></a>
 		</td>
 		</tr>
         </br>";
-	}
 }
 ?>
 
-<a href='/'>Log out</a>
+<a href='/Account/index'>Go back to My Account</a>
 <?php $this->view('footer', 'Foodie'); ?>
 </body>
