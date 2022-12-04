@@ -23,6 +23,7 @@ class Main extends \app\core\Controller
 				$_SESSION['role'] = $account->role;
 				$_SESSION['first_name'] = $account->first_name;
 				$_SESSION['last_name'] = $account->last_name;
+
 				header('location:/Category/index');
 			} else {
 				header('location:/Main/login?error=Wrong username/password combination!');

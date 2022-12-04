@@ -29,7 +29,7 @@
 
     <div class="form-group">
         <label class="col-sm-2 col-form-label">Price:
-            <input class='form-control' type="text" name="price" value="<?= $data->price ?>" />
+            <input class='form-control' type="number" name="price" value="<?= $data->price ?>" />
         </label>
     </div>
 

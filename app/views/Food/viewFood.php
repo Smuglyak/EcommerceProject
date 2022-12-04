@@ -15,6 +15,8 @@
 </div> <?php } ?>
 
 <a href='/Favorite/addFavorite/<?= $data['food']->food_id ?>'>Add to Favorite</a>
+</br>
+<a href='/Checkout/addFoodToCart/<?= $data['food']->food_id ?>'>Add to Cart</a>
 
 <dl>
 	<dt>

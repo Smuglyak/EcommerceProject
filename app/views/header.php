@@ -44,6 +44,7 @@
     <?php
     if (isset($_SESSION['username'])) { ?>
       <a style="color:inherit;"href="/Account/index">Account<i class="bi bi-person-circle"></i></a>
+      <a style="color:inherit;"href="/Checkout/index">Cart<i class="bi bi-person-circle"></i></a>
     <?php } ?>
     <hr class="solid">
   </div>
