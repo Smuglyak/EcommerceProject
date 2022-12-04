@@ -27,7 +27,7 @@ class Checkout extends \app\core\Controller{
 			$addItem->assign_food_id = $getFood->assign_food_id;
 			$addItem->updateQty();
 			$addItem->updatePrice();
-			header('location:/Food/viewFood/'. $food_id .'?message=Food not added to Cart');
+			header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 		}
 		elseif($cart && !$details){
 			$newItem = new \app\models\CheckoutDetails();

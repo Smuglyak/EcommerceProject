@@ -34,13 +34,8 @@
 </form>
 
 <?php
-//foreach ($data['assignFoods'] as $food) {
-//	$food_id = $food->food_id;
 	foreach ($data['foods'] as $viewFood) {
-//		if ($viewFood->food_id == $food_id) {
 			$this->view('/Food/assignFoodView', $viewFood);
-//		}
-//	}
 }
 ?>
 
