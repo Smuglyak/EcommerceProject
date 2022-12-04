@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+define("ratings", ["1" => "1", "2" => "2", "3" => "3", "4" => "4", "5" => "5"]);
+
 class Review extends \app\core\Controller{
 
 	public function index(){
@@ -16,32 +18,32 @@ class Review extends \app\core\Controller{
 			$review->rating = $_POST['rating'];
 			$review->comment = $_POST['comment'];
 			$review->insert();
-			header('location:/Food/viewFood?message=Review added!');
+			header('location:/Food/viewFood/'. $food_id . '?message=Review added!');
 		}
 		else{
 			$this->view('Review/addReview');
 		}
 	}
 
-	public function editReview($review_id){
-		$review = new \app\models\Review();
-		$review = $review->get($review_id);
-		if(isset($_POST['action'])){
-			$review->rating = $_POST['rating'];
-			$review->comment = $_POST['comment'];
-			$review->account_id = $_SESSION['account_id']
-			$review->update();
-			header('location:/Food/viewFood');
-		}
-		else{
-			$this->view('Review/editReview', $review);
-		}
-	}
+	// public function editReview($review_id){
+	// 	$review = new \app\models\Review();
+	// 	$review = $review->get($review_id);
+	// 	if(isset($_POST['action'])){
+	// 		$review->rating = $_POST['rating'];
+	// 		$review->comment = $_POST['comment'];
+	// 		$review->account_id = $_SESSION['account_id']
+	// 		$review->update();
+	// 		header('location:/Food/viewFood');
+	// 	}
+	// 	else{
+	// 		$this->view('Review/editReview', $review);
+	// 	}
+	// }
 
 	public function deleteReview($review_id){
 		$review = new \app\models\Review();
 		$review->review_id = $review_id;
-		$review->deleteReview();
-		header('location:/Food/viewFood');
+		$review->delete();
+		header('location:/Food/viewFood/'. $_SESSION['temp_food_id']);
 	}
 }

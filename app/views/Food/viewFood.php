@@ -46,16 +46,22 @@
 
 <h3>Reviews</h3>
 
+<a href='/Review/addReview/<?= $data['food']->food_id ?>'>Add a review</a>
 
+</br>
 <?php
 foreach ($data['reviews'] as $reviews) {
-		echo "<tr>
-		<td type=name>$reviews->username</td>
-		</br>
-		<td type=name>$reviews->rating</td>
+		echo "</br>
+		<tr>
+		<td type=name>$reviews->rating stars</td>
 		</br>
 		<td type=name>$reviews->comment</td>
+		</br>
+		<td type=name>Review by $reviews->username</td>
+		</br>
+		<a href='/Review/deleteReview/$reviews->review_id'>Remove review<i class='bi-trash'></i></a>
 		</tr>
+    </br>
     </br>";
 }
 ?>

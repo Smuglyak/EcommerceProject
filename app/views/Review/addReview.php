@@ -19,13 +19,20 @@
 ?>
 
 <form action='' method='post' enctype='multipart/form-data'>
-	<div class="form-group">
-		<label class="col-sm-2 col-form-label">Rating:<input class='form-control' type="text" name="rating" placeholder='Enter rating. Rating is out of 5 stars.' required/></label>
-	</div>
+	<div class="form-outline mb-4">
+             <label for="rating">Rating:</label>
+              <select name="rating" id="rating">
+                <optgroup>
+                  <?php 
+                    foreach (ratings as $key=>$rating) {
+                      echo "<option value='$key'>$rating</option>";
+                    }
+                  ?>
+                </optgroup>
 	<div class="form-group">
 		<label class="col-sm-2 col-form-label">Comment:
-		<textarea name="comment" rows="4" cols="50" placeholder="Write your comment here." required>
-		</textarea></label>
+		<input class='form-control' type="text "name="comment" rows="4" cols="20" placeholder="Write your comment here." required />
+		</label>
 	</div>
 	<input type="submit" name="action" value="Post Review" class='btn btn-primary' />
 </form>

@@ -62,18 +62,16 @@ class Food extends \app\core\Controller{
 		header('location:/Food/index/');
 	}
 
+
 	public function viewFood($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
 		$review = new \app\models\Review();
 		$reviews = $review->getAllForFood($food_id);
+		$_SESSION['temp_food_id'] = $food_id;
 		$this->view('Food/viewFood', ['food'=>$food,'reviews'=>$reviews]);
 	}
-
-	public function assignFoodView(){
-		
-	}
-
+	
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();
