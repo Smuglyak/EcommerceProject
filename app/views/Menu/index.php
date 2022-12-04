@@ -1,34 +1,40 @@
-<?php $this->view('header', 'Foodie'); ?>
-<h1>Dashboard</h1>
-<br>
+<html>
 
-<!-- add menu -->
-<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
-<br>
-<h2>
-	List of all the Menus
-</h2>
+<body>
+	<?php $this->view('header', 'Foodie'); ?>
+	<h1>Dashboard</h1>
+	<br>
 
-<?php
+	<!-- add menu -->
+	<?php echo "<a href='/Category/addMenu'>Add Category</a>" ?>
+	<br>
+	<h2>
+		List of all the Menus
+	</h2>
 
-foreach ($data['menus'] as $menu) {
-	$this->view('/Menu/menuLink', $menu);
-}
-?>
+	<?php
 
-<h2>List of all the Combos</h2>
+	foreach ($data['menus'] as $menu) {
+		$this->view('/Menu/menuLink', $menu);
+	}
+	?>
 
-<?php
-foreach ($data['combos'] as $menu) {
-	$this->view('/Menu/menuLink', $menu);
-}
-?>
+	<h2>List of all the Combos</h2>
 
-<!-- the food list(all foods, uncategorized) -->
-<a href="/Food/index">Food List</a>
+	<?php
+	foreach ($data['combos'] as $menu) {
+		$this->view('/Menu/menuLink', $menu);
+	}
+	?>
 
-<br>
+	<!-- the food list(all foods, uncategorized) -->
+	<a href="/Food/index">Food List</a>
 
-<br>
-<!-- </div> -->
-<?php $this->view('footer', 'Foodie'); ?>
+	<br>
+
+	<br>
+	<!-- </div> -->
+	<?php $this->view('footer', 'Foodie'); ?>
+</body>
+
+</html>

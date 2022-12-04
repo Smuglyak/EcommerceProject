@@ -1,0 +1,63 @@
+body {
+    background-color: #FFF6F3 !important;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    -webkit-box-shadow: 0 4px 6px -6px #222;
+    -moz-box-shadow: 0 4px 6px -6px #222;
+    box-shadow: 0 4px 6px -6px #222;
+}
+
+.logo {
+    padding-left: 76px !important;
+    padding-right: 6px !important;
+}
+
+.logoText > p {
+    margin: 0 !important;
+    padding: 0 !important;
+    padding-left: 6px !important;
+    font-family: 'TT Norms Pro',
+        sans-serif;
+    color: #E5172A !important;
+    font-weight: bold;
+}
+
+.logoContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logoImage {
+    flex-basis: 40%
+}
+
+p {
+    color: black;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black !important;
+    margin: 0;
+    padding: 0;
+}
+
+.footerContainer {
+    display: flex;
+    /* align-items: center;
+    justify-content: center */
+    justify-content: space-between;
+}
+/* 
+.leftside {
+    float: left;
+}
+.rightside {
+    float: left;
+} */
