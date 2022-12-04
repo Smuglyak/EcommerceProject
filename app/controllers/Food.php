@@ -33,23 +33,20 @@ class Food extends \app\core\Controller{
 		}
 	}
 
-	public function editFood($food_id){
+	public function editFood($food_id)
+	{
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
-		if(isset($_POST['action'])){
-			$filename = $this->saveFile($_FILES['pic_preview']);
-			if($filename){
-				unlink("images/$food->picture");
-				$food->picture = $filename;
-			}
+		if (isset($_POST['action'])) {
+			$filename = $this->saveFile($_FILES['picture']);
+			$food->picture = $filename;
 			$food->food_name = $_POST['food_name'];
 			$food->food_description = $_POST['food_description'];
 			$food->price = $_POST['price'];
 			$food->update();
 			header('location:/Food/index');
-		}
-		else{
-			$this->view('Food/editFood', $food);
+		} else {
+			$this->view('Food/editFood', ['food'=>$food]);
 		}
 	}
 
@@ -71,7 +68,7 @@ class Food extends \app\core\Controller{
 		$_SESSION['temp_food_id'] = $food_id;
 		$this->view('Food/viewFood', ['food'=>$food,'reviews'=>$reviews]);
 	}
-	
+
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();

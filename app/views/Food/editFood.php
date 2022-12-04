@@ -5,20 +5,26 @@
 <form action='' method='post' enctype='multipart/form-data'>
 
     <div class="form-group">
-        <label class="col-sm-2 col-form-label">Picture:</label>
-
-        <img id='pic_preview' src='/images/blank.jpg' style="max-width:200px;max-height:200px" />
-
+        <label class="col-sm-2 col-form-label">Old Picture
+            <img src=<?php echo "/images/" . $data['food']->picture; ?> width="200" height="200">
     </div>
 
     <div class="form-group">
+        <label class="col-sm-2 col-form-label">Upload a new picture:<input class='form-control' type="file" name="picture" id="picture" /></label><img id='pic_preview' src='/images/blank.jpg' style='max-width:200px;' />
+    </div>
+
+    <!-- <div class="form-group">
+        <label class="col-sm-2 col-form-label">Picture:<input class='form-control' type="file" name="picture" id="picture" /></label>
+    </div> -->
+
+    <div class="form-group">
         <label class="col-sm-2 col-form-label">Name:
-            <input class='form-control' type="text" name="food_name" value="<?= $data->food_name ?>" />
+            <input class='form-control' type="text" name="food_name" value="<?= $data['food']->food_name ?>" />
         </label>
     </div>
 
     <?php
-    $food_desc = $data->food_description;
+    $food_desc = $data['food']->food_description;
     ?>
 
     <div class="form-group">
@@ -29,7 +35,7 @@
 
     <div class="form-group">
         <label class="col-sm-2 col-form-label">Price:
-            <input class='form-control' type="text" name="price" value="<?= $data->price ?>" />
+            <input class='form-control' type="text" name="price" value="<?= $data['food']->price ?>" />
         </label>
     </div>
 
@@ -37,17 +43,15 @@
 </form>
 
 <script>
-    profile_pic.onchange = evt => {
-        const [file] = pic_preview.files
+    picture.onchange = evt => {
+        const [file] = picture.files
         if (file) {
             pic_preview.src = URL.createObjectURL(file)
         }
     }
-
-    file = "<?= $data->picture ?>";
-    if (file != "") {
-        document.getElementById("pic_preview").src = "/images/" + file;
-    }
 </script>
+
+
+
 
 <?php $this->view('footer', 'Foodie'); ?>
