@@ -22,7 +22,6 @@ class Checkout extends \app\core\Controller{
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
 		$assignFood = new \app\models\AssignFood();
-		
 		$newItem = new \app\models\CheckoutDetails();
 		$newItem->checkout_id = $_SESSION['checkout_id'];
 		$newItem->food_id = $food_id;
