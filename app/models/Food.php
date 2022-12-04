@@ -119,7 +119,11 @@ class Food extends \app\core\Model
 		return $STMT->fetchAll();
 	}
 
-
-
-
+	public function getByCategoryUnordered($category){
+		$SQL = "SELECT * FROM food JOIN assign_food ON food.food_id = assign_food.food_id WHERE category_id = :category";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['category' => $category]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
+		return $STMT->fetchAll();
+	}
 }

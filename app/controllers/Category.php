@@ -75,12 +75,9 @@ class Category extends \app\core\Controller{
 		if(!isset($_GET['Order'])){
 			$menu = new \app\models\Category();
 			$menu = $menu->getById($menu_id);
-			$assignFoods = new \app\models\AssignFood();
 			$food = new \app\models\Food();
-			$foods = $food->getAll();
-			$assignFoods = $assignFoods->getAllWithMenuId($menu_id);
-			$_SESSION['menu_id'] = $menu_id;
-			$this->view('Menu/details', ['menu' => $menu, 'assignFoods' => $assignFoods, 'foods' => $foods]);
+			$foods = $food->getByCategoryUnordered($menu_id);
+			$this->view('Menu/details', ['menu' => $menu, 'foods' => $foods]);
 		} else {
 			$food = new \app\models\Food();
 			$foods = $food->getByCategory($_GET['Order'], $menu_id);

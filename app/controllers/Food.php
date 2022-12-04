@@ -62,16 +62,13 @@ class Food extends \app\core\Controller{
 		header('location:/Food/index/');
 	}
 
+
 	public function viewFood($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
 		$this->view('Food/viewFood', ['food'=>$food]);
 	}
-
-	public function assignFoodView(){
-		
-	}
-
+	
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();
