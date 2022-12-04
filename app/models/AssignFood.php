@@ -23,22 +23,29 @@ class AssignFood extends \app\core\Model{
 	public function getComboPrice(){
 		$SQL = "SELECT SUM(price) FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id CROSS JOIN category ON assign_food.category_id=category.category_id WHERE category_type=:category_type";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['category_type'=>$this->category_type]);
+		$STMT->execute(['category_type'=>'Combo']);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
 		return $STMT->fetchAll();
 	}
 
-	public function getFoodPrice(){
-		$SQL = "SELECT price FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id AND category_type=:category_type";
+	public function getFoodPrice($food_id){
+		$SQL = "SELECT price FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id WHERE food.food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_id'=>$this->food_id,
-						'category_type'=>$this->category_type]);
+		$STMT->execute(['food_id'=>$food_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
 		return $STMT->fetchAll();
+	}
+
+	public function getByFood($food_id){
+		$SQL = "SELECT * FROM assign_food WHERE food_id=:food_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['food_id'=>$food_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
+		return $STMT->fetch();
 	}
 
 	public function getFood($food_id){
-		$SQL = "SELECT * FROM assign_food WHERE food_id=:food_id";
+		$SQL = "SELECT * FROM food LEFT JOIN assign_food ON food.food_id=assign_food.food_id WHERE food.food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['food_id'=>$food_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\AssignFood');
