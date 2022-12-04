@@ -4,8 +4,6 @@ namespace app\models;
 
 class Food extends \app\core\Model
 {
-
-
 	public $food_name;
 	public $food_description;
 	public $price;
@@ -33,7 +31,7 @@ class Food extends \app\core\Model
 	{
 		$SQL = "SELECT * FROM food WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_id' => $food_id]);
+		$STMT->execute(['food_id'=>$food_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
 		return $STMT->fetch();
 	}
@@ -45,6 +43,15 @@ class Food extends \app\core\Model
 		$STMT->execute(['food_name' => $food_name]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Food');
 		return $STMT->fetch();
+	}
+
+	public function getReviews()
+	{
+		$SQL = "SELECT * FROM review CROSS JOIN account ON review.account_id=account.account_id WHERE food_id=:food_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['food_id' => $this->food_id]);
+		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Review');
+		return $STMT->fetchAll();
 	}
 
 	public function insert()

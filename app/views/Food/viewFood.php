@@ -15,6 +15,7 @@
 </div> <?php } ?>
 
 <a href='/Favorite/addFavorite/<?= $data['food']->food_id ?>'>Add to Favorite</a>
+
 <dl>
 	<dt>
 		Picture:
@@ -43,7 +44,27 @@
 	</dd>
 </dl>
 
+<h3>Reviews</h3>
 
+<a href='/Review/addReview/<?= $data['food']->food_id ?>'>Add a review</a>
+
+</br>
+<?php
+foreach ($data['reviews'] as $reviews) {
+		echo "</br>
+		<tr>
+		<td type=name>$reviews->rating stars</td>
+		</br>
+		<td type=name>$reviews->comment</td>
+		</br>
+		<td type=name>Review by $reviews->username</td>
+		</br>
+		<a href='/Review/deleteReview/$reviews->review_id'>Remove review<i class='bi-trash'></i></a>
+		</tr>
+    </br>
+    </br>";
+}
+?>
 
 <script>
 file = "" + "<?= $data['food']->picture ?>"

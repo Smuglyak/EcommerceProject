@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2022 at 04:35 PM
+-- Generation Time: Dec 04, 2022 at 03:50 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -45,12 +45,11 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `password_hash`, `role`, `two_fa_code`) VALUES
-(1, 'AkiraSan', 'Akira', 'San', '$2y$10$GQLqUht08iTyugcWXu/ujuGBMKRT7Ky.lRj9MB8aKZUF9p1R0/7xC', 'user', ''),
-(5, 'lol5', 'lol2', 'lol2', '$2y$10$eSTg.j2X3JdhNbILoMlyrOEYXISIAYH8Irijd2OXmZXE4Fy07t8Wy', 'user', ''),
-(6, 'lo6', 'lol', 'lol', '$2y$10$DWUVTPnolz6Ftt5CcSPfHOyUIr6LJomGihOWbrFqlzMx1uGSpFyHa', 'user', ''),
-(7, 'lol78', 'lol7', 'lol7', '$2y$10$oe3ZFE8zj3DPkfhyY3ieKeOYxSe7rmfXGhmupLgHqs0535YvE7/w6', 'user', ''),
-(9, 'lol', 'lol', 'lol', '$2y$10$ecq8VQicU5IXdO3euewn0ePCuWCke.F8oYVBqJd1XJSK4of9KNxZi', 'user', ''),
-(10, 'AkiraAkira', 'Akira', 'Akira', '$2y$10$tF0HAJL5SW/WcaWiG/ahMOdeEF6uORM7KuIFc/QElbXbFcVKwAZ.S', 'user', '');
+(1, 'CJ', 'Craig', 'Justin', '$2y$10$3Xhd4k8ms9d.GDvBttqOLuMCncDhItf4nWxFNu3aElRqSE0/oD3fW', 'user', ''),
+(2, 'JC', 'Craig', 'Justin', '$2y$10$V8G6oW0R0SXaXzTonyz2A.ULusZOKJpAVgRO0LNy/JeAO.vie/Mwq', 'user', ''),
+(3, 'Hello', 'Craig', 'Justin', '$2y$10$ixobynhR60vcCf2QHPTBtO7LkLevJ5wR3OhOjYkWM/u.gSr/tX7my', 'user', ''),
+(4, 'HelloAgain', 'Craig', 'Justin', '$2y$10$P.js3a8mIXrMks6Gy3OCLOW9i5i6EVxbwA4nMje3aXHbYRklovHNq', 'user', ''),
+(11, 'Wow', 'Wow', 'Wowow', '$2y$10$Evacu7knl/LeDaijLGWdOOX7GXwDaameLdru0TB/dlQkhOpZbfali', 'user', '');
 
 -- --------------------------------------------------------
 
@@ -72,7 +71,8 @@ CREATE TABLE `assign_food` (
 INSERT INTO `assign_food` (`assign_food_id`, `food_id`, `category_id`) VALUES
 (1, 7, 7),
 (2, 10, 8),
-(3, 8, 8);
+(3, 8, 8),
+(4, 9, 8);
 
 -- --------------------------------------------------------
 
@@ -143,7 +143,10 @@ CREATE TABLE `favorite` (
 --
 
 INSERT INTO `favorite` (`favorite_id`, `account_id`, `food_id`) VALUES
-(1, 7, 2);
+(1, 7, 2),
+(2, 1, 8),
+(4, 11, 9),
+(12, 11, 10);
 
 -- --------------------------------------------------------
 
@@ -201,6 +204,13 @@ CREATE TABLE `review` (
   `comment` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`review_id`, `account_id`, `food_id`, `rating`, `comment`) VALUES
+(7, 11, 9, 5, 'Food was magnificent!');
+
 -- --------------------------------------------------------
 
 --
@@ -220,6 +230,7 @@ CREATE TABLE `security_question` (
 --
 
 INSERT INTO `security_question` (`security_question_id`, `account_id`, `question`, `answer`) VALUES
+(0, 11, 'What is your mother`s maiden name?', 'Wow'),
 (1, 5, 'What', 'ali'),
 (2, 6, 'What', 'Lol'),
 (3, 7, 'What', 'yu6ht'),
@@ -310,13 +321,13 @@ ALTER TABLE `security_question`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `assign_food`
 --
 ALTER TABLE `assign_food`
-  MODIFY `assign_food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `assign_food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -340,7 +351,7 @@ ALTER TABLE `checkout_details`
 -- AUTO_INCREMENT for table `favorite`
 --
 ALTER TABLE `favorite`
-  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `food`
@@ -349,71 +360,20 @@ ALTER TABLE `food`
   MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `history`
---
-ALTER TABLE `history`
-  MODIFY `history_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `security_question`
---
-ALTER TABLE `security_question`
-  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `assign_food`
---
-ALTER TABLE `assign_food`
-  ADD CONSTRAINT `assign_food_to_category` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`),
-  ADD CONSTRAINT `assign_food_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
-
---
 -- Constraints for table `checkout`
 --
 ALTER TABLE `checkout`
   ADD CONSTRAINT `FK_checkout_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
-
---
--- Constraints for table `checkout_details`
---
-ALTER TABLE `checkout_details`
-  ADD CONSTRAINT `FK_checkout_details_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`);
-
---
--- Constraints for table `favorite`
---
-ALTER TABLE `favorite`
-  ADD CONSTRAINT `FK_favorite_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
-  ADD CONSTRAINT `FK_favorite_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
-
---
--- Constraints for table `history`
---
-ALTER TABLE `history`
-  ADD CONSTRAINT `FK_history_to_checkout` FOREIGN KEY (`checkout_id`) REFERENCES `checkout` (`checkout_id`);
-
---
--- Constraints for table `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `FK_review_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`),
-  ADD CONSTRAINT `FK_review_to_food` FOREIGN KEY (`food_id`) REFERENCES `food` (`food_id`);
-
---
--- Constraints for table `security_question`
---
-ALTER TABLE `security_question`
-  ADD CONSTRAINT `FK_security_question_to_account` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

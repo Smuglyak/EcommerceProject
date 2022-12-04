@@ -114,20 +114,17 @@ class Main extends \app\core\Controller
 		if (isset($_POST['action'])) {
 			$account = new \app\models\Account();
 			$account = $account->get($_SESSION['name']);
-			if ($_POST['password'] == $_POST['password_confirm']) {
-				$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-				$account->updatePassword();
-				header('location:/Main/login?message=Password changed successfully.');
-			} else {
-				header('location:/Main/changePassword?error=Wrong answer provided.');
+				if($_POST['password'] == $_POST['password_confirm']){
+					$account->password_hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+					$account->updatePassword();
+					header('location:/Main/login?message=Password changed successfully.');
+				} else{
+					header('location:/Main/changePassword?error=Passwords do not match.');
 			}
-			// 		} else{
-			// 			header('location:/Main/changePassword?error=Wrong username provided.');
-			// 		}
-			// 		else{
-			// 			$this->view('Main/changePassword');
-			// 		}
 		}
+			else{
+				$this->view('Main/changePassword');
+			}
 	}
 
 	public function logout()

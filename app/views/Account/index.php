@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="col-6 mb-3">
                                         <h6>Check favorite foods</h6>
-                                        <a href="/Favorite/index/<?= $data->account_id ?>"><i class="fa-solid fa-heart"></i></a>
+                                        <a href="/Favorite/index/"><i class="fa-solid fa-heart"></i></a>
                                     </div>
                                 </div>
                                 <div class="d-flex justify-content-start">
