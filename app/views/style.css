@@ -11,6 +11,11 @@ body {
     box-shadow: 0 4px 6px -6px #222;
 }
 
+.rightSide {
+        display: flex;
+        align-items: center;
+}
+
 .nav-link {
     background-color:#E5172A !important;
      color: white !important;
@@ -31,10 +36,11 @@ body {
     font-weight: bold;
 }
 
-.logoContainer {
+.logo-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-right: 20px;
 }
 
 .logoImage {

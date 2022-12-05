@@ -40,7 +40,7 @@
       </a>
     <?php  } else { ?>
       <a href='/Category/index'>
-        <div class="logoContainer">
+        <div class="logo-container">
           <div class="logoImage">
             <img src="/images/foodie.png" alt="Logo image" style="max-width: 200px;" />
           </div>
@@ -58,15 +58,21 @@
     if (isset($_SESSION['username'])) { ?>
       <a href="/Account/index">
         <div class="logo-container">
-
           <i class="bi bi-person-circle"></i>
-
           <div class="logoText">
             <p>Account</p>
           </div>
         </div>
       </a>
-      <a style="color:inherit;" href="/Checkout/index">Cart<i class="bi bi-person-circle"></i></a>
+      <a href="/Checkout/index">
+        <div class="logo-container">
+          <i class="bi bi-cart"></i>
+          <div class="logoText">
+            <p>Cart</p>
+          </div>
+
+        </div>
+      </a>
     <?php } ?>
   </div>
 
