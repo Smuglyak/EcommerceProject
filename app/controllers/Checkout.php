@@ -4,6 +4,7 @@ namespace app\controllers;
 
 class Checkout extends \app\core\Controller{
 
+	#[\app\filters\Login]
 	public function index(){
 		$userCart = new \app\models\Checkout();
 		$userCart = $userCart->findUserCheckout($_SESSION['account_id']);
@@ -12,6 +13,7 @@ class Checkout extends \app\core\Controller{
 		$this->view('Checkout/index', ['displayCart'=>$displayCart]);
 	}
 
+	#[\app\filters\Login]
 	public function addFoodToCart($food_id){
 		$cart = new \app\models\Checkout();
 		$cart = $cart->findUserCheckout($_SESSION['account_id']);
@@ -76,6 +78,7 @@ class Checkout extends \app\core\Controller{
 	// 	$this->view('Account/checkout', $newItem);
 	// }
 
+	#[\app\filters\Login]
 	public function payCheckout(){
 		$checkout = new \app\models\Checkout();
 		$checkout = $checkout->findUserCheckout($_SESSION['account_id']);
@@ -84,6 +87,7 @@ class Checkout extends \app\core\Controller{
 		header('location:/Category/index');
 	}
 
+	#[\app\filters\Login]
 	public function removeFromCart($checkout_details_id){
 		$userCart = new \app\models\Checkout();
 		$userCart = $userCart->findUserCheckout($_SESSION['account_id']);

@@ -4,6 +4,7 @@ namespace app\controllers;
 
 class Favorite extends \app\core\Controller{
 
+	#[\app\filters\Login]
 	public function index()
     {
     	$favorite = new \app\models\Favorite();
@@ -11,6 +12,7 @@ class Favorite extends \app\core\Controller{
 		$this->view('Favorite/index', $favorites);
     }
 
+    #[\app\filters\Login]
     public function addFavorite($food_id){
 		$favoriteFood = new \app\models\Favorite();
 		$check = $favoriteFood->checkFavorite($_SESSION['account_id'], $food_id);
@@ -25,6 +27,7 @@ class Favorite extends \app\core\Controller{
 		}
     }
 
+    #[\app\filters\Login]
     public function deleteFavorite($favorite_id)
     {
     	$favoriteFood = new \app\models\Favorite();

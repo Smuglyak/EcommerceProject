@@ -4,6 +4,7 @@ namespace app\controllers;
 
 class Account extends \app\core\Controller{
 
+    #[\app\filters\Login]
     public function index()
     {
         $account = new \app\models\Account();
@@ -11,6 +12,7 @@ class Account extends \app\core\Controller{
         $this->view('Account/index', $account);
     }
 
+    #[\app\filters\Login]
     public function edit(){
         $account = new \app\models\Account();
         $account = $account->get($_SESSION['username']);
