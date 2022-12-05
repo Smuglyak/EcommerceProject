@@ -12,10 +12,11 @@ class CheckoutDetails extends \app\core\Model{
 	// 	return $STMT->fetchAll();
 	// }
 
-	public function getFood($food_id){
-		$SQL = "SELECT * FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id CROSS JOIN checkout_details ON assign_food.assign_food_id=checkout_details.assign_food_id WHERE food.food_id=:food_id";
+	public function getFood($food_id, $checkout_id){
+		$SQL = "SELECT * FROM food CROSS JOIN assign_food ON food.food_id=assign_food.food_id CROSS JOIN checkout_details ON assign_food.assign_food_id=checkout_details.assign_food_id WHERE food.food_id=:food_id AND checkout_id=:checkout_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute(['food_id'=>$food_id]);
+		$STMT->execute(['food_id'=>$food_id,
+						'checkout_id'=>$checkout_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\CheckoutDetails');
 		return $STMT->fetch();
 	}

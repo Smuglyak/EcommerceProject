@@ -4,8 +4,8 @@ namespace app\controllers;
 
 class Category extends \app\core\Controller{
 
-	#[\app\filters\Setup2fa]
-	#[\app\filters\Check2fa]
+	//#[\app\filters\Setup2fa]
+	//#[\app\filters\Check2fa]
 	public function index(){
 		$menu = new \app\models\Category();
 		$menus = $menu->getAllMenus();
@@ -111,7 +111,7 @@ class Category extends \app\core\Controller{
 		$this->view('Menu/menuLink');
 	}
 
-	#[\app\filters\Login]
+	
 	public function delete($category_id){
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($category_id);

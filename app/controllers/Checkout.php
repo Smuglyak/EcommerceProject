@@ -18,24 +18,24 @@ class Checkout extends \app\core\Controller{
 		$cart = new \app\models\Checkout();
 		$cart = $cart->findUserCheckout($_SESSION['account_id']);
 		$details = new \app\models\CheckoutDetails();
-		$details = $details->getFood($food_id);
+		$details = $details->getFood($food_id, $cart->checkout_id);
 
 		if($cart && $details){
 			$addItem = new \app\models\CheckoutDetails();
 			$getFood = new \app\models\AssignFood();
-			$getFood = $getFood->getByFood($food_id);
+			$getFood = $getFood->getByFood($food_id, $cart->checkout_id);
 
 			$addItem->checkout_id = $cart->checkout_id;
 			$addItem->assign_food_id = $getFood->assign_food_id;
 			$addItem->updateQty();
 			$addItem->updatePrice();
-			header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
+			// header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 		}
 		elseif($cart && !$details){
 			$newItem = new \app\models\CheckoutDetails();
 			$getFood = new \app\models\AssignFood();
 			$getFoodPrice = new \app\models\Food();
-			$getFood = $getFood->getByFood($food_id);
+			$getFood = $getFood->getByFood($food_id, $cart->checkout_id);
 			$getFoodPrice = $getFoodPrice->getById($food_id);
 
 			$newItem->checkout_id = $cart->checkout_id;
@@ -43,15 +43,16 @@ class Checkout extends \app\core\Controller{
 			$newItem->total_price = $getFoodPrice->price;
 			$newItem->order_quantity = 1;
 			$newItem->insert();
-			header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
+			// header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 		}
 		else {
 			$newCart = new \app\models\Checkout();
 			$newCart->account_id = $_SESSION['account_id'];
 			$newCart->status = 'cart';
 			$_SESSION['checkout_id'] = $newCart->createCheckout();
+			// header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 		}
-		// header('location:/Food/viewFood/'. $food_id);
+		header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 	}
 
 	// public function addComboToCheckout($food_id){
@@ -95,7 +96,6 @@ class Checkout extends \app\core\Controller{
 		$displayOrder = $displayOrder->get($checkout_details_id);
 
 		if($displayOrder->order_quantity > 1){
-
 			$displayOrder->checkout_id = $userCart->checkout_id;
 			$displayOrder->removeQty();
 			$displayOrder->updatePrice();
