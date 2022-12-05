@@ -11,6 +11,11 @@ body {
     box-shadow: 0 4px 6px -6px #222;
 }
 
+.nav-link {
+    background-color:#E5172A !important;
+     color: white !important;
+}
+
 .logo {
     padding-left: 76px !important;
     padding-right: 6px !important;
@@ -48,16 +53,16 @@ a {
     padding: 0;
 }
 
-.footerContainer {
-    display: flex;
-    /* align-items: center;
-    justify-content: center */
-    justify-content: space-between;
+input {
+        /* border: 1px solid black !important; */
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-/* 
-.leftside {
-    float: left;
+
+#footerContainer {
+        display: block;
+        padding-top: 200px;
 }
-.rightside {
-    float: left;
-} */
+
+.mb-4 {
+    margin-bottom: 3rem !important;
+}

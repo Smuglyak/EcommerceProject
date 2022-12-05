@@ -33,11 +33,20 @@
 	</div>
 </form>
 
-<?php
-	foreach ($data['foods'] as $viewFood) {
-			$this->view('/Food/assignFoodView', $viewFood);
-}
-?>
+<div class="row">
+	<?php foreach ($data['foods'] as $food) { ?>
+		<div class="col-sm-3">
+			<div class="card">
+				<img src="<?php echo "/images/" . $food->picture; ?>" class="card-img-top" alt="...">
+				<div class="card-body text-center">
+					<h5 class="card-title"><?php echo $food->food_name; ?></h5>
+					<p class="card-text">$<?php echo $food->price; ?></p>
+					<a class="btn btn-primary" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite</a>
+				</div>
+			</div>
+		</div>
+	<?php } ?>
+</div>
 
 <a href='/Category/index'>Back to category index</a>
 

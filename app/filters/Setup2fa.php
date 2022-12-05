@@ -2,7 +2,7 @@
 namespace app\filters;
 //defining the Login attribute
 #[\Attribute]
-class Seller2fa extends \app\core\AccessFilter{
+class Setup2fa extends \app\core\AccessFilter{
 	public function execute(){
 		if($_SESSION['role'] == 'admin'){
 			$user = new \app\models\Account(); 	
