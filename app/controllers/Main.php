@@ -128,6 +128,49 @@ class Main extends \app\core\Controller
 			}
 	}
 
+	#[\app\filters\Login] 
+    public function setup2fa(){     
+        if(isset($_POST['action'])){         
+            $currentcode = $_POST['currentCode'];         
+            if(\app\core\TokenAuth6238::verify($_SESSION['two_fa_code'],$currentcode)){ 
+                //the user has verified their proper 2-factor authentication setup             
+                $user = new \App\models\Account();             
+                $user->account_id = $_SESSION['account_id'];             
+                $user->two_fa_code = $_SESSION['two_fa_code'];             
+                $user->update2fa();             
+                header('location:/Category/index');         
+            }
+            else{             
+                header('location:Main/setup2fa?error=token not verified!');//reload         
+            }     
+        }
+        else{         
+            $two_fa_code = \app\core\TokenAuth6238::generateRandomClue();         
+            $_SESSION['two_fa_code'] = $two_fa_code;         
+            $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['username'],'Awesome.com',$secretkey, 'Awesome App');
+            $this->view('Main/twofasetup', $url);     
+        } 
+    } 
+
+    #[\app\filters\Login]
+    public function check2fa(){
+        if(isset($_POST['action'])){
+            $currentcode = $_POST['currentCode'];
+            if(\app\core\TokenAuth6238::verify($_SESSION['two_fa_code'],$currentcode)){
+                $_SESSION['two_fa_code'] = null;
+                header('location:/Category/index');
+            }
+        }
+        else{
+            $this->view('Main/check2fa');
+        }
+    }
+
+    public function makeQRCode(){  
+        $data = $_GET['data'];  
+        \QRcode::png($data); 
+    } 
+
 	public function logout()
 	{
 		session_destroy();

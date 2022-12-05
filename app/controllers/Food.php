@@ -10,7 +10,7 @@ class Food extends \app\core\Controller{
 		$this->view('Food/index', $foods);
 	}
 
-	//I am not sure if this is gonna work
+	#[\app\filters\Login]
 	public function addFood(){
 		if(isset($_POST['action'])){
 			$newFood = new \app\models\Food();
@@ -33,6 +33,7 @@ class Food extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\Login]
 	public function editFood($food_id)
 	{
 		$food = new \app\models\Food();
@@ -50,6 +51,7 @@ class Food extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\Login]
 	public function delete($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
@@ -69,6 +71,7 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food,'reviews'=>$reviews]);
 	}
 
+	#[\app\filters\Login]
 	public function assignFood(){
 		if(isset($_POST['action'])){
 			$food = new \app\models\Food();

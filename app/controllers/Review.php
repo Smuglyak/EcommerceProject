@@ -9,7 +9,8 @@ class Review extends \app\core\Controller{
 	public function index(){
 		
 	}
-
+	
+	#[\app\filters\Login]
 	public function addReview($food_id){
 		if(isset($_POST['action'])){
 			$review = new \app\models\Review();
@@ -40,6 +41,7 @@ class Review extends \app\core\Controller{
 	// 	}
 	// }
 
+	#[\app\filters\Login]
 	public function deleteReview($review_id){
 		$review = new \app\models\Review();
 		$review->review_id = $review_id;
