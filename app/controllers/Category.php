@@ -33,6 +33,7 @@ class Category extends \app\core\Controller{
 	// 	$this->view('Menu/index', $combo);
 	// }
 
+	#[\app\filters\RoleForCategory]
 	#[\app\filters\Login]
 	public function addMenu(){
 		if(isset($_POST['action'])){
