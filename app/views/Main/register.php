@@ -37,7 +37,7 @@
                 <div class="form-helper">Confirm Password</div>
               </div>
 
-              <button class="btn btn-outline-light btn-lg px-5" type="submit"  name="action" style="background-color: red">Sign up</button>
+              <button class="btn themeButton" type="submit"  name="action" style="background-color: red">Sign up</button>
 
 </form>
             </div>

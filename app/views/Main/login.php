@@ -28,7 +28,7 @@
                   </p>
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5" type="submit" name="action" style="background-color: red">Login</button>
+                <button class="btn themeButton" type="submit" name="action">Login</button>
 
 
               </form>

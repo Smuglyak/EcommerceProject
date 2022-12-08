@@ -1,22 +1,23 @@
 <body>
-<?php $this->view('header', 'Foodie'); ?>
-<h1>Checkout</h1>
+	<?php $this->view('header', 'Foodie'); ?>
+	<div class="container py-3">
+		<h1>Checkout</h1>
 
-<?php
-	if(isset($_GET['error'])){ ?>
-<div class="alert alert-danger" role="alert">
-  <?= $_GET['error'] ?>
-</div>
+		<?php
+		if (isset($_GET['error'])) { ?>
+			<div class="alert alert-danger" role="alert">
+				<?= $_GET['error'] ?>
+			</div>
 
-<?php	}
-	if(isset($_GET['message'])){ ?> 
-<div class="alert alert-success" role="alert">
-  <?= $_GET['message'] ?>
-</div> <?php } ?>
+		<?php	}
+		if (isset($_GET['message'])) { ?>
+			<div class="alert alert-success" role="alert">
+				<?= $_GET['message'] ?>
+			</div> <?php } ?>
 
-<?php
-foreach ($data['displayCart'] as $cart) {
-		echo "</br>
+		<?php
+		foreach ($data['displayCart'] as $cart) {
+			echo "</br>
 		<tr>
 		<td type=name>$cart->food_name</td>
 		</br>
@@ -30,19 +31,20 @@ foreach ($data['displayCart'] as $cart) {
 		</tr>
     </br>
     </br>";
-}
-?>
+		}
+		?>
 
-<a href='/Checkout/payCheckout/'>Pay Checkout</a>
-</br>
+		<a href='/Checkout/payCheckout/'>Pay Checkout</a>
+		</br>
 
-<script>
-file = "" + "<?= $data['displayCart']->picture ?>"
-if (file != "") {
-	document.getElementById("profile_pic_preview").src = "/images/" + file;
-}
-</script>
+		<script>
+			file = "" + "<?= $data['displayCart']->picture ?>"
+			if (file != "") {
+				document.getElementById("profile_pic_preview").src = "/images/" + file;
+			}
+		</script>
 
-<a href='/Food/index/'>Back to Food List</a>
-<?php $this->view('footer', 'foodie'); ?>
+		<a href='/Food/index/'>Back to Food List</a>
+	</div>
+		<?php $this->view('footer', 'foodie'); ?>
 </body>

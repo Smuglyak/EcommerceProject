@@ -56,21 +56,16 @@
   <div class="rightSide">
     <?php
     if (isset($_SESSION['username'])) { ?>
-      <a href="/Account/index">
-        <div class="logo-container">
+      <a class="" style="" href="/Account/index">
+        <div class="logo-container btn themeButton">
           <i class="bi bi-person-circle"></i>
-          <div class="logoText">
             <p>Account</p>
-          </div>
         </div>
       </a>
-      <a href="/Checkout/index">
-        <div class="logo-container">
+      <a class="" href="/Checkout/index" style="padding-right: 10px">
+        <div class="logo-container btn themeButton">
           <i class="bi bi-cart"></i>
-          <div class="logoText">
-            <p>Cart</p>
-          </div>
-
+            <p>Cart</p>          
         </div>
       </a>
     <?php } ?>
@@ -79,4 +74,3 @@
 
 </nav>
 
-<div class="container py-3">
