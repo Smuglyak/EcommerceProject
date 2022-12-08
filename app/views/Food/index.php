@@ -56,8 +56,8 @@
 								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite</a>
 							</div>
 							<div class="menuContainer" style="justify-content:center !important;">
-								<a type=action href='/Food/editFood/$food->food_id'>edit<i class='bi bi-pencil-square'></i></a> |
-								<a type=action href='/Food/viewFood/$food->food_id'>view details<i class="bi bi-three-dots"></i></a> |
+								<a type=action href='/Food/editFood/<?php echo $food->food_id?>'>edit<i class='bi bi-pencil-square'></i></a> |
+								<a type=action href='/Food/viewFood/<?php echo $food->food_id?>'>view details<i class="bi bi-three-dots"></i></a> |
 								<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
 							</div>
 						</div>

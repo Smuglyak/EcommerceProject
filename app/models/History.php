@@ -13,9 +13,9 @@ class History extends \app\core\Model{
 	// }
 
 	public function getByAccount($account_id){
-		$SQL = "SELECT * FROM checkout WHERE account_id=$account_id";
+		$SQL = "SELECT * FROM checkout WHERE account_id=$account_id";	
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute('account_id'=>$this->$account_id);
+		$STMT->execute(['account_id'=>$this->$account_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\History');
 		return $STMT->fetchAll();
 	}

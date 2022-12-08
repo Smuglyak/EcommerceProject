@@ -9,25 +9,39 @@
 
 <body>
 	<?php $this->view('header', 'Foodie'); ?>
-	<h1>My Favorite Food List</h1>
-	<br>
+	<div class="container py-3">
+		<div class="hNav" style="padding-bottom: 20px">
+			<h3><a href="/Account/index">Account</a></h3>
+			<span aria-hidden="true">
+				<h3>/</h3>
+			</span>
+			<h2>Favorites</h2>
+		</div>
+		<br>
+		<div class="row">
+			<?php foreach ($data as $food) {
+				if ($food->is_available != "False") {
+			?>
+					<div class="col-sm-3">
+						<div class="card" style="margin-bottom: 50px; width:300px">
+							<img style="max-height: 306px" src="<?php echo "/images/" . $food->picture; ?>" class="card-img-top" alt="...">
+							<div class="card-body text-center">
+								<h5 class="card-title"><?php echo $food->food_name; ?></h5>
+								<p class="card-text">$<?php echo $food->price; ?></p>
+								<a class="btn themeButton" href='/Favorite/deleteFavorite/<?php echo $food->favorite_id ?>'>Remove from Favorite<i class='bi-trash'></i></a>
+							</div>
+							<div class="menuContainer" style="justify-content:center !important;">
+								<a type=action href='/Food/editFood/<?php echo $food->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
+								<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
+								<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
+							</div>
+						</div>
+					</div>
+			<?php }
+			} ?>
+		</div>
 
-	<?php
-	foreach ($data as $favorites) {
-		echo "
-		<li>
-		<tr>
-		<td type=name>$favorites->food_name</td><br>
-		<td type=action>
-		<a href='/Food/viewFood/$favorites->food_id'>View Details</a><br>
-		<a href='/Favorite/deleteFavorite/$favorites->favorite_id'>Remove from Favorite<i class='bi-trash'></i></a>
-		</td>
-		</tr>
-		</li>
-        ";
-	}
-	?>
-	</br>
-	<a href='/Account/index'>Go back to My Account</a>
+		</br>
+	</div>
 	<?php $this->view('footer', 'Foodie'); ?>
 </body>
