@@ -93,9 +93,11 @@ class Food extends \app\core\Controller{
 		else {
 			$menu = new \app\models\Category();
 			$menus = $menu->getAllMenus();
+			$combo = new \app\models\Category();
+			$combos = $menu->getAllCombos();
 			$food = new \app\models\Food();
 			$foods = $food->getAllAvailable();
-			$this->view('Food/assignFood', ['menus'=>$menus,'foods'=>$foods]);
+			$this->view('Food/assignFood', ['menus'=>$menus,'foods'=>$foods, 'combos'=>$combos]);
 		}
 	}
 

@@ -4,7 +4,7 @@ namespace app\filters;
 #[\Attribute]
 class RoleForCategory extends \app\core\AccessFilter{
 	public function execute(){
-		if($_SESSION['account_id'] != 'admin'){
+		if($_SESSION['role'] != 'admin'){
 			header('location:/Category/index?error=You must be an Admin to access this area.');
 			return true;
 		}

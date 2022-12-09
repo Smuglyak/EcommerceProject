@@ -52,16 +52,22 @@
 								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
 								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $food->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
 							</div>
-							<div class="menuContainer" style="justify-content:center !important;">
-								<a type=action href='/Food/editFood/<?php echo $food->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
-								<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
-								<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
-							</div>
+							<?php if($_SESSION['role'] != 'admin') { ?>
+								<div class="menuContainer" style="justify-content:center !important;">
+									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a>
+								</div>
+							<?php } else { ?>
+								<div class="menuContainer" style="justify-content:center !important;">
+									<a type=action href='/Food/editFood/<?php echo $food->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
+									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
+									<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
+								</div>
+								<?php } ?>
+								</div>
 						</div>
-					</div>
-			<?php }
+				<?php }
 			} ?>
+					</div>
 		</div>
-	</div>
-	<?php $this->view('footer', 'Foodie'); ?>
+		<?php $this->view('footer', 'Foodie'); ?>
 </body>

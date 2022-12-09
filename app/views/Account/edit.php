@@ -49,7 +49,7 @@
                                     <a href="#!"><i class="fab fa-twitter fa-lg me-3"></i></a>
                                     <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                                 </div> -->
-                                <input type="submit" name="action" value="Save changes" class='btn btn-primary' />
+                                <input type="submit" name="action" value="Save changes" class='btn themeButton' />
 </form>
                             </div>
                         </div>

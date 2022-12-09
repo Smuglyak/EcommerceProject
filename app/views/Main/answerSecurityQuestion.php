@@ -9,7 +9,20 @@
 
 <body>
 	<?php $this->view('header', 'Foodie'); ?>
-	<h1>Answer the Question to proceed to password change</h1>
+
+	<div class="container py-3">
+		<div class="hNav">
+			<h3><a href="/Main/index">Landing page</a></h3>
+			<span aria-hidden="true">
+				<h3>/</h3>
+			</span>
+			<h3><a href="/Main/addSecurityQuestion">Add Security Question</a></h3>
+			<span aria-hidden="true">
+				<h3>/</h3>
+			</span>
+			<h2>Answer Security Question</h2>
+		</div>
+	</div>
 	<div class="row d-flex justify-content-center align-items-center h-100">
 		<div class="col-12 col-md-8 col-lg-6 col-xl-5">
 			<div class="card bg-white text-dark" style="border-radius: 1rem;">
@@ -28,7 +41,7 @@
 								<input type="text" class="form-control form-control-lg" name="answer" placeholder="Enter the answer to the question" required>
 							</div>
 							<div class="d-flex justify-content-center">
-								<button type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4" name="action">Verify Answer</button>
+								<button type="submit" class="btn themeButton" name="action">Verify Answer</button>
 							</div>
 						</form>
 					</div>

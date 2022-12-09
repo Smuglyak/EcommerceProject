@@ -25,7 +25,7 @@
 				<div class="input-group">
 					<button type="submit" name="Order" value="Ascend" class="btn themeButton"><i class="bi bi-sort-up-alt"></i></button>
 					<button type="submit" name="Order" value="Descend" class="btn themeButton">
-<i class="bi bi-sort-down"></i>
+						<i class="bi bi-sort-down"></i>
 					</button>
 				</div>
 			</form>
@@ -33,18 +33,33 @@
 
 
 		<div class="row">
-			<?php foreach ($data['foods'] as $food) { ?>
-				<div class="col-sm-3">
-					<div class="card" style="margin-bottom: 50px; width:300px">
-						<img style="max-height: 306px" src="<?php echo "/images/" . $food->picture; ?>" class="card-img-top" alt="...">
-						<div class="card-body text-center">
-							<h5 class="card-title"><?php echo $food->food_name; ?></h5>
-							<p class="card-text">$<?php echo $food->price; ?></p>
-							<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite</a>
+			<?php foreach ($data['foods'] as $food) {
+				if ($food->is_available != "False") {
+			?>
+					<div class="col-sm-3">
+						<div class="card" style="margin-bottom: 50px; width:300px">
+							<img style="max-height: 306px" src="<?php echo "/images/" . $food->picture; ?>" class="card-img-top" alt="...">
+							<div class="card-body text-center">
+								<h5 class="card-title"><?php echo $food->food_name; ?></h5>
+								<p class="card-text">$<?php echo $food->price; ?></p>
+								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
+								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $food->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
+							</div>
+							<?php if ($_SESSION['role'] != 'admin') { ?>
+								<div class="menuContainer" style="justify-content:center !important;">
+									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a>
+								</div>
+							<?php } else { ?>
+								<div class="menuContainer" style="justify-content:center !important;">
+									<a type=action href='/Food/editFood/<?php echo $food->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
+									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
+									<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
+								</div>
+							<?php } ?>
 						</div>
 					</div>
-				</div>
-			<?php } ?>
+			<?php }
+			} ?>
 		</div>
 	</div>
 	<?php $this->view('footer', 'Foodie'); ?>

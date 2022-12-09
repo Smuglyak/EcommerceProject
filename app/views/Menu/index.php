@@ -9,6 +9,17 @@
 			<a class="btn themeButton" href='/Category/addMenu'>Add Menu</a>
 		</div>
 
+		<?php
+		if (isset($_GET['error'])) { ?>
+			<div class="alert alert-danger" role="alert">
+				<?= $_GET['error'] ?>
+			</div>
+
+		<?php	}
+		if (isset($_GET['message'])) { ?>
+			<div class="alert alert-success" role="alert">
+				<?= $_GET['message'] ?>
+			</div> <?php } ?>
 		<!-- the food list(all foods, uncategorized) -->
 		<ul>
 			<div class="menuContainer">

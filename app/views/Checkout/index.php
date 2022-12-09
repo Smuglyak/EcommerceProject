@@ -10,7 +10,7 @@
 		</div>
 
 		<?php
-				if (isset($_GET['error'])) { ?>
+		if (isset($_GET['error'])) { ?>
 			<div class="alert alert-danger" role="alert">
 				<?= $_GET['error'] ?>
 			</div>
@@ -40,7 +40,7 @@
 							<div class="menuContainer" style="justify-content:center !important;">
 								<a type=action href='/Food/editFood/<?php echo $cart->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
 								<a type=action href='/Food/viewFood/<?php echo $cart->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
-								<a type=action href='/Checkout/removeFromCart/$cart->checkout_details_id'>Delete from cart<i class='bi-trash'></i></a>
+								<a type=action href='/Checkout/removeFromCart/<?php echo $cart->checkout_details_id ?>'>Delete from cart<i class='bi-trash'></i></a>
 							</div>
 						</div>
 					</div>
