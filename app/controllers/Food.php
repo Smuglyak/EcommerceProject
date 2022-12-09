@@ -34,6 +34,7 @@ class Food extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\RoleForProduct]
 	#[\app\filters\Login]
 	public function editFood($food_id)
 	{
@@ -52,6 +53,7 @@ class Food extends \app\core\Controller{
 		}
 	}
 
+	#[\app\filters\RoleForProduct]
 	#[\app\filters\Login]
 	public function delete($food_id){
 		$food = new \app\models\Food();
@@ -72,6 +74,7 @@ class Food extends \app\core\Controller{
 		$this->view('Food/viewFood', ['food'=>$food,'reviews'=>$reviews]);
 	}
 
+	#[\app\filters\RoleForProduct]
 	#[\app\filters\Login]
 	public function assignFood(){
 		if(isset($_POST['action'])){

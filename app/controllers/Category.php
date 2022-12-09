@@ -93,6 +93,7 @@ class Category extends \app\core\Controller{
 		}	
 	}
 
+	#[\app\filters\RoleForCategory]
 	#[\app\filters\Login]
 	public function edit($menu_id){
 		$menu = new \app\models\Category();
@@ -112,7 +113,8 @@ class Category extends \app\core\Controller{
 		$this->view('Menu/menuLink');
 	}
 
-	
+	#[\app\filters\RoleForCategory]
+	#[\app\filters\Login]
 	public function delete($category_id){
 		$menu = new \app\models\Category();
 		$menu = $menu->getById($category_id);

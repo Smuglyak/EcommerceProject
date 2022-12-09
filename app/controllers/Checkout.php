@@ -85,7 +85,7 @@ class Checkout extends \app\core\Controller{
 		$checkout = $checkout->findUserCheckout($_SESSION['account_id']);
 		$checkout->status = 'paid';
 		$checkout->updateCheckoutStatus();
-		header('location:/Category/index');
+		header('location:/Category/index?message=Your order is being processed. Thank you for using BUDGET_DOORDASH');
 	}
 
 	#[\app\filters\Login]

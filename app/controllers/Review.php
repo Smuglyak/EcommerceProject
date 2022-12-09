@@ -43,9 +43,16 @@ class Review extends \app\core\Controller{
 
 	#[\app\filters\Login]
 	public function deleteReview($review_id){
-		$review = new \app\models\Review();
-		$review->review_id = $review_id;
-		$review->delete();
-		header('location:/Food/viewFood/'. $_SESSION['temp_food_id']);
+		$check = new \app\models\Review();
+		$check = $check->checkReview($review_id);
+		if($check->username == $_SESSION['username']){
+			$review = new \app\models\Review();
+			$review->review_id = $review_id;
+			$review->delete();
+			header('location:/Food/viewFood/'. $_SESSION['temp_food_id']);
+		}
+		else{
+			header('location:/Food/viewFood/'. $_SESSION['temp_food_id'] . "?error=You cannot delete a review that is not yours!");
+		}
 	}
 }
