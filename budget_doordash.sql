@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2022 at 01:03 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 09, 2022 at 04:05 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,7 +38,7 @@ CREATE TABLE `account` (
   `password_hash` varchar(72) NOT NULL,
   `role` varchar(25) NOT NULL DEFAULT 'user',
   `two_fa_code` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `account`
@@ -51,7 +51,9 @@ INSERT INTO `account` (`account_id`, `username`, `first_name`, `last_name`, `pas
 (4, 'HelloAgain', 'Craig', 'Justin', '$2y$10$P.js3a8mIXrMks6Gy3OCLOW9i5i6EVxbwA4nMje3aXHbYRklovHNq', 'user', ''),
 (11, 'Wow', 'Wow', 'Wowow', '$2y$10$Evacu7knl/LeDaijLGWdOOX7GXwDaameLdru0TB/dlQkhOpZbfali', 'user', ''),
 (12, 'Akira', 'Akira', 'Crybaby', '$2y$10$eNlmP9sbjTPAYm36079myuBlDEcYuDGB1Ovy5J4vNRZHzyQbIjMQi', 'user', ''),
-(13, 'Tsunade', 'Tsunade', '106', '$2y$10$cwN7mBz1yBQxPyog3d/ise4MGMgDRrP6Lqf3K.r8Pi8v8puaox8i6', 'user', '');
+(13, 'Tsunade', 'Tsunade', '106', '$2y$10$cwN7mBz1yBQxPyog3d/ise4MGMgDRrP6Lqf3K.r8Pi8v8puaox8i6', 'user', ''),
+(14, 'Akira2', 'aaa2', 'aaa2', '$2y$10$CttqBlCzmIgvHRgfN9C7Se3Lr4/hD.Y76mbEvwMBi6XOV2AaJPbii', 'user', ''),
+(15, 'admin', 'admin', 'admin', '$2y$10$8aNQWbbo9yZ1H3x3kM5LCemZ1QHx0/T/ExNf4OYq9ED0HqUbAX/M.', 'admin', '');
 
 -- --------------------------------------------------------
 
@@ -64,7 +66,7 @@ CREATE TABLE `assign_food` (
   `assign_food_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL,
   `category_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `assign_food`
@@ -92,7 +94,7 @@ CREATE TABLE `categories` (
   `category_name` varchar(50) NOT NULL,
   `category_type` varchar(25) NOT NULL,
   `category_description` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `categories`
@@ -101,7 +103,8 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`category_id`, `category_name`, `category_type`, `category_description`) VALUES
 (7, 'Burgers', 'Menu', 'Burgers... hmmm'),
 (8, 'Sandwiches', 'Menu', 'Sandwiches , damn'),
-(9, 'Drinks', 'Menu', 'All type of drinks you can imagine of');
+(9, 'Drinks', 'Menu', 'All type of drinks you can imagine of'),
+(10, 'TripleDoubleMcQueenHappyMeals', 'Combo', 'Boys favorite!');
 
 -- --------------------------------------------------------
 
@@ -114,7 +117,17 @@ CREATE TABLE `checkout` (
   `checkout_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `checkout`
+--
+
+INSERT INTO `checkout` (`checkout_id`, `account_id`, `status`) VALUES
+(2, 12, 'paid'),
+(3, 14, 'paid'),
+(4, 14, 'cart'),
+(5, 12, 'cart');
 
 -- --------------------------------------------------------
 
@@ -129,7 +142,19 @@ CREATE TABLE `checkout_details` (
   `checkout_id` int(11) NOT NULL,
   `order_quantity` int(11) NOT NULL,
   `total_price` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `checkout_details`
+--
+
+INSERT INTO `checkout_details` (`checkout_details_id`, `assign_food_id`, `checkout_id`, `order_quantity`, `total_price`) VALUES
+(1, 6, 2, 13, 182),
+(2, 5, 2, 5, 35),
+(3, 7, 2, 1, 4),
+(4, 6, 3, 3, 42),
+(5, 10, 4, 1, 6),
+(6, 6, 5, 1, 14);
 
 -- --------------------------------------------------------
 
@@ -142,18 +167,15 @@ CREATE TABLE `favorite` (
   `favorite_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `food_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `favorite`
 --
 
 INSERT INTO `favorite` (`favorite_id`, `account_id`, `food_id`) VALUES
-(0, 12, 1),
-(1, 7, 2),
-(2, 1, 8),
-(4, 11, 9),
-(12, 11, 10);
+(8, 14, 2),
+(9, 14, 6);
 
 -- --------------------------------------------------------
 
@@ -169,7 +191,7 @@ CREATE TABLE `food` (
   `food_description` text NOT NULL,
   `price` double NOT NULL,
   `is_available` varchar(5) NOT NULL DEFAULT 'TRUE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `food`
@@ -196,7 +218,7 @@ CREATE TABLE `history` (
   `history_id` int(11) NOT NULL,
   `checkout_id` int(11) NOT NULL,
   `date_ordered` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -211,13 +233,14 @@ CREATE TABLE `review` (
   `food_id` int(11) NOT NULL,
   `rating` int(2) NOT NULL,
   `comment` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `review`
 --
 
 INSERT INTO `review` (`review_id`, `account_id`, `food_id`, `rating`, `comment`) VALUES
+(0, 12, 2, 1, 'Cute'),
 (7, 11, 9, 5, 'Food was magnificent!');
 
 -- --------------------------------------------------------
@@ -232,14 +255,15 @@ CREATE TABLE `security_question` (
   `account_id` int(11) NOT NULL,
   `question` text NOT NULL,
   `answer` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `security_question`
 --
 
 INSERT INTO `security_question` (`security_question_id`, `account_id`, `question`, `answer`) VALUES
-(0, 13, 'What is your mother`s maiden name?', 'Sakura');
+(1, 14, 'What is your mother`s maiden name?', 'Akira2'),
+(2, 15, 'What is your mother`s maiden name?', 'root');
 
 --
 -- Indexes for dumped tables
@@ -325,7 +349,7 @@ ALTER TABLE `security_question`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `assign_food`
@@ -337,25 +361,37 @@ ALTER TABLE `assign_food`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `checkout`
 --
 ALTER TABLE `checkout`
-  MODIFY `checkout_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `checkout_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `checkout_details`
 --
 ALTER TABLE `checkout_details`
-  MODIFY `checkout_details_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `checkout_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `favorite`
+--
+ALTER TABLE `favorite`
+  MODIFY `favorite_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `food`
 --
 ALTER TABLE `food`
   MODIFY `food_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `security_question`
+--
+ALTER TABLE `security_question`
+  MODIFY `security_question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
