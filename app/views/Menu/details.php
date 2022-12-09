@@ -23,8 +23,10 @@
 			<form action="/Category/details/<?= $data['menu']->category_id ?>" method="get" style='display:inline-block'>
 				<h4>Sort Food by price</h4>
 				<div class="input-group">
-					<button type="submit" name="Order" value="Ascend"><i class="bi bi-sort-up-alt"></i></button>
-					<button type="submit" name="Order" value="Descend"><i class="bi bi-sort-down"></i></button>
+					<button type="submit" name="Order" value="Ascend" class="btn themeButton"><i class="bi bi-sort-up-alt"></i></button>
+					<button type="submit" name="Order" value="Descend" class="btn themeButton">
+<i class="bi bi-sort-down"></i>
+					</button>
 				</div>
 			</form>
 		</div>
@@ -45,4 +47,4 @@
 			<?php } ?>
 		</div>
 	</div>
-		<?php $this->view('footer', 'Foodie'); ?>
+	<?php $this->view('footer', 'Foodie'); ?>

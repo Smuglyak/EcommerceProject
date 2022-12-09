@@ -20,10 +20,10 @@ class Favorite extends \app\core\Controller{
 			$favoriteFood->account_id = $_SESSION['account_id'];
 			$favoriteFood->food_id = $food_id;
 			$favoriteFood->insert();
-			header('location:/Food/viewFood/'. $food_id .'?message=Food added to Favorite');
+			header('location:/Favorite/index/'. $food_id .'?message=Food added to Favorite');
 		}
 		else {
-			header('location:/Food/viewFood/'. $food_id .'?error=Food is already in favorite');
+			header('location:/Favorite/index/'. $food_id .'?error=Food is already in favorite');
 		}
     }
 

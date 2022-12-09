@@ -8,9 +8,13 @@ class Checkout extends \app\core\Controller{
 	public function index(){
 		$userCart = new \app\models\Checkout();
 		$userCart = $userCart->findUserCheckout($_SESSION['account_id']);
-		$displayCart = new \app\models\CheckoutDetails();
-		$displayCart = $displayCart->getForCheckout($userCart->checkout_id);
-		$this->view('Checkout/index', ['displayCart'=>$displayCart]);
+		if(!$userCart){
+			$this->view('Checkout/index');	
+		}else {
+			$displayCart = new \app\models\CheckoutDetails();
+			$displayCart = $displayCart->getForCheckout($userCart->checkout_id);
+			$this->view('Checkout/index', ['displayCart' => $displayCart]);
+		}
 	}
 
 	#[\app\filters\Login]
@@ -52,7 +56,7 @@ class Checkout extends \app\core\Controller{
 			$_SESSION['checkout_id'] = $newCart->createCheckout();
 			// header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
 		}
-		header('location:/Food/viewFood/'. $food_id .'?message=Food added to Cart');
+		header('location:/Checkout/index/'. $food_id .'?message=Food added to Cart');
 	}
 
 	// public function addComboToCheckout($food_id){

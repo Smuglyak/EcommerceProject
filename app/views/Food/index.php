@@ -39,21 +39,6 @@
 			</a>
 		</div>
 
-		<?php
-		foreach ($data as $food) {
-			if ($food->is_available != "False") {
-				echo "<tr>
-		<td type=name>$food->food_name</td>       		 
-		<td type=action>
-		
-		</td>
-		</tr>
-        </br>";
-			}
-		}
-		?>
-
-
 		<div class="row">
 			<?php foreach ($data as $food) {
 				if ($food->is_available != "False") {
@@ -64,11 +49,12 @@
 							<div class="card-body text-center">
 								<h5 class="card-title"><?php echo $food->food_name; ?></h5>
 								<p class="card-text">$<?php echo $food->price; ?></p>
-								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite</a>
+								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
+								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $food->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
 							</div>
 							<div class="menuContainer" style="justify-content:center !important;">
-								<a type=action href='/Food/editFood/<?php echo $food->food_id?>'>edit<i class='bi bi-pencil-square'></i></a> |
-								<a type=action href='/Food/viewFood/<?php echo $food->food_id?>'>view details<i class="bi bi-three-dots"></i></a> |
+								<a type=action href='/Food/editFood/<?php echo $food->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
+								<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
 								<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
 							</div>
 						</div>

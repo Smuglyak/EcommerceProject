@@ -34,7 +34,7 @@
 				Picture:
 			</dt>
 			<dd>
-				<img src="/images/blank.jpg" style="max-width:200px;max-height:200px" id="profile_pic_preview" />
+				<img src="/images/blank.jpg" style="max-width:300px;" id="profile_pic_preview" />
 			</dd>
 			<dt>
 				Name:

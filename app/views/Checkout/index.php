@@ -10,7 +10,7 @@
 		</div>
 
 		<?php
-		if (isset($_GET['error'])) { ?>
+				if (isset($_GET['error'])) { ?>
 			<div class="alert alert-danger" role="alert">
 				<?= $_GET['error'] ?>
 			</div>
@@ -22,25 +22,59 @@
 			</div> <?php } ?>
 
 		<?php
-		foreach ($data['displayCart'] as $cart) {
-			echo "</br>
-		<tr>
-		<td type=name>$cart->food_id</td>
-		</br>
-		<td type=name>$cart->order_quantity</td>
-		</br>
-		<td type=name>$cart->total_price</td>
-		</br>
-		<a href='/Food/viewFood/$cart->food_id'>view details</a>
-		</br>
-		<a href='/Checkout/removeFromCart/$cart->checkout_details_id'>Remove Food<i class='bi-trash'></i></a>
-		</tr>
-    </br>
-    </br>";
+		if ($data) {
+			$total_price = 0;
+			foreach ($data['displayCart'] as $cart) {
+				$total_price = $total_price + $cart->total_price;
+		?>
+				<div class="row">
+					<div class="col-sm-3">
+						<div class="card" style="margin-bottom: 50px; width:300px">
+							<img style="max-height: 306px" src="<?php echo "/images/" . $cart->picture; ?>" class="card-img-top" alt="...">
+							<div class="card-body text-center">
+								<h5 class="card-title"><?php echo $cart->order_quantity ?>x <?php echo $cart->food_name; ?></h5>
+								<p class="card-text">$<?php echo $cart->price; ?></p>
+								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $cart->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
+								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $cart->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
+							</div>
+							<div class="menuContainer" style="justify-content:center !important;">
+								<a type=action href='/Food/editFood/<?php echo $cart->food_id ?>'>edit<i class='bi bi-pencil-square'></i></a> |
+								<a type=action href='/Food/viewFood/<?php echo $cart->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
+								<a type=action href='/Checkout/removeFromCart/$cart->checkout_details_id'>Delete from cart<i class='bi-trash'></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php }
+			echo "
+			<h4>Total price: $total_price $</h4>
+			<a class='btn themeButton' href='/Checkout/payCheckout/'>Pay Checkout</a>";
+		} else { ?>
+		<?php
+			echo "<div class='container-fluid  mt-100'>
+				 <div class='row'>
+					<div class='col-md-12'>
+							<div class='card'>
+						<div class='card-header'>
+						<h5>Cart</h5>
+						</div>
+						<div class='card-body cart'>
+								<div class='col-sm-12 empty-cart-cls text-center'>
+									<img style='height: 200px' src='/images/red-shopping-cart-10906.png' class='img-fluid mb-4 mr-3'>
+									<h3><strong>Your Cart is Empty</strong></h3>
+									<h4>Add something to make me happy :)</h4>
+									<a href='/Category/index' class='btn themeButton' data-abc='true'>continue shopping</a>
+								</div>
+						</div>
+				</div>
+					</div>
+				 </div>
+				</div>
+				";
 		}
 		?>
 
-		<a href='/Checkout/payCheckout/'>Pay Checkout</a>
+
 		</br>
 
 		<script>
@@ -48,7 +82,7 @@
 			if (file != "") {
 				document.getElementById("profile_pic_preview").src = "/images/" + file;
 			}
-		</script>		
+		</script>
 	</div>
 	<?php $this->view('footer', 'foodie'); ?>
 </body>

@@ -88,7 +88,7 @@ class Category extends \app\core\Controller{
 			$food = new \app\models\Food();
 			$foods = $food->getByCategory($_GET['Order'], $menu_id);
 			$menu = new \app\models\Category();
-			$menu = $menu->getById($_SESSION['menu_id']);
+			$menu = $menu->getById($menu_id);
 			 $this->view('Menu/details', ['menu' => $menu, 'foods'=>$foods]);
 		}	
 	}
