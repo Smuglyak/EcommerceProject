@@ -11,7 +11,7 @@
                 <input type="text" name="username" class="form-control form-control-lg" />
                 <div class="form-helper">Username</div>
               </div>
-              <input type="submit" name="action" value="Find Question" class='btn btn-primary' />
+              <input type="submit" name="action" value="Find Question" class='btn btn themeButton' />
             </form>
             <a href='/Main/index'>Cancel</a>
           </div>

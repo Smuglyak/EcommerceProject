@@ -10,6 +10,7 @@ class Food extends \app\core\Controller{
 		$this->view('Food/index', $foods);
 	}
 
+	#[\app\filters\RoleForProduct]
 	#[\app\filters\Login]
 	public function addFood(){
 		if(isset($_POST['action'])){

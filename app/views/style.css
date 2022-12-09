@@ -1,24 +1,204 @@
 body {
-    background-color: #FFF6F3 !important;
+    /* background-color: #FFF6F3 !important; */
+    font-family: 'TT Norms Pro',
+        sans-serif !important;
+        margin: 0;
+        padding: 0;
 }
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.wrapper {
+    margin: 70px auto;
+    padding: 20px;
+    background: #e7e7e7;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.wrapper h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.wrapper .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.wrapper .close:hover {
+    color: #06D85F;
+}
+
+.wrapper .content {
+    max-height: 30%;
+    overflow: auto;
+}
+
+.container.py-3 {
+        padding-top: 3rem !important;
+}
+
+.center {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: black;
+    /* margin: 0px !important;  */
+}
+/* 
+h4 {
+    
+} */
 
 .headerContainer {
     display: flex;
     justify-content: space-between;
-    background-color: white;
+    background-color: #FFF6F3 !important;
     -webkit-box-shadow: 0 4px 6px -6px #222;
     -moz-box-shadow: 0 4px 6px -6px #222;
     box-shadow: 0 4px 6px -6px #222;
 }
 
-.rightSide {
-        display: flex;
-        align-items: center;
+.banner {
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        url(/images/banner4.jpg);
+    /* pointer-events: none; */
 }
 
+/* .banner:hover {
+    animation: darken 1s ease-in 1s forwards;
+    background: linear-gradient(rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.7)),
+    url(/images/banner4.jpg);
+} */
+
+.close {
+    pointer-events: auto !important;
+}
+
+/* @keyframes darken {
+    from {
+        background: url(/images/banner4.jpg);
+    }
+
+    to {
+        
+    }
+} */
+
+.menuContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.hNav {
+    display: flex;
+    margin: 0px;
+    align-items: baseline;
+}
+
+.themeColor1 {
+    color: #E5172A !important;
+}
+
+.btn.themeButton {
+    border-radius: 500px;
+    background-color: #E5172A;
+    color: white !important;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 15px 2.4rem;
+}
+
+.btn.themeButton:hover {
+    background-color: #d7182b;
+    transition: 0.5s;
+}
+
+.btn.themeButton.shadow {
+    /* pointer-events: auto;     */
+}
+
+.btn.themeButton>p,
+.btn.themeButton> h4, 
+.btn.themeButton>h6 {
+    color: white !important;
+    margin: 0px;
+}
+
+input.btn.themeButton {
+    margin-top: 20px;
+}
+
+.bannerImage {    
+    height: 430px;
+    margin-left:auto;
+    margin-right:auto;
+
+}
+
+/* .hNav > h3 > a {
+    color: #E5172A !important;
+} */
+
+.menuContainer > li > a > h4 {
+
+}
+
+li {
+    list-style: none;
+}
+
+.rightSide {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 20px;
+}
+
+/* .rightSide. */
+
 .nav-link {
-    background-color:#E5172A !important;
-     color: white !important;
+    background-color: #E5172A !important;
+    color: white !important;
 }
 
 .logo {
@@ -26,7 +206,7 @@ body {
     padding-right: 6px !important;
 }
 
-.logoText > p {
+.logoText>p {
     margin: 0 !important;
     padding: 0 !important;
     padding-left: 6px !important;
@@ -54,19 +234,18 @@ p {
 }
 
 a {
-    color: black !important;
+    color: #E5172A !important;
     margin: 0;
     padding: 0;
 }
 
 input {
-        /* border: 1px solid black !important; */
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* border: 1px solid black !important; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 #footerContainer {
-        display: block;
-        padding-top: 200px;
+    display: block;    
 }
 
 .mb-4 {

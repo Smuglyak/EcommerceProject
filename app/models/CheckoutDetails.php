@@ -3,7 +3,6 @@
 namespace app\models;
 
 class CheckoutDetails extends \app\core\Model{
-
 	// public function getAll(){
 	// 	$SQL = "SELECT * FROM checkout_details";
 	// 	$STMT = self::$_connection->prepare($SQL);
