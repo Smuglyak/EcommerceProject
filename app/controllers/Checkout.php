@@ -23,7 +23,7 @@ class Checkout extends \app\core\Controller{
 		$cart = $cart->findUserCheckout($_SESSION['account_id']);
 		$details = new \app\models\CheckoutDetails();
 		$details = $details->getFood($food_id, $cart->checkout_id);
-
+		
 		if($cart && $details){
 			$addItem = new \app\models\CheckoutDetails();
 			$getFood = new \app\models\AssignFood();
@@ -105,6 +105,7 @@ class Checkout extends \app\core\Controller{
 			$displayOrder->updatePrice();
 		}
 		else{
+			$checkout = new \app\models\CheckoutDetails();
 			$checkout->checkout_details_id = $checkout_details_id;
 			$checkout->delete();
 		}

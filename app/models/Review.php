@@ -19,7 +19,7 @@ class Review extends \app\core\Model{
 		$STMT = self::$_connection->prepare($SQL);
 		$STMT->execute(['review_id'=>$review_id]);
 		$STMT->setFetchMode(\PDO::FETCH_CLASS, 'app\models\Review');
-		return $STMT->fetchAll();
+		return $STMT->fetch();
 	}
 
 	public function getAllForFood($food_id){

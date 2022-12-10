@@ -33,7 +33,7 @@
 							<img style="max-height: 306px" src="<?php echo "/images/" . $cart->picture; ?>" class="card-img-top" alt="...">
 							<div class="card-body text-center">
 								<h5 class="card-title"><?php echo $cart->order_quantity ?>x <?php echo $cart->food_name; ?></h5>
-								<p class="card-text">$<?php echo $cart->price; ?></p>
+								<p class="card-text">$<?php echo $cart->total_price; ?></p>
 								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $cart->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
 								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $cart->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
 							</div>
