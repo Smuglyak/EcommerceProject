@@ -20,7 +20,6 @@
 			<div class="alert alert-success" role="alert">
 				<?= $_GET['message'] ?>
 			</div> <?php } ?>
-		<!-- the food list(all foods, uncategorized) -->
 		<ul>
 			<div class="menuContainer">
 				<li>

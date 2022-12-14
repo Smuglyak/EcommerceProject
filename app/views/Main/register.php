@@ -9,35 +9,35 @@
 
             <div class="mb-md-5 mt-md-4 pb-5">
               <form action='' method='post'>
-                <h2 class="fw-bold mb-2 text-uppercase">Register</h2>
-                <p class="text-dark-50 mb-5">Please enter your credentials</p>
+                <h2 class="fw-bold mb-2 text-uppercase"><?= _("Register") ?></h2>
+                <p class="text-dark-50 mb-5"><?= _("Please enter your credentials") ?></p>
 
                 <div class="mb-4">
                   <input type="text" name="username" class="form-control form-control-lg" />
-                  <div class="form-helper">Username</div>
+                  <div class="form-helper"><?= _("Username") ?></div>
                 </div>
 
                 <div class="mb-4">
                   <input type="text" name="first_name" class="form-control form-control-lg" />
-                  <div class="form-helper">Firstname</div>
+                  <div class="form-helper"><?= _("Firstname") ?></div>
                 </div>
 
                 <div class="mb-4">
                   <input type="text" name="last_name" class="form-control form-control-lg" />
-                  <div class="form-helper">Lastname</div>
+                  <div class="form-helper"><?= _("Lastname") ?></div>
                 </div>
 
                 <div class="mb-4">
                   <input type="password" name="password" class="form-control form-control-lg" required />
-                  <div class="form-helper">Password</div>
+                  <div class="form-helper"><?= _("Password") ?></div>
                 </div>
 
                 <div class="mb-4">
                   <input type="password" name="password_confirm" class="form-control form-control-lg" required />
-                  <div class="form-helper">Confirm Password</div>
+                  <div class="form-helper"><?= _("Confirm Password") ?></div>
                 </div>
 
-                <button class="btn themeButton" type="submit" name="action" style="background-color: red">Sign up</button>
+                <button class="btn themeButton" type="submit" name="action" style="background-color: red"><?= _("Sign up") ?></button>
 
               </form>
             </div>

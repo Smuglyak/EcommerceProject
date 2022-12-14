@@ -52,7 +52,7 @@
 								<a class="btn themeButton" href='/Favorite/addFavorite/<?= $food->food_id ?>'>Add to Favorite&nbsp;&nbsp;<i class="bi bi-heart-fill"></i></a>
 								<a style="margin-top:10px" class="btn themeButton" href='/Checkout/addFoodToCart/<?= $food->food_id ?>'>Add to cart&nbsp;&nbsp;<i class="bi bi-cart-fill"></i></a>
 							</div>
-							<?php if($_SESSION['role'] != 'admin') { ?>
+							<?php if ($_SESSION['role'] != 'admin') { ?>
 								<div class="menuContainer" style="justify-content:center !important;">
 									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a>
 								</div>
@@ -62,12 +62,12 @@
 									<a type=action href='/Food/viewFood/<?php echo $food->food_id ?>'>view details<i class="bi bi-three-dots"></i></a> |
 									<a type=action href='/Food/delete/$food->food_id'>delete<i class='bi-trash'></i></a>
 								</div>
-								<?php } ?>
-								</div>
+							<?php } ?>
 						</div>
-				<?php }
-			} ?>
 					</div>
+			<?php }
+			} ?>
 		</div>
-		<?php $this->view('footer', 'Foodie'); ?>
+	</div>
+	<?php $this->view('footer', 'Foodie'); ?>
 </body>

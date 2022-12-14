@@ -24,7 +24,7 @@ class Main extends \app\core\Controller
 				$_SESSION['first_name'] = $account->first_name;
 				$_SESSION['last_name'] = $account->last_name;
 
-				header('location:/Category/index');
+				header('location:/Main/setup2fa');
 			} else {
 				header('location:/Main/login?error=Wrong username/password combination!');
 			}
@@ -141,13 +141,13 @@ class Main extends \app\core\Controller
                 header('location:/Category/index');         
             }
             else{             
-                header('location:Main/setup2fa?error=token not verified!');//reload         
+                header('location:/Main/setup2fa?error=token not verified!');//reload         
             }     
         }
         else{         
             $two_fa_code = \app\core\TokenAuth6238::generateRandomClue();         
             $_SESSION['two_fa_code'] = $two_fa_code;         
-            $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['username'],'Awesome.com',$secretkey, 'Awesome App');
+            $url = \App\core\TokenAuth6238::getLocalCodeUrl($_SESSION['username'],'Awesome.com', $two_fa_code, 'Awesome App');
             $this->view('Main/twofasetup', $url);     
         } 
     } 
@@ -173,7 +173,26 @@ class Main extends \app\core\Controller
 
 	public function logout()
 	{
+		// Destroy all session variables
+		session_unset();
+		global $logged_in;
+		$logged_in = false;  
+		// Destroy the session cookie
+		if (ini_get("session.use_cookies")) {
+			$params = session_get_cookie_params();
+			setcookie(
+				session_name(),
+				'',
+				time() - 42000,
+				$params["path"],
+				$params["domain"],
+				$params["secure"],
+				$params["httponly"]
+			);
+		}
+		
 		session_destroy();
+
 		header('location:/Main/index');
 	}
 }
