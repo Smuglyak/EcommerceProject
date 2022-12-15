@@ -9,18 +9,18 @@
             <form action='' method='post' enctype='multipart/form-data'>
               <div class="mb-4">
                 <input type="text" name="username" class="form-control form-control-lg" />
-                <div class="form-helper">Username</div>
+                <div class="form-helper"><?= _("Username") ?></div>
               </div>
               <input type="submit" name="action" value="Find Question" class='btn btn themeButton' />
             </form>
-            <a href='/Main/index'>Cancel</a>
+            <a href='/Main/index'><?= _("Cancel") ?></a>
           </div>
         </div>
       </div>
     </div>
-</div>
+  </div>
 
 
 
-    <?php $this->view('footer', 'Foodie'); ?>
+  <?php $this->view('footer', 'Foodie'); ?>
 </body>

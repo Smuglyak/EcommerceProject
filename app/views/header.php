@@ -3,7 +3,7 @@
 
 <head>
 
-  <title><?= $data ?></title>
+  <title><?= gettext($data) ?></title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -34,7 +34,7 @@
             <img src="/images/foodie.png" alt="Logo image" style="max-width: 200px;" />
           </div>
           <div class="logoText">
-            <p>BUDGET_DOORDASH</p>
+            <p><?= _("BUDGET_DOORDASH") ?></p>
           </div>
         </div>
       </a>
@@ -45,7 +45,7 @@
             <img src="/images/foodie.png" alt="Logo image" style="max-width: 200px;" />
           </div>
           <div class="logoText">
-            <p>BUDGET_DOORDASH</p>
+            <p><?= _("BUDGET_DOORDASH") ?></p>
           </div>
         </div>
       </a>
@@ -59,13 +59,13 @@
       <a class="" style="" href="/Account/index">
         <div class="logo-container btn themeButton">
           <i class="bi bi-person-circle"></i>
-            <p>Account</p>
+          <p><?= _("Account") ?></p>
         </div>
       </a>
       <a class="" href="/Checkout/index" style="padding-right: 10px">
         <div class="logo-container btn themeButton">
           <i class="bi bi-cart"></i>
-            <p>Cart</p>          
+          <p><?= _("Cart") ?></p>
         </div>
       </a>
     <?php } ?>
@@ -73,4 +73,3 @@
 
 
 </nav>
-
