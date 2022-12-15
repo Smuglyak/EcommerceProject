@@ -85,10 +85,8 @@ class Food extends \app\core\Model
 	{
 		$SQL = "UPDATE food SET is_available=:is_available WHERE food_id=:food_id";
 		$STMT = self::$_connection->prepare($SQL);
-		$STMT->execute([
-			'is_available'=>$this->is_available,
-			'food_id' => $this->food_id
-		]);
+		$STMT->execute(['is_available'=>'False',
+						'food_id' => $this->food_id]);
 	}
 
 	public function deleteAssignFood()

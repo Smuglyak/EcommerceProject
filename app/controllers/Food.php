@@ -42,7 +42,15 @@ class Food extends \app\core\Controller{
 		$food = $food->getById($food_id);
 		if (isset($_POST['action'])) {
 			$filename = $this->saveFile($_FILES['picture']);
-			$food->picture = $filename;
+			if($filename){
+				if(isset($_SESSION['filename']))
+					unlink("images/$_SESSION[filename]");
+				$_SESSION['filename'] = $filename;
+				$_SESSION['oldFile'] = $food->picture;
+				$food->picture = $filename;
+			}elseif(isset($_SESSION['filename'])){
+				$food->picture = $_SESSION['filename'];
+			}
 			$food->food_name = $_POST['food_name'];
 			$food->food_description = $_POST['food_description'];
 			$food->price = $_POST['price'];
@@ -58,8 +66,8 @@ class Food extends \app\core\Controller{
 	public function delete($food_id){
 		$food = new \app\models\Food();
 		$food = $food->getById($food_id);
-		$food->deleteAssignFood();
-		$food->is_available = 'False';
+		// $food->deleteAssignFood();
+		// $food->is_available = 'False';
 		$food->delete();
 		header('location:/Food/index/');
 	}

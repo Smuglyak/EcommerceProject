@@ -78,4 +78,10 @@ class CheckoutDetails extends \app\core\Model{
 						'assign_food_id'=>$this->assign_food_id]);
 	}
 
+	public function delete(){
+		$SQL = "DELETE FROM checkout_details WHERE checkout_details_id=:checkout_details_id";
+		$STMT = self::$_connection->prepare($SQL);
+		$STMT->execute(['checkout_details_id'=>$this->checkout_details_id]);
+	}
+
 }
