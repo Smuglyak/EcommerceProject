@@ -8,7 +8,7 @@
                     <div class="row g-0">
                         <div class="col-md-4 gradient-custom text-center text-dark" style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
                             <img src="https://img.freepik.com/free-vector/cheese-burger-cartoon-icon-illustration_138676-2450.jpg?w=2000" alt="Avatar" class="img-fluid my-5" style="width: 180px;" />
-                            
+
                             <form action='' method='post' enctype='multipart/form-data'>
 
                                 <input class='form-control' type="text" name="username" value="<?= $_SESSION['username'] ?>" />
@@ -20,15 +20,15 @@
                         <div class="col-md-8">
                             <div class="card-body p-4">
 
-                                <h6>Account Information</h6>
+                                <h6><?= _("Account Information") ?></h6>
                                 <hr class="mt-0 mb-4">
                                 <div class="row pt-1">
                                     <div class="col-6 mb-3">
-                                        <h6>First Name</h6>
+                                        <h6><?= _("First Name") ?></h6>
                                         <input class='form-control' type="text" name="first_name" value="<?= $data->first_name ?>" />
                                     </div>
                                     <div class="col-6 mb-3">
-                                        <h6>Last Name</h6>
+                                        <h6><?= _("Last Name") ?></h6>
                                         <input class='form-control' type="text" name="last_name" value="<?= $data->last_name ?>" />
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
                                     <a href="#!"><i class="fab fa-instagram fa-lg"></i></a>
                                 </div> -->
                                 <input type="submit" name="action" value="Save changes" class='btn themeButton' />
-</form>
+                                </form>
                             </div>
                         </div>
                     </div>

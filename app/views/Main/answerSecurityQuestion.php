@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title>Change Password</title>
+	<title><?= _("Change Password") ?></title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 	<link rel="icon" type="image/png" href="/images/foodie.png">
@@ -12,15 +12,15 @@
 
 	<div class="container py-3">
 		<div class="hNav">
-			<h3><a href="/Main/index">Landing page</a></h3>
+			<h3><a href="/Main/index"><?= _("Landing page") ?></a></h3>
 			<span aria-hidden="true">
 				<h3>/</h3>
 			</span>
-			<h3><a href="/Main/addSecurityQuestion">Add Security Question</a></h3>
+			<h3><a href="/Main/addSecurityQuestion"><?= _("Add Sequrity Question") ?></a></h3>
 			<span aria-hidden="true">
 				<h3>/</h3>
 			</span>
-			<h2>Answer Security Question</h2>
+			<h2><?= _("Answer Security Question") ?></h2>
 		</div>
 	</div>
 	<div class="row d-flex justify-content-center align-items-center h-100">
@@ -31,17 +31,17 @@
 						<form action='' enctype="multipart/form-data" method='post'>
 							<dl>
 								<dt>
-									Question:
+									<?= _("Question:") ?>
 								</dt>
 								<dd>
-									<?= $data['question']->question ?>
+									<?= gettext($data['question']->question) ?>
 								</dd>
 							</dl>
 							<div class="mb-4">
 								<input type="text" class="form-control form-control-lg" name="answer" placeholder="Enter the answer to the question" required>
 							</div>
 							<div class="d-flex justify-content-center">
-								<button type="submit" class="btn themeButton" name="action">Verify Answer</button>
+								<button type="submit" class="btn themeButton" name="action"><?= _("Verify Answer") ?></button>
 							</div>
 						</form>
 					</div>
@@ -49,7 +49,7 @@
 			</div>
 		</div>
 	</div>
-	<a href='/Main/login/'>Back to Login</a>
+	<a href='/Main/login/'><?= _("Back to Login") ?></a>
 	<?php $this->view('footer', 'foodie'); ?>
 </body>
 

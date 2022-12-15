@@ -1,5 +1,5 @@
 <?php $this->view('header', 'Foodie'); ?>
 
-History of foods 
+<?= _("History of foods ") ?>
 
 <?php $this->view('footer', 'Foodie'); ?>

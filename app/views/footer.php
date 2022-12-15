@@ -11,7 +11,7 @@
       <?php if (isset($_SESSION['username'])) { ?>
         <div class="center">
           <a href="/Main/logout" class="btn themeButton">
-            <p class="text-center"><i class="bi bi-door-closed"></i>Log out</p>
+            <p class="text-center"><i class="bi bi-door-closed"></i><?= _("Log out") ?></p>
           </a>
         </div>
       <?php } else { ?>

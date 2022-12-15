@@ -1,0 +1,490 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 12:10-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: app/views/Account/edit.php:23 app/views/Account/index.php:22
+msgid "Account Information"
+msgstr ""
+
+#: app/views/Account/edit.php:27 app/views/Account/index.php:26
+msgid "First Name"
+msgstr ""
+
+#: app/views/Account/edit.php:31 app/views/Account/index.php:30
+msgid "Last Name"
+msgstr ""
+
+#: app/views/Account/index.php:13
+msgid "Hey there"
+msgstr ""
+
+#: app/views/Account/index.php:37
+msgid "Check purchase history"
+msgstr ""
+
+#: app/views/Account/index.php:42
+msgid "Check favorite foods"
+msgstr ""
+
+#: app/views/Checkout/index.php:5 app/views/Food/addFood.php:6
+#: app/views/Food/assignFood.php:7 app/views/Food/editFood.php:4
+#: app/views/Food/index.php:5 app/views/Food/viewFood.php:5
+#: app/views/Menu/addMenu.php:15 app/views/Menu/details.php:4
+#: app/views/Menu/editMenu.php:4 app/views/Menu/index.php:7
+msgid "Menu"
+msgstr ""
+
+#: app/views/Checkout/index.php:9
+msgid "Checkout"
+msgstr ""
+
+#: app/views/Checkout/index.php:37 app/views/Food/assignFoodView.php:9
+#: app/views/Food/index.php:52 app/views/Food/viewFood.php:28
+#: app/views/Menu/details.php:45
+msgid "Add to Favorite"
+msgstr ""
+
+#: app/views/Checkout/index.php:38 app/views/Food/index.php:53
+#: app/views/Menu/details.php:46
+msgid "Add to cart"
+msgstr ""
+
+#: app/views/Checkout/index.php:41 app/views/Favorite/index.php:45
+#: app/views/Food/index.php:61 app/views/Menu/editMenu.php:8
+msgid "Edit"
+msgstr ""
+
+#: app/views/Checkout/index.php:42 app/views/Favorite/index.php:46
+#: app/views/Food/index.php:57 app/views/Food/index.php:62
+msgid "View details"
+msgstr ""
+
+#: app/views/Checkout/index.php:43
+msgid "Delete from cart"
+msgstr ""
+
+#: app/views/Checkout/index.php:59 app/views/header.php:68
+msgid "Cart"
+msgstr ""
+
+#: app/views/Checkout/index.php:64
+msgid "Your Cart is Empty"
+msgstr ""
+
+#: app/views/Checkout/index.php:65
+msgid "Add something to make me happy :)"
+msgstr ""
+
+#: app/views/Checkout/index.php:66
+msgid "Continue shopping"
+msgstr ""
+
+#: app/views/Favorite/index.php:4
+msgid "Favorite Food List"
+msgstr ""
+
+#: app/views/Favorite/index.php:14 app/views/header.php:62
+msgid "Account"
+msgstr ""
+
+#: app/views/Favorite/index.php:18
+msgid "Favorites"
+msgstr ""
+
+#: app/views/Favorite/index.php:42
+msgid "Remove from Favorite"
+msgstr ""
+
+#: app/views/Favorite/index.php:47 app/views/Food/index.php:63
+msgid "Delete"
+msgstr ""
+
+#: app/views/Food/addFood.php:10 app/views/Food/assignFood.php:11
+#: app/views/Food/editFood.php:8 app/views/Food/index.php:9
+#: app/views/Food/viewFood.php:9
+msgid "All Products"
+msgstr ""
+
+#: app/views/Food/addFood.php:14 app/views/Food/index.php:34
+msgid "Add Food"
+msgstr ""
+
+#: app/views/Food/addFood.php:23
+msgid "Picture:"
+msgstr ""
+
+#: app/views/Food/addFood.php:26 app/views/Food/editFood.php:31
+#: app/views/Food/viewFood.php:40 app/views/Menu/addMenu.php:24
+#: app/views/Menu/editMenu.php:14
+msgid "Name:"
+msgstr ""
+
+#: app/views/Food/addFood.php:26
+msgid "Enter the food name."
+msgstr ""
+
+#: app/views/Food/addFood.php:29 app/views/Food/editFood.php:41
+#: app/views/Food/viewFood.php:47 app/views/Menu/addMenu.php:28
+#: app/views/Menu/details.php:14 app/views/Menu/editMenu.php:20
+msgid "Description:"
+msgstr ""
+
+#: app/views/Food/addFood.php:30
+msgid "Describe the food."
+msgstr ""
+
+#: app/views/Food/addFood.php:33 app/views/Food/editFood.php:47
+#: app/views/Food/viewFood.php:53
+msgid "Price:"
+msgstr ""
+
+#: app/views/Food/addFood.php:33
+msgid "Enter the price of the food."
+msgstr ""
+
+#: app/views/Food/addFood.php:35
+msgid "Create food"
+msgstr ""
+
+#: app/views/Food/assignFood.php:15
+msgid "Assign a Food"
+msgstr ""
+
+#: app/views/Food/assignFood.php:20
+msgid "Choose a Menu:"
+msgstr ""
+
+#: app/views/Food/assignFood.php:31
+msgid "Choose a Food:"
+msgstr ""
+
+#: app/views/Food/assignFood.php:40
+msgid "Assign food"
+msgstr ""
+
+#: app/views/Food/editFood.php:12
+msgid "Edit Food details"
+msgstr ""
+
+#: app/views/Food/editFood.php:18
+msgid "Old Picture"
+msgstr ""
+
+#: app/views/Food/editFood.php:23
+msgid "Upload a new picture:"
+msgstr ""
+
+#: app/views/Food/editFood.php:32 app/views/Food/viewFood.php:13
+#: app/views/Food/viewFood.php:43 app/views/Food/viewFood.php:50
+msgid "food"
+msgstr ""
+
+#: app/views/Food/editFood.php:52
+msgid "Save changes"
+msgstr ""
+
+#: app/views/Food/index.php:28
+msgid "Search for specific food"
+msgstr ""
+
+#: app/views/Food/index.php:29
+msgid "Search"
+msgstr ""
+
+#: app/views/Food/index.php:38
+msgid "Assign a food to menu"
+msgstr ""
+
+#: app/views/Food/viewFood.php:30
+msgid "Add to Cart"
+msgstr ""
+
+#: app/views/Food/viewFood.php:34
+msgid "Picture"
+msgstr ""
+
+#: app/views/Food/viewFood.php:60
+msgid "Reviews"
+msgstr ""
+
+#: app/views/Food/viewFood.php:62
+msgid "Add a review"
+msgstr ""
+
+#: app/views/Food/viewFood.php:69
+msgid "stars"
+msgstr ""
+
+#: app/views/Food/viewFood.php:75
+msgid "Remove review"
+msgstr ""
+
+#: app/views/header.php:37 app/views/header.php:48
+msgid "BUDGET_DOORDASH"
+msgstr ""
+
+#: app/views/History/index.php:3
+msgid "History of foods "
+msgstr ""
+
+#: app/views/Main/addSecurityQuestion.php:4
+#: app/views/Main/addSecurityQuestion.php:18
+#: app/views/Main/answerSecurityQuestion.php:19
+msgid "Add Sequrity Question"
+msgstr ""
+
+#: app/views/Main/addSecurityQuestion.php:14
+#: app/views/Main/answerSecurityQuestion.php:15
+#: app/views/Main/changePassword.php:13
+msgid "Landing page"
+msgstr ""
+
+#: app/views/Main/addSecurityQuestion.php:31
+msgid "Question"
+msgstr ""
+
+#: app/views/Main/addSecurityQuestion.php:44
+msgid "Save"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:4
+#: app/views/Main/changePassword.php:4 app/views/Main/changePassword.php:25
+msgid "Change Password"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:23
+#: app/views/Main/changePassword.php:21
+msgid "Answer Security Question"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:34
+msgid "Question:"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:37
+msgid "question"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:44
+msgid "Verify Answer"
+msgstr ""
+
+#: app/views/Main/answerSecurityQuestion.php:52
+msgid "Back to Login"
+msgstr ""
+
+#: app/views/Main/changePassword.php:17
+msgid "Add Security Question"
+msgstr ""
+
+#: app/views/Main/changePassword.php:34
+msgid "Set up 2-factor authentication"
+msgstr ""
+
+#: app/views/Main/changePassword.php:41
+msgid "Modify your password"
+msgstr ""
+
+#: app/views/Main/changePassword.php:43
+msgid "New Password:"
+msgstr ""
+
+#: app/views/Main/changePassword.php:44
+msgid "Confirmation New Password :"
+msgstr ""
+
+#: app/views/Main/check2fa.php:4
+msgid "2fa Check"
+msgstr ""
+
+#: app/views/Main/check2fa.php:8
+msgid "Hi"
+msgstr ""
+
+#: app/views/Main/check2fa.php:8
+msgid "username"
+msgstr ""
+
+#: app/views/Main/check2fa.php:8
+msgid "Provide your 2-factor authentication code"
+msgstr ""
+
+#: app/views/Main/check2fa.php:10
+msgid "Current code:"
+msgstr ""
+
+#: app/views/Main/findSecurityQuestion.php:12 app/views/Main/login.php:17
+#: app/views/Main/register.php:17
+msgid "Username"
+msgstr ""
+
+#: app/views/Main/findSecurityQuestion.php:16
+#: app/views/Review/addReview.php:41
+msgid "Cancel"
+msgstr ""
+
+#: app/views/Main/index.php:5
+msgid "Proceed to the website"
+msgstr ""
+
+#: app/views/Main/index.php:9
+msgid "Welcome to the site"
+msgstr ""
+
+#: app/views/Main/index.php:10
+msgid "Log in or register to proceed to the menu"
+msgstr ""
+
+#: app/views/Main/index.php:16 app/views/Main/login.php:12
+#: app/views/Main/login.php:31
+msgid "Login"
+msgstr ""
+
+#: app/views/Main/index.php:21 app/views/Main/register.php:12
+msgid "Register"
+msgstr ""
+
+#: app/views/Main/login.php:13
+msgid "Please enter your login and password!"
+msgstr ""
+
+#: app/views/Main/login.php:22 app/views/Main/register.php:32
+msgid "Password"
+msgstr ""
+
+#: app/views/Main/login.php:24
+msgid "Forgot password?"
+msgstr ""
+
+#: app/views/Main/login.php:27
+msgid "Don't have an account?"
+msgstr ""
+
+#: app/views/Main/login.php:27
+msgid "Sign Up"
+msgstr ""
+
+#: app/views/Main/register.php:13
+msgid "Please enter your credentials"
+msgstr ""
+
+#: app/views/Main/register.php:22
+msgid "Firstname"
+msgstr ""
+
+#: app/views/Main/register.php:27
+msgid "Lastname"
+msgstr ""
+
+#: app/views/Main/register.php:37
+msgid "Confirm Password"
+msgstr ""
+
+#: app/views/Main/register.php:40
+msgid "Sign up"
+msgstr ""
+
+#: app/views/Main/twofasetup.php:4
+msgid "2fa set up"
+msgstr ""
+
+#: app/views/Main/twofasetup.php:16
+msgid ""
+"Please scan the QR-code on the screen with your favorite\n"
+"\t\tAuthenticator software, such as Google Authenticator. The\n"
+"\t\tauthenticator software will generate codes that are valid for 30\n"
+"\t\tseconds only. Enter such a code while and submit it while it is\n"
+"\t\tstill valid to confirm that the 2-factor authentication can be\n"
+"\t\tapplied to your account."
+msgstr ""
+
+#: app/views/Main/twofasetup.php:29
+msgid "Setup 2fa"
+msgstr ""
+
+#: app/views/Main/twofasetup.php:36
+msgid "Current code shown by the app"
+msgstr ""
+
+#: app/views/Main/twofasetup.php:42
+msgid "Submit"
+msgstr ""
+
+#: app/views/Menu/addMenu.php:4 app/views/Menu/addMenu.php:19
+#: app/views/Menu/index.php:9
+msgid "Add Menu"
+msgstr ""
+
+#: app/views/Menu/addMenu.php:24
+msgid "Enter the menu name."
+msgstr ""
+
+#: app/views/Menu/addMenu.php:34
+msgid "Type:"
+msgstr ""
+
+#: app/views/Menu/details.php:8 app/views/Menu/details.php:17
+msgid "menu"
+msgstr ""
+
+#: app/views/Menu/details.php:24
+msgid "Sort Food by price"
+msgstr ""
+
+#: app/views/Menu/details.php:50 app/views/Menu/details.php:55
+msgid "view details"
+msgstr ""
+
+#: app/views/Menu/details.php:54
+msgid "edit"
+msgstr ""
+
+#: app/views/Menu/details.php:56
+msgid "delete"
+msgstr ""
+
+#: app/views/Menu/editMenu.php:8
+msgid "details"
+msgstr ""
+
+#: app/views/Menu/editMenu.php:26
+msgid "Menu Type:"
+msgstr ""
+
+#: app/views/Menu/index.php:27
+msgid "All products"
+msgstr ""
+
+#: app/views/Menu/index.php:42
+msgid "Combos"
+msgstr ""
+
+#: app/views/Review/addReview.php:4 app/views/Review/addReview.php:12
+msgid "Add Review"
+msgstr ""
+
+#: app/views/Review/addReview.php:24
+msgid "Rating:"
+msgstr ""
+
+#: app/views/Review/addReview.php:34
+msgid "Comment:"
+msgstr ""
+
+#: app/views/Review/addReview.php:35
+msgid "Write your comment here."
+msgstr ""

@@ -4,9 +4,9 @@
 	<?php $this->view('header', 'Foodie'); ?>
 	<div class="container py-3">
 		<div class="menuContainer">
-			<h2>Menu</h2>
+			<h2><?= _("Menu") ?></h2>
 			<!-- add menu -->
-			<a class="btn themeButton" href='/Category/addMenu'>Add Menu</a>
+			<a class="btn themeButton" href='/Category/addMenu'><?= _("Add Menu") ?></a>
 		</div>
 
 		<?php
@@ -24,7 +24,7 @@
 			<div class="menuContainer">
 				<li>
 					<a href="/Food/index">
-						<h4>All products</h4>
+						<h4><?= _("All products") ?></h4>
 					</a>
 				</li>
 			</div>
@@ -39,7 +39,7 @@
 		}
 		?>
 
-		<h2>Combos</h2>
+		<h2><?= _("Combos") ?></h2>
 
 		<?php
 		foreach ($data['combos'] as $menu) {
