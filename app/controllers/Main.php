@@ -64,7 +64,7 @@ class Main extends \app\core\Controller
 			$question = new \app\models\SecurityQuestion();
 			$question->account_id = $_SESSION['account_id'];
 			$question->question = $_POST['question'];
-			$question->answer = $_POST['answer'];
+			$question->answer = password_hash($_POST['answer'], PASSWORD_DEFAULT);
 			$question->insert();
 			header('location:/Main/login');
 		} else {
@@ -96,7 +96,7 @@ class Main extends \app\core\Controller
 		$question = new \app\models\SecurityQuestion();
 		$question = $question->getQuestion($_SESSION['temp_account_id']);
 		if (isset($_POST['action'])) {
-			if ($_POST['answer'] == $question->answer) {
+			if (password_verify($_POST['answer'], $question->answer)) {
 				$user = new \app\models\Account();
 				$user = $user->getById($_SESSION['temp_account_id']);
 				$_SESSION['name'] = $user->username;
