@@ -39,3 +39,12 @@ We will be spending approximately 180 hours or more building this product.
 
 #### Teacher's comments:
 16. As a customer, I can Order a delivery **(How does this differ from #11 Checking out an order?)**
+
+### User guide
+1) Once you land in first page, you will need to press button in the center of the page to either login or register.
+2) If you go to register page, you will need to fill up all the fields for the account information.
+3) Once you fill up everything, you will need to give an answer to the security question to authenticate in case you forget your password.
+4) Once you give security question, you will need to login
+5) Once you login, you will need to setup 2-fa authentication in order to make sure, you are not a robot and to make sure that it is you who is accessing the application.(Double verification of a user)
+6) Once you authenticate through 2fa, you will be in the dashboard page.
+7) 
