@@ -51,6 +51,12 @@ class Review extends \app\core\Controller{
 			$review->delete();
 			header('location:/Food/viewFood/'. $_SESSION['temp_food_id']);
 		}
+		else if ($_SESSION['role'] == 'admin'){
+			$review = new \app\models\Review();
+			$review->review_id = $review_id;
+			$review->delete();
+			header('location:/Food/viewFood/'. $_SESSION['temp_food_id']);
+		}
 		else{
 			header('location:/Food/viewFood/'. $_SESSION['temp_food_id'] . "?error=You cannot delete a review that is not yours!");
 		}
