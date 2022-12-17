@@ -44,7 +44,18 @@ We will be spending approximately 180 hours or more building this product.
 1) Once you land in first page, you will need to press button in the center of the page to either login or register.
 2) If you go to register page, you will need to fill up all the fields for the account information.
 3) Once you fill up everything, you will need to give an answer to the security question to authenticate in case you forget your password.
-4) Once you give security question, you will need to login
-5) Once you login, you will need to setup 2-fa authentication in order to make sure, you are not a robot and to make sure that it is you who is accessing the application.(Double verification of a user)
+4) Once you give security question, you will need to login.
+5) Once you login, you will need to setup 2-fa authentication in order to make sure, you are not a robot and to make sure that it is you who is accessing the application.(Double verification of a user).
 6) Once you authenticate through 2fa, you will be in the dashboard page.
-7) 
+7) On the dashboard you will have three sections: upper section(the header), main article(the body), and the lower section(footer).
+In the header you have:
+- Application logo which will bring you to dashboard.
+- Account logo which will bring you to account page.
+- Cart logo which will bring you to the cart of foods.
+In the body you have:
+- all type of menus, and combos which you can click on head to that specific menu.
+- There is also an option to see all foods uncategorized.
+In the footer you have:
+- The copyright text.
+- Logout button to logout of the application.
+
