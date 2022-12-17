@@ -48,14 +48,14 @@ We will be spending approximately 180 hours or more building this product.
 5) Once you login, you will need to setup 2-fa authentication in order to make sure, you are not a robot and to make sure that it is you who is accessing the application.(Double verification of a user).
 6) Once you authenticate through 2fa, you will be in the dashboard page.
 7) On the dashboard you will have three sections: upper section(the header), main article(the body), and the lower section(footer).
-In the header you have:
+###### In the header you have:
 - Application logo which will bring you to dashboard.
 - Account logo which will bring you to account page.
 - Cart logo which will bring you to the cart of foods.
-In the body you have:
+###### In the body you have:
 - all type of menus, and combos which you can click on head to that specific menu.
 - There is also an option to see all foods uncategorized.
-In the footer you have:
+###### In the footer you have:
 - The copyright text.
 - Logout button to logout of the application.
 
